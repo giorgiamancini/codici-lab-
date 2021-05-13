@@ -1,0 +1,8 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|c82419e1-19d8-43cc-8631-2a7e8fa2aed2
+C:\Users\cante\OneDrive\Documenti\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|dfea0b90-1abf-4bd6-8a5e-80cfd8da0e3c
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|98c1f659-8a6e-4747-a3e6-275de9c49b12
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|46740ea7-78cd-4ba1-85c0-d182a8a0c6c8
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|5022b61d-b5cf-4199-9973-95c4cfade7f0
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\Progetti 7 aprile\Workspace01\Project1.cydsn\Project1.cyprj|19b6810e-28ee-4a32-8725-4936aa42adea
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AnnotationLibrary\AnnotationLibrary_lib\AnnotationLibrary_lib.cylib\AnnotationLibrary_lib.cyprj|9d7623a4-2bbf-4379-9daf-5fc6c0d37166
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\Progetti 7 aprile\Workspace01\Project2.cydsn\Project2.cyprj|a7a32a50-bfbf-490e-86cf-07ce79009b1e

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWorkspaceSerialize" version="5" xml_contents_version="3" name="AY2021_II_PSoC_Basics" persistent="AY2021_II_PSoC_Basics.cywrk" platform="NOT_USED">
+<current_project name=".\01b-LedBlink.cydsn\01b-LedBlink.cyprj" />
+<wrkspc_folders />
+<files />
+<projects>
+<v>.\01-LedBlink.cydsn\01-LedBlink.cyprj</v>
+<v>.\01b-LedBlink.cydsn\01b-LedBlink.cyprj</v>
+<v>.\02-LedButtonReal.cydsn\02-LedButtonReal.cyprj</v>
+<v>.\03-LedButtonDebounceReal.cydsn\03-LedButtonDebounceReal.cyprj</v>
+<v>.\04_RGBled.cydsn\04_RGBled.cyprj</v>
+<v>.\02b-LedButton.cydsn\02b-LedButton.cyprj</v>
+<v>.\04b_RGBled.cydsn\04b_RGBled.cyprj</v>
+<v>.\05-RGBLedDriver.cydsn\05-RGBLedDriver.cyprj</v>
+<v>.\06-UART.cydsn\06-UART.cyprj</v>
+<v>.\07-UARTX.cydsn\07-UARTX.cyprj</v>
+<v>.\08-UARTLED.cydsn\08-UARTLED.cyprj</v>
+</projects>
+<workspace_id v="287c084b-143c-45d9-b32d-c65ffe74322a" />
+<WriteAppVersionLastSavedWith v="4.4.0.80" />
+<WriteAppMarketingVersionLastSavedWith v="4.4" />
+<CyGuid_dcbd9771-0334-43dc-9cc3-fe99dc3c5316 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWorkspaceSerialize+CyPrjDependencyList" version="4">
+<wrkspc_dependencies>
+<wrkspc_dependency project="01b-LedBlink.cydsn\01b-LedBlink.cyprj" dependency="..\AnnotationLibrary\AnnotationLibrary_lib\AnnotationLibrary_lib.cylib\AnnotationLibrary_lib.cyprj" />
+</wrkspc_dependencies>
+</CyGuid_dcbd9771-0334-43dc-9cc3-fe99dc3c5316>
+<CyGuid_63b68103-67f5-4406-8da6-5c8625765b82 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWorkspaceSerialize+CyIgnoredSystemDepsList" version="1">
+<wrkspc_dependencies />
+</CyGuid_63b68103-67f5-4406-8da6-5c8625765b82>
+</CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd>
+</CyXmlSerializer>

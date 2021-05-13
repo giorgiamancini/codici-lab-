@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="AY2021_II_PSoC_Basics\05-RGBLedDriver">
+<ExpandedNodeIds>
+<v>AY2021_II_PSoC_Basics</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\Header Files</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\Source Files</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Header Files</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Source Files</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Generated_Source\PSoC5\Blue_LED</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\Header Files</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\Source Files</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\Header Files</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\Source Files</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\Header Files</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\Source Files</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Header Files</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Source Files</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Generated_Source\PSoC5\Timer_LED</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Generated_Source\PSoC5\Timer_LED_ISR</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Header Files</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Header Files\InterruptRoutines.h</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Source Files</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Source Files\InterruptRoutines.c</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Generated_Source\PSoC5\Timer_LED_ISR</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Header Files</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Header Files\colors.h</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Header Files\RGBLedDriver.h</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Source Files</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Source Files\RGBLedDriver.c</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\06-UART\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\06-UART\Header Files</v>
+<v>AY2021_II_PSoC_Basics\06-UART\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\06-UART\Source Files</v>
+<v>AY2021_II_PSoC_Basics\06-UART\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\06-UART\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\06-UART\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\Header Files</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\Header Files\InterruptRoutines.h</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\Source Files</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\Source Files\InterruptRoutines.c</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Header Files</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Header Files\InterruptRoutines.h</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Source Files</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Source Files\InterruptRoutines.c</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>AY2021_II_PSoC_Basics</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Pins</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Analog</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Clocks</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Interrupts</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\DMA</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\System</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Directives</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\Flash Security</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.cydwr\EEPROM</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Header Files</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Header Files\colors.h</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Header Files\cyapicallbacks.h</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Header Files\RGBLedDriver.h</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Source Files</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Source Files\main.c</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Source Files\RGBLedDriver.c</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Generated_Source</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Generated_Source\PSoC5</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Generated_Source\PSoC5\BLU_Led</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>AY2021_II_PSoC_Basics</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\06-UART</v>
+<v>AY2021_II_PSoC_Basics\06-UART\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\06-UART\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>AY2021_II_PSoC_Basics</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\06-UART</v>
+<v>AY2021_II_PSoC_Basics\06-UART\TopDesign</v>
+<v>AY2021_II_PSoC_Basics\06-UART\TopDesign\TopDesign.cysch</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\TopDesign</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>AY2021_II_PSoC_Basics</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\Blue_LED.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\01b-LedBlink.elf</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\01b-LedBlink.hex</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\01b-LedBlink.map</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.rpt</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink_timing.html</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\Blue_LED.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\01-LedBlink.elf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\01-LedBlink.hex</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\01-LedBlink.map</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink.rpt</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\01-LedBlink_timing.html</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\Blue_LED.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\Listing Files\PushButton.lst</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\02b-LedButton.elf</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\02b-LedButton.hex</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CortexM3\ARM_GCC_541\Debug\02b-LedButton.map</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton.rpt</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\02b-LedButton_timing.html</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\Blue_LED.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\Listing Files\PushButton.lst</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\02-LedButtonReal.elf</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\02-LedButtonReal.hex</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CortexM3\ARM_GCC_541\Debug\02-LedButtonReal.map</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal.rpt</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\02-LedButtonReal_timing.html</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_LED.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\Listing Files\PushButton.lst</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\03-LedButtonDebounceReal.elf</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\03-LedButtonDebounceReal.hex</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CortexM3\ARM_GCC_541\Debug\03-LedButtonDebounceReal.map</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal.rpt</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\03-LedButtonDebounceReal_timing.html</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\GreenLed.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_LED.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_LED_Clock.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_LED_ISR.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_LED_PM.lst</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\04_RGBled.elf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\04_RGBled.hex</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CortexM3\ARM_GCC_541\Debug\04_RGBled.map</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled.rpt</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\04_RGBled_timing.html</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\GreenLed.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\InterruptRoutines.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_LED.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_LED_Clock.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_LED_ISR.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\Listing Files\Timer_LED_PM.lst</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\04b_RGBled.elf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\04b_RGBled.hex</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CortexM3\ARM_GCC_541\Debug\04b_RGBled.map</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled.rpt</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\04b_RGBled_timing.html</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\BLU_Led.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_PWM.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\GREEN_Led.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_B.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_B_PM.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_RG.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_RG_PM.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\RED_Led.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\Listing Files\RGBLedDriver.lst</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\05-RGBLedDriver.elf</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\05-RGBLedDriver.hex</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CortexM3\ARM_GCC_541\Debug\05-RGBLedDriver.map</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver.rpt</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\05-RGBLedDriver_timing.html</v>
+<v>AY2021_II_PSoC_Basics\06-UART</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\06-UART.elf</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\06-UART.hex</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CortexM3\ARM_GCC_541\Debug\06-UART.map</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART.rpt</v>
+<v>AY2021_II_PSoC_Basics\06-UART\06-UART_timing.html</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\InterruptRoutines.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_UART.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\07-UARTX.elf</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\07-UARTX.hex</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CortexM3\ARM_GCC_541\Debug\07-UARTX.map</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX.rpt</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\07-UARTX_timing.html</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\InterruptRoutines.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_UART.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_uart.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\08-UARTLED.elf</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\08-UARTLED.hex</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CortexM3\ARM_GCC_541\Debug\08-UARTLED.map</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED.rpt</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\08-UARTLED_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>AY2021_II_PSoC_Basics</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\Blue_LED.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\01b-LedBlink.elf</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\01b-LedBlink.hex</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CortexM3\ARM_GCC_541\Debug\01b-LedBlink.map</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.gpdsc</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink.rpt</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\01b-LedBlink_timing.html</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>AY2021_II_PSoC_Basics</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Gnd_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\LED_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\cy_pins_v2_20</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\cy_pins_v2_20</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\cy_pins_v2_20</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\Gnd_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\LED_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\03-LedButtonDebounceReal\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\cy_clock_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\cy_isr_v1_70.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Gnd_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\LED_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\Timer_v2_80.pdf</v>
+<v>AY2021_II_PSoC_Basics\04_RGBled\ZeroTerminal.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\cy_clock_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\cy_isr_v1_70.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Gnd_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\LED_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\Timer_v2_80.pdf</v>
+<v>AY2021_II_PSoC_Basics\04b_RGBled\ZeroTerminal.pdf</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\cy_clock_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\cy_constant_v1_0</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\cy_pins_v2_20</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\LED_v1_0</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\LED_v1_0\LED_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Power_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\PWM_v3_30</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\PWM_v3_30\PWM_v3_30.pdf</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Resistor_v1_0</v>
+<v>AY2021_II_PSoC_Basics\05-RGBLedDriver\Resistor_v1_0\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\06-UART</v>
+<v>AY2021_II_PSoC_Basics\06-UART\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\06-UART\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\06-UART\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\06-UART\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\06-UART\cy_pins_v2_20</v>
+<v>AY2021_II_PSoC_Basics\06-UART\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\06-UART\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\06-UART\UART_v2_50.pdf</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\cy_isr_v1_70.pdf</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\cy_pins_v2_20</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\07-UARTX\UART_v2_50.pdf</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\cy_isr_v1_70.pdf</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\cy_pins_v2_20</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\08-UARTLED\UART_v2_50.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>AY2021_II_PSoC_Basics</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\01b-LedBlink\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Gnd_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\LED_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\01-LedBlink\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\CY8C58LP Family Datasheet</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\System Reference Guides</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\System Reference Guides\cy_boot_v6_0</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\cy_pins_v2_20</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\KIT-059_v1_0_A.pdf</v>
+<v>AY2021_II_PSoC_Basics\02b-LedButton\Resistor_v1_0.pdf</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\PSoC 5LP Architecture TRM</v>
+<v>AY2021_II_PSoC_Basics\02-LedButtonReal\CY8C58LP Family Datasheet</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="6c335137-fa19-46ce-bc2d-2fbeb6d5f2a2">
+<CyGuid_70084457-cd6a-4593-9ed0-7f6eeb432dc2 type_name="CyDesigner.Common.ProjMgmt.GUI.CyDependenciesCustomData" version="1">
+<dictName v=".\01b-LedBlink.cydsn\01b-LedBlink.cyprj">
+<listName />
+</dictName>
+</CyGuid_70084457-cd6a-4593-9ed0-7f6eeb432dc2>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\01b-LedBlink.cydsn\main.c" />
+<name v=".\01b-LedBlink.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\02b-LedButton.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\04_RGBled.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\04b_RGBled.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\03-LedButtonDebounceReal.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\05-RGBLedDriver.cydsn\TopDesign\TopDesign.cysch" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1056, 414" SelectedTabbedMdiWindow="f839cbe8-dd5f-422d-b1df-b14388b9042e"><DocumentWindow Key="C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\01b-LedBlink.cydsn\main.c" Guid="de6c5a21-7ab5-486e-bb2d-86f6c67634f0" /><DocumentWindow Key="C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\01b-LedBlink.cydsn\TopDesign\TopDesign.cysch" Guid="0fcf07bd-5724-4d9b-ba3e-94f3f96e2f30" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="56f0ddd8-37af-4414-b8e1-6f483609c007" /><DocumentWindow Key="C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\02b-LedButton.cydsn\TopDesign\TopDesign.cysch" Guid="4b049531-5344-45fa-b7f3-81faf0a1ae38" /><DocumentWindow Key="C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\04_RGBled.cydsn\TopDesign\TopDesign.cysch" Guid="3cf9db40-a5ca-4715-93ff-189d74d1a775" /><DocumentWindow Key="C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\04b_RGBled.cydsn\TopDesign\TopDesign.cysch" Guid="280e9b0b-35c5-443f-8228-cec3f3eb8821" /><DocumentWindow Key="C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\03-LedButtonDebounceReal.cydsn\TopDesign\TopDesign.cysch" Guid="39effa26-168a-4b15-8b98-99b5d4f7e209" /><DocumentWindow Key="C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\05-RGBLedDriver.cydsn\TopDesign\TopDesign.cysch" Guid="f839cbe8-dd5f-422d-b1df-b14388b9042e" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

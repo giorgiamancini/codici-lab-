@@ -1,0 +1,829 @@
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"InterruptRoutines.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Custom_ISR_timer,"ax",%progbits
+  20              		.align	2
+  21              		.global	Custom_ISR_timer
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Custom_ISR_timer, %function
+  25              	Custom_ISR_timer:
+  26              	.LFB64:
+  27              		.file 1 "InterruptRoutines.c"
+   1:InterruptRoutines.c **** /* ========================================
+   2:InterruptRoutines.c ****  *
+   3:InterruptRoutines.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:InterruptRoutines.c ****  * All Rights Reserved
+   5:InterruptRoutines.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:InterruptRoutines.c ****  *
+   7:InterruptRoutines.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:InterruptRoutines.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:InterruptRoutines.c ****  *
+  10:InterruptRoutines.c ****  * ========================================
+  11:InterruptRoutines.c **** */
+  12:InterruptRoutines.c **** 
+  13:InterruptRoutines.c **** #include "InterruptRoutines.h"
+  14:InterruptRoutines.c **** #include "project.h"
+  15:InterruptRoutines.c **** #include "DMA_Routines.h"
+  16:InterruptRoutines.c **** 
+  17:InterruptRoutines.c **** //variable to read digit data from 16-bit ADC
+  18:InterruptRoutines.c **** 
+  19:InterruptRoutines.c **** int32 value_digit;
+  20:InterruptRoutines.c **** int32 value_mv;
+  21:InterruptRoutines.c **** 
+  22:InterruptRoutines.c **** CY_ISR_PROTO(Custom_ISR_timer){
+  28              		.loc 1 22 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 2
+
+
+  23:InterruptRoutines.c ****     
+  24:InterruptRoutines.c ****     Timer_ReadStatusRegister();
+  36              		.loc 1 24 0
+  37 0002 FFF7FEFF 		bl	Timer_ReadStatusRegister
+  38              	.LVL0:
+  25:InterruptRoutines.c ****     
+  26:InterruptRoutines.c ****     /*
+  27:InterruptRoutines.c ****     
+  28:InterruptRoutines.c ****     ADC_DelSig_IsEndConversion(ADC_DelSig_WAIT_FOR_RESULT); //wait for conversion ending
+  29:InterruptRoutines.c ****     ADC_DelSig_StopConvert(); //stop conversion
+  30:InterruptRoutines.c ****     
+  31:InterruptRoutines.c ****     
+  32:InterruptRoutines.c ****     
+  33:InterruptRoutines.c ****     value_digit = ADC_DelSig_GetResult32();
+  34:InterruptRoutines.c ****     */
+  35:InterruptRoutines.c ****     
+  36:InterruptRoutines.c ****     *((char*)&value_digit) =  AdcBuffer[0]; //copy the first byte on the LSB of adc buffer
+  39              		.loc 1 36 0
+  40 0006 204A     		ldr	r2, .L7
+  41 0008 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+  42 000a 204B     		ldr	r3, .L7+4
+  43 000c 1970     		strb	r1, [r3]
+  37:InterruptRoutines.c ****     *((char*)&value_digit+1) =  AdcBuffer[1];
+  44              		.loc 1 37 0
+  45 000e 5278     		ldrb	r2, [r2, #1]	@ zero_extendqisi2
+  46 0010 5A70     		strb	r2, [r3, #1]
+  38:InterruptRoutines.c ****     
+  39:InterruptRoutines.c ****     
+  40:InterruptRoutines.c ****     
+  41:InterruptRoutines.c ****     if (value_digit < 0) value_digit = 0;
+  47              		.loc 1 41 0
+  48 0012 1B68     		ldr	r3, [r3]
+  49 0014 002B     		cmp	r3, #0
+  50 0016 02DA     		bge	.L2
+  51              		.loc 1 41 0 is_stmt 0 discriminator 1
+  52 0018 0022     		movs	r2, #0
+  53 001a 1C4B     		ldr	r3, .L7+4
+  54 001c 1A60     		str	r2, [r3]
+  55              	.L2:
+  42:InterruptRoutines.c ****     if (value_digit > 65535) value_digit = 65535;
+  56              		.loc 1 42 0 is_stmt 1
+  57 001e 1B4B     		ldr	r3, .L7+4
+  58 0020 1B68     		ldr	r3, [r3]
+  59 0022 B3F5803F 		cmp	r3, #65536
+  60 0026 03DB     		blt	.L3
+  61              		.loc 1 42 0 is_stmt 0 discriminator 1
+  62 0028 4FF6FF72 		movw	r2, #65535
+  63 002c 174B     		ldr	r3, .L7+4
+  64 002e 1A60     		str	r2, [r3]
+  65              	.L3:
+  43:InterruptRoutines.c ****     
+  44:InterruptRoutines.c ****     value_mv = ADC_DelSig_CountsTo_mVolts(value_digit);
+  66              		.loc 1 44 0 is_stmt 1
+  67 0030 164C     		ldr	r4, .L7+4
+  68 0032 2068     		ldr	r0, [r4]
+  69 0034 FFF7FEFF 		bl	ADC_DelSig_CountsTo_mVolts
+  70              	.LVL1:
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 3
+
+
+  71 0038 154B     		ldr	r3, .L7+8
+  72 003a 1860     		str	r0, [r3]
+  45:InterruptRoutines.c ****     
+  46:InterruptRoutines.c ****     //dataBuffer[0] is iniziating the buffer
+  47:InterruptRoutines.c ****     //dataBuffer[3] is terminating the buffer
+  48:InterruptRoutines.c ****     
+  49:InterruptRoutines.c **** 
+  50:InterruptRoutines.c ****     
+  51:InterruptRoutines.c ****     //dataBuffer[1] 
+  52:InterruptRoutines.c ****     dataBuffer[1]= (value_mv >> 8) & 0xFF;
+  73              		.loc 1 52 0
+  74 003c 0212     		asrs	r2, r0, #8
+  75 003e 154B     		ldr	r3, .L7+12
+  76 0040 5A70     		strb	r2, [r3, #1]
+  53:InterruptRoutines.c ****     
+  54:InterruptRoutines.c ****     //dataBuffer[2]
+  55:InterruptRoutines.c ****     dataBuffer[2]= value_mv & 0xFF;
+  77              		.loc 1 55 0
+  78 0042 9870     		strb	r0, [r3, #2]
+  56:InterruptRoutines.c ****     
+  57:InterruptRoutines.c ****     
+  58:InterruptRoutines.c ****     *((char*)&value_digit) =  FilterBuffer[0]; //copy the first byte on the LSB of adc buffer
+  79              		.loc 1 58 0
+  80 0044 144B     		ldr	r3, .L7+16
+  81 0046 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  82 0048 2270     		strb	r2, [r4]
+  59:InterruptRoutines.c ****     *((char*)&value_digit+1) =  FilterBuffer[1];
+  83              		.loc 1 59 0
+  84 004a 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  85 004c 6370     		strb	r3, [r4, #1]
+  60:InterruptRoutines.c ****     
+  61:InterruptRoutines.c ****     
+  62:InterruptRoutines.c ****     
+  63:InterruptRoutines.c ****     if (value_digit < 0) value_digit = 0;
+  86              		.loc 1 63 0
+  87 004e 2368     		ldr	r3, [r4]
+  88 0050 002B     		cmp	r3, #0
+  89 0052 01DA     		bge	.L4
+  90              		.loc 1 63 0 is_stmt 0 discriminator 1
+  91 0054 0022     		movs	r2, #0
+  92 0056 2260     		str	r2, [r4]
+  93              	.L4:
+  64:InterruptRoutines.c ****     if (value_digit > 65535) value_digit = 65535;
+  94              		.loc 1 64 0 is_stmt 1
+  95 0058 0C4B     		ldr	r3, .L7+4
+  96 005a 1B68     		ldr	r3, [r3]
+  97 005c B3F5803F 		cmp	r3, #65536
+  98 0060 03DB     		blt	.L5
+  99              		.loc 1 64 0 is_stmt 0 discriminator 1
+ 100 0062 4FF6FF72 		movw	r2, #65535
+ 101 0066 094B     		ldr	r3, .L7+4
+ 102 0068 1A60     		str	r2, [r3]
+ 103              	.L5:
+  65:InterruptRoutines.c ****     
+  66:InterruptRoutines.c ****     value_mv = ADC_DelSig_CountsTo_mVolts(value_digit);
+ 104              		.loc 1 66 0 is_stmt 1
+ 105 006a 084B     		ldr	r3, .L7+4
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 4
+
+
+ 106 006c 1868     		ldr	r0, [r3]
+ 107 006e FFF7FEFF 		bl	ADC_DelSig_CountsTo_mVolts
+ 108              	.LVL2:
+ 109 0072 074B     		ldr	r3, .L7+8
+ 110 0074 1860     		str	r0, [r3]
+  67:InterruptRoutines.c ****     
+  68:InterruptRoutines.c ****     //dataBuffer[0] is iniziating the buffer
+  69:InterruptRoutines.c ****     //dataBuffer[3] is terminating the buffer
+  70:InterruptRoutines.c ****     
+  71:InterruptRoutines.c **** 
+  72:InterruptRoutines.c ****     
+  73:InterruptRoutines.c ****     //dataBuffer[1] 
+  74:InterruptRoutines.c ****     dataBuffer[3]= (value_mv >> 8) & 0xFF;
+ 111              		.loc 1 74 0
+ 112 0076 0212     		asrs	r2, r0, #8
+ 113 0078 064B     		ldr	r3, .L7+12
+ 114 007a DA70     		strb	r2, [r3, #3]
+  75:InterruptRoutines.c ****     
+  76:InterruptRoutines.c ****     //dataBuffer[2]
+  77:InterruptRoutines.c ****     dataBuffer[4]= value_mv & 0xFF;
+ 115              		.loc 1 77 0
+ 116 007c 1871     		strb	r0, [r3, #4]
+  78:InterruptRoutines.c ****     
+  79:InterruptRoutines.c ****     Flag = 1;
+ 117              		.loc 1 79 0
+ 118 007e 0122     		movs	r2, #1
+ 119 0080 064B     		ldr	r3, .L7+20
+ 120 0082 1A70     		strb	r2, [r3]
+ 121 0084 10BD     		pop	{r4, pc}
+ 122              	.L8:
+ 123 0086 00BF     		.align	2
+ 124              	.L7:
+ 125 0088 00000000 		.word	AdcBuffer
+ 126 008c 00000000 		.word	value_digit
+ 127 0090 00000000 		.word	value_mv
+ 128 0094 00000000 		.word	dataBuffer
+ 129 0098 00000000 		.word	FilterBuffer
+ 130 009c 00000000 		.word	Flag
+ 131              		.cfi_endproc
+ 132              	.LFE64:
+ 133              		.size	Custom_ISR_timer, .-Custom_ISR_timer
+ 134              		.comm	value_mv,4,4
+ 135              		.comm	value_digit,4,4
+ 136              		.comm	FilterBuffer,2,4
+ 137              		.comm	AdcBuffer,2,4
+ 138              		.comm	Flag,1,1
+ 139              		.comm	dataBuffer,6,4
+ 140              		.text
+ 141              	.Letext0:
+ 142              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 143              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 144              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 145              		.file 5 "InterruptRoutines.h"
+ 146              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 147              		.file 7 "DMA_Routines.h"
+ 148              		.file 8 "Generated_Source\\PSoC5/Timer.h"
+ 149              		.file 9 "Generated_Source\\PSoC5/ADC_DelSig.h"
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 5
+
+
+ 150              		.section	.debug_info,"",%progbits
+ 151              	.Ldebug_info0:
+ 152 0000 97010000 		.4byte	0x197
+ 153 0004 0400     		.2byte	0x4
+ 154 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 155 000a 04       		.byte	0x4
+ 156 000b 01       		.uleb128 0x1
+ 157 000c 53000000 		.4byte	.LASF27
+ 158 0010 0C       		.byte	0xc
+ 159 0011 55020000 		.4byte	.LASF28
+ 160 0015 E5010000 		.4byte	.LASF29
+ 161 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 162 001d 00000000 		.4byte	0
+ 163 0021 00000000 		.4byte	.Ldebug_line0
+ 164 0025 02       		.uleb128 0x2
+ 165 0026 01       		.byte	0x1
+ 166 0027 06       		.byte	0x6
+ 167 0028 D9010000 		.4byte	.LASF0
+ 168 002c 02       		.uleb128 0x2
+ 169 002d 01       		.byte	0x1
+ 170 002e 08       		.byte	0x8
+ 171 002f 45000000 		.4byte	.LASF1
+ 172 0033 02       		.uleb128 0x2
+ 173 0034 02       		.byte	0x2
+ 174 0035 05       		.byte	0x5
+ 175 0036 A8010000 		.4byte	.LASF2
+ 176 003a 02       		.uleb128 0x2
+ 177 003b 02       		.byte	0x2
+ 178 003c 07       		.byte	0x7
+ 179 003d 23000000 		.4byte	.LASF3
+ 180 0041 03       		.uleb128 0x3
+ 181 0042 00000000 		.4byte	.LASF9
+ 182 0046 02       		.byte	0x2
+ 183 0047 3F       		.byte	0x3f
+ 184 0048 4C000000 		.4byte	0x4c
+ 185 004c 02       		.uleb128 0x2
+ 186 004d 04       		.byte	0x4
+ 187 004e 05       		.byte	0x5
+ 188 004f B8010000 		.4byte	.LASF4
+ 189 0053 02       		.uleb128 0x2
+ 190 0054 04       		.byte	0x4
+ 191 0055 07       		.byte	0x7
+ 192 0056 E1000000 		.4byte	.LASF5
+ 193 005a 02       		.uleb128 0x2
+ 194 005b 08       		.byte	0x8
+ 195 005c 05       		.byte	0x5
+ 196 005d 90010000 		.4byte	.LASF6
+ 197 0061 02       		.uleb128 0x2
+ 198 0062 08       		.byte	0x8
+ 199 0063 07       		.byte	0x7
+ 200 0064 4D010000 		.4byte	.LASF7
+ 201 0068 04       		.uleb128 0x4
+ 202 0069 04       		.byte	0x4
+ 203 006a 05       		.byte	0x5
+ 204 006b 696E7400 		.ascii	"int\000"
+ 205 006f 02       		.uleb128 0x2
+ 206 0070 04       		.byte	0x4
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 6
+
+
+ 207 0071 07       		.byte	0x7
+ 208 0072 40010000 		.4byte	.LASF8
+ 209 0076 03       		.uleb128 0x3
+ 210 0077 7F010000 		.4byte	.LASF10
+ 211 007b 03       		.byte	0x3
+ 212 007c 2C       		.byte	0x2c
+ 213 007d 41000000 		.4byte	0x41
+ 214 0081 05       		.uleb128 0x5
+ 215 0082 B2010000 		.4byte	.LASF11
+ 216 0086 04       		.byte	0x4
+ 217 0087 E901     		.2byte	0x1e9
+ 218 0089 2C000000 		.4byte	0x2c
+ 219 008d 05       		.uleb128 0x5
+ 220 008e F3000000 		.4byte	.LASF12
+ 221 0092 04       		.byte	0x4
+ 222 0093 EE01     		.2byte	0x1ee
+ 223 0095 4C000000 		.4byte	0x4c
+ 224 0099 02       		.uleb128 0x2
+ 225 009a 04       		.byte	0x4
+ 226 009b 04       		.byte	0x4
+ 227 009c 3F000000 		.4byte	.LASF13
+ 228 00a0 02       		.uleb128 0x2
+ 229 00a1 08       		.byte	0x8
+ 230 00a2 04       		.byte	0x4
+ 231 00a3 13010000 		.4byte	.LASF14
+ 232 00a7 02       		.uleb128 0x2
+ 233 00a8 01       		.byte	0x1
+ 234 00a9 08       		.byte	0x8
+ 235 00aa A3010000 		.4byte	.LASF15
+ 236 00ae 02       		.uleb128 0x2
+ 237 00af 08       		.byte	0x8
+ 238 00b0 04       		.byte	0x4
+ 239 00b1 CD010000 		.4byte	.LASF16
+ 240 00b5 02       		.uleb128 0x2
+ 241 00b6 04       		.byte	0x4
+ 242 00b7 07       		.byte	0x7
+ 243 00b8 87010000 		.4byte	.LASF17
+ 244 00bc 06       		.uleb128 0x6
+ 245 00bd 25010000 		.4byte	.LASF30
+ 246 00c1 01       		.byte	0x1
+ 247 00c2 16       		.byte	0x16
+ 248 00c3 00000000 		.4byte	.LFB64
+ 249 00c7 A0000000 		.4byte	.LFE64-.LFB64
+ 250 00cb 01       		.uleb128 0x1
+ 251 00cc 9C       		.byte	0x9c
+ 252 00cd ED000000 		.4byte	0xed
+ 253 00d1 07       		.uleb128 0x7
+ 254 00d2 06000000 		.4byte	.LVL0
+ 255 00d6 84010000 		.4byte	0x184
+ 256 00da 07       		.uleb128 0x7
+ 257 00db 38000000 		.4byte	.LVL1
+ 258 00df 8F010000 		.4byte	0x18f
+ 259 00e3 07       		.uleb128 0x7
+ 260 00e4 72000000 		.4byte	.LVL2
+ 261 00e8 8F010000 		.4byte	0x18f
+ 262 00ec 00       		.byte	0
+ 263 00ed 08       		.uleb128 0x8
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 7
+
+
+ 264 00ee 81000000 		.4byte	0x81
+ 265 00f2 FD000000 		.4byte	0xfd
+ 266 00f6 09       		.uleb128 0x9
+ 267 00f7 B5000000 		.4byte	0xb5
+ 268 00fb 05       		.byte	0x5
+ 269 00fc 00       		.byte	0
+ 270 00fd 0A       		.uleb128 0xa
+ 271 00fe 1A010000 		.4byte	.LASF18
+ 272 0102 05       		.byte	0x5
+ 273 0103 17       		.byte	0x17
+ 274 0104 ED000000 		.4byte	0xed
+ 275 0108 05       		.uleb128 0x5
+ 276 0109 03       		.byte	0x3
+ 277 010a 00000000 		.4byte	dataBuffer
+ 278 010e 0A       		.uleb128 0xa
+ 279 010f 9E010000 		.4byte	.LASF19
+ 280 0113 05       		.byte	0x5
+ 281 0114 18       		.byte	0x18
+ 282 0115 81000000 		.4byte	0x81
+ 283 0119 05       		.uleb128 0x5
+ 284 011a 03       		.byte	0x3
+ 285 011b 00000000 		.4byte	Flag
+ 286 011f 0B       		.uleb128 0xb
+ 287 0120 06010000 		.4byte	.LASF20
+ 288 0124 06       		.byte	0x6
+ 289 0125 1207     		.2byte	0x712
+ 290 0127 2B010000 		.4byte	0x12b
+ 291 012b 0C       		.uleb128 0xc
+ 292 012c 76000000 		.4byte	0x76
+ 293 0130 08       		.uleb128 0x8
+ 294 0131 A7000000 		.4byte	0xa7
+ 295 0135 40010000 		.4byte	0x140
+ 296 0139 09       		.uleb128 0x9
+ 297 013a B5000000 		.4byte	0xb5
+ 298 013e 01       		.byte	0x1
+ 299 013f 00       		.byte	0
+ 300 0140 0A       		.uleb128 0xa
+ 301 0141 36010000 		.4byte	.LASF21
+ 302 0145 07       		.byte	0x7
+ 303 0146 1B       		.byte	0x1b
+ 304 0147 30010000 		.4byte	0x130
+ 305 014b 05       		.uleb128 0x5
+ 306 014c 03       		.byte	0x3
+ 307 014d 00000000 		.4byte	AdcBuffer
+ 308 0151 0A       		.uleb128 0xa
+ 309 0152 F9000000 		.4byte	.LASF22
+ 310 0156 07       		.byte	0x7
+ 311 0157 2F       		.byte	0x2f
+ 312 0158 30010000 		.4byte	0x130
+ 313 015c 05       		.uleb128 0x5
+ 314 015d 03       		.byte	0x3
+ 315 015e 00000000 		.4byte	FilterBuffer
+ 316 0162 0A       		.uleb128 0xa
+ 317 0163 C1010000 		.4byte	.LASF23
+ 318 0167 01       		.byte	0x1
+ 319 0168 13       		.byte	0x13
+ 320 0169 8D000000 		.4byte	0x8d
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 8
+
+
+ 321 016d 05       		.uleb128 0x5
+ 322 016e 03       		.byte	0x3
+ 323 016f 00000000 		.4byte	value_digit
+ 324 0173 0A       		.uleb128 0xa
+ 325 0174 36000000 		.4byte	.LASF24
+ 326 0178 01       		.byte	0x1
+ 327 0179 14       		.byte	0x14
+ 328 017a 8D000000 		.4byte	0x8d
+ 329 017e 05       		.uleb128 0x5
+ 330 017f 03       		.byte	0x3
+ 331 0180 00000000 		.4byte	value_mv
+ 332 0184 0D       		.uleb128 0xd
+ 333 0185 0A000000 		.4byte	.LASF25
+ 334 0189 0A000000 		.4byte	.LASF25
+ 335 018d 08       		.byte	0x8
+ 336 018e 5E       		.byte	0x5e
+ 337 018f 0D       		.uleb128 0xd
+ 338 0190 64010000 		.4byte	.LASF26
+ 339 0194 64010000 		.4byte	.LASF26
+ 340 0198 09       		.byte	0x9
+ 341 0199 47       		.byte	0x47
+ 342 019a 00       		.byte	0
+ 343              		.section	.debug_abbrev,"",%progbits
+ 344              	.Ldebug_abbrev0:
+ 345 0000 01       		.uleb128 0x1
+ 346 0001 11       		.uleb128 0x11
+ 347 0002 01       		.byte	0x1
+ 348 0003 25       		.uleb128 0x25
+ 349 0004 0E       		.uleb128 0xe
+ 350 0005 13       		.uleb128 0x13
+ 351 0006 0B       		.uleb128 0xb
+ 352 0007 03       		.uleb128 0x3
+ 353 0008 0E       		.uleb128 0xe
+ 354 0009 1B       		.uleb128 0x1b
+ 355 000a 0E       		.uleb128 0xe
+ 356 000b 55       		.uleb128 0x55
+ 357 000c 17       		.uleb128 0x17
+ 358 000d 11       		.uleb128 0x11
+ 359 000e 01       		.uleb128 0x1
+ 360 000f 10       		.uleb128 0x10
+ 361 0010 17       		.uleb128 0x17
+ 362 0011 00       		.byte	0
+ 363 0012 00       		.byte	0
+ 364 0013 02       		.uleb128 0x2
+ 365 0014 24       		.uleb128 0x24
+ 366 0015 00       		.byte	0
+ 367 0016 0B       		.uleb128 0xb
+ 368 0017 0B       		.uleb128 0xb
+ 369 0018 3E       		.uleb128 0x3e
+ 370 0019 0B       		.uleb128 0xb
+ 371 001a 03       		.uleb128 0x3
+ 372 001b 0E       		.uleb128 0xe
+ 373 001c 00       		.byte	0
+ 374 001d 00       		.byte	0
+ 375 001e 03       		.uleb128 0x3
+ 376 001f 16       		.uleb128 0x16
+ 377 0020 00       		.byte	0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 9
+
+
+ 378 0021 03       		.uleb128 0x3
+ 379 0022 0E       		.uleb128 0xe
+ 380 0023 3A       		.uleb128 0x3a
+ 381 0024 0B       		.uleb128 0xb
+ 382 0025 3B       		.uleb128 0x3b
+ 383 0026 0B       		.uleb128 0xb
+ 384 0027 49       		.uleb128 0x49
+ 385 0028 13       		.uleb128 0x13
+ 386 0029 00       		.byte	0
+ 387 002a 00       		.byte	0
+ 388 002b 04       		.uleb128 0x4
+ 389 002c 24       		.uleb128 0x24
+ 390 002d 00       		.byte	0
+ 391 002e 0B       		.uleb128 0xb
+ 392 002f 0B       		.uleb128 0xb
+ 393 0030 3E       		.uleb128 0x3e
+ 394 0031 0B       		.uleb128 0xb
+ 395 0032 03       		.uleb128 0x3
+ 396 0033 08       		.uleb128 0x8
+ 397 0034 00       		.byte	0
+ 398 0035 00       		.byte	0
+ 399 0036 05       		.uleb128 0x5
+ 400 0037 16       		.uleb128 0x16
+ 401 0038 00       		.byte	0
+ 402 0039 03       		.uleb128 0x3
+ 403 003a 0E       		.uleb128 0xe
+ 404 003b 3A       		.uleb128 0x3a
+ 405 003c 0B       		.uleb128 0xb
+ 406 003d 3B       		.uleb128 0x3b
+ 407 003e 05       		.uleb128 0x5
+ 408 003f 49       		.uleb128 0x49
+ 409 0040 13       		.uleb128 0x13
+ 410 0041 00       		.byte	0
+ 411 0042 00       		.byte	0
+ 412 0043 06       		.uleb128 0x6
+ 413 0044 2E       		.uleb128 0x2e
+ 414 0045 01       		.byte	0x1
+ 415 0046 3F       		.uleb128 0x3f
+ 416 0047 19       		.uleb128 0x19
+ 417 0048 03       		.uleb128 0x3
+ 418 0049 0E       		.uleb128 0xe
+ 419 004a 3A       		.uleb128 0x3a
+ 420 004b 0B       		.uleb128 0xb
+ 421 004c 3B       		.uleb128 0x3b
+ 422 004d 0B       		.uleb128 0xb
+ 423 004e 27       		.uleb128 0x27
+ 424 004f 19       		.uleb128 0x19
+ 425 0050 11       		.uleb128 0x11
+ 426 0051 01       		.uleb128 0x1
+ 427 0052 12       		.uleb128 0x12
+ 428 0053 06       		.uleb128 0x6
+ 429 0054 40       		.uleb128 0x40
+ 430 0055 18       		.uleb128 0x18
+ 431 0056 9742     		.uleb128 0x2117
+ 432 0058 19       		.uleb128 0x19
+ 433 0059 01       		.uleb128 0x1
+ 434 005a 13       		.uleb128 0x13
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 10
+
+
+ 435 005b 00       		.byte	0
+ 436 005c 00       		.byte	0
+ 437 005d 07       		.uleb128 0x7
+ 438 005e 898201   		.uleb128 0x4109
+ 439 0061 00       		.byte	0
+ 440 0062 11       		.uleb128 0x11
+ 441 0063 01       		.uleb128 0x1
+ 442 0064 31       		.uleb128 0x31
+ 443 0065 13       		.uleb128 0x13
+ 444 0066 00       		.byte	0
+ 445 0067 00       		.byte	0
+ 446 0068 08       		.uleb128 0x8
+ 447 0069 01       		.uleb128 0x1
+ 448 006a 01       		.byte	0x1
+ 449 006b 49       		.uleb128 0x49
+ 450 006c 13       		.uleb128 0x13
+ 451 006d 01       		.uleb128 0x1
+ 452 006e 13       		.uleb128 0x13
+ 453 006f 00       		.byte	0
+ 454 0070 00       		.byte	0
+ 455 0071 09       		.uleb128 0x9
+ 456 0072 21       		.uleb128 0x21
+ 457 0073 00       		.byte	0
+ 458 0074 49       		.uleb128 0x49
+ 459 0075 13       		.uleb128 0x13
+ 460 0076 2F       		.uleb128 0x2f
+ 461 0077 0B       		.uleb128 0xb
+ 462 0078 00       		.byte	0
+ 463 0079 00       		.byte	0
+ 464 007a 0A       		.uleb128 0xa
+ 465 007b 34       		.uleb128 0x34
+ 466 007c 00       		.byte	0
+ 467 007d 03       		.uleb128 0x3
+ 468 007e 0E       		.uleb128 0xe
+ 469 007f 3A       		.uleb128 0x3a
+ 470 0080 0B       		.uleb128 0xb
+ 471 0081 3B       		.uleb128 0x3b
+ 472 0082 0B       		.uleb128 0xb
+ 473 0083 49       		.uleb128 0x49
+ 474 0084 13       		.uleb128 0x13
+ 475 0085 3F       		.uleb128 0x3f
+ 476 0086 19       		.uleb128 0x19
+ 477 0087 02       		.uleb128 0x2
+ 478 0088 18       		.uleb128 0x18
+ 479 0089 00       		.byte	0
+ 480 008a 00       		.byte	0
+ 481 008b 0B       		.uleb128 0xb
+ 482 008c 34       		.uleb128 0x34
+ 483 008d 00       		.byte	0
+ 484 008e 03       		.uleb128 0x3
+ 485 008f 0E       		.uleb128 0xe
+ 486 0090 3A       		.uleb128 0x3a
+ 487 0091 0B       		.uleb128 0xb
+ 488 0092 3B       		.uleb128 0x3b
+ 489 0093 05       		.uleb128 0x5
+ 490 0094 49       		.uleb128 0x49
+ 491 0095 13       		.uleb128 0x13
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 11
+
+
+ 492 0096 3F       		.uleb128 0x3f
+ 493 0097 19       		.uleb128 0x19
+ 494 0098 3C       		.uleb128 0x3c
+ 495 0099 19       		.uleb128 0x19
+ 496 009a 00       		.byte	0
+ 497 009b 00       		.byte	0
+ 498 009c 0C       		.uleb128 0xc
+ 499 009d 35       		.uleb128 0x35
+ 500 009e 00       		.byte	0
+ 501 009f 49       		.uleb128 0x49
+ 502 00a0 13       		.uleb128 0x13
+ 503 00a1 00       		.byte	0
+ 504 00a2 00       		.byte	0
+ 505 00a3 0D       		.uleb128 0xd
+ 506 00a4 2E       		.uleb128 0x2e
+ 507 00a5 00       		.byte	0
+ 508 00a6 3F       		.uleb128 0x3f
+ 509 00a7 19       		.uleb128 0x19
+ 510 00a8 3C       		.uleb128 0x3c
+ 511 00a9 19       		.uleb128 0x19
+ 512 00aa 6E       		.uleb128 0x6e
+ 513 00ab 0E       		.uleb128 0xe
+ 514 00ac 03       		.uleb128 0x3
+ 515 00ad 0E       		.uleb128 0xe
+ 516 00ae 3A       		.uleb128 0x3a
+ 517 00af 0B       		.uleb128 0xb
+ 518 00b0 3B       		.uleb128 0x3b
+ 519 00b1 0B       		.uleb128 0xb
+ 520 00b2 00       		.byte	0
+ 521 00b3 00       		.byte	0
+ 522 00b4 00       		.byte	0
+ 523              		.section	.debug_aranges,"",%progbits
+ 524 0000 1C000000 		.4byte	0x1c
+ 525 0004 0200     		.2byte	0x2
+ 526 0006 00000000 		.4byte	.Ldebug_info0
+ 527 000a 04       		.byte	0x4
+ 528 000b 00       		.byte	0
+ 529 000c 0000     		.2byte	0
+ 530 000e 0000     		.2byte	0
+ 531 0010 00000000 		.4byte	.LFB64
+ 532 0014 A0000000 		.4byte	.LFE64-.LFB64
+ 533 0018 00000000 		.4byte	0
+ 534 001c 00000000 		.4byte	0
+ 535              		.section	.debug_ranges,"",%progbits
+ 536              	.Ldebug_ranges0:
+ 537 0000 00000000 		.4byte	.LFB64
+ 538 0004 A0000000 		.4byte	.LFE64
+ 539 0008 00000000 		.4byte	0
+ 540 000c 00000000 		.4byte	0
+ 541              		.section	.debug_line,"",%progbits
+ 542              	.Ldebug_line0:
+ 543 0000 DF010000 		.section	.debug_str,"MS",%progbits,1
+ 543      02009D01 
+ 543      00000201 
+ 543      FB0E0D00 
+ 543      01010101 
+ 544              	.LASF9:
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 12
+
+
+ 545 0000 5F5F696E 		.ascii	"__int32_t\000"
+ 545      7433325F 
+ 545      7400
+ 546              	.LASF25:
+ 547 000a 54696D65 		.ascii	"Timer_ReadStatusRegister\000"
+ 547      725F5265 
+ 547      61645374 
+ 547      61747573 
+ 547      52656769 
+ 548              	.LASF3:
+ 549 0023 73686F72 		.ascii	"short unsigned int\000"
+ 549      7420756E 
+ 549      7369676E 
+ 549      65642069 
+ 549      6E7400
+ 550              	.LASF24:
+ 551 0036 76616C75 		.ascii	"value_mv\000"
+ 551      655F6D76 
+ 551      00
+ 552              	.LASF13:
+ 553 003f 666C6F61 		.ascii	"float\000"
+ 553      7400
+ 554              	.LASF1:
+ 555 0045 756E7369 		.ascii	"unsigned char\000"
+ 555      676E6564 
+ 555      20636861 
+ 555      7200
+ 556              	.LASF27:
+ 557 0053 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 557      43313120 
+ 557      352E342E 
+ 557      31203230 
+ 557      31363036 
+ 558 0086 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 558      20726576 
+ 558      6973696F 
+ 558      6E203233 
+ 558      37373135 
+ 559 00b9 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 559      66756E63 
+ 559      74696F6E 
+ 559      2D736563 
+ 559      74696F6E 
+ 560              	.LASF5:
+ 561 00e1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 561      20756E73 
+ 561      69676E65 
+ 561      6420696E 
+ 561      7400
+ 562              	.LASF12:
+ 563 00f3 696E7433 		.ascii	"int32\000"
+ 563      3200
+ 564              	.LASF22:
+ 565 00f9 46696C74 		.ascii	"FilterBuffer\000"
+ 565      65724275 
+ 565      66666572 
+ 565      00
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 13
+
+
+ 566              	.LASF20:
+ 567 0106 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 567      52784275 
+ 567      66666572 
+ 567      00
+ 568              	.LASF14:
+ 569 0113 646F7562 		.ascii	"double\000"
+ 569      6C6500
+ 570              	.LASF18:
+ 571 011a 64617461 		.ascii	"dataBuffer\000"
+ 571      42756666 
+ 571      657200
+ 572              	.LASF30:
+ 573 0125 43757374 		.ascii	"Custom_ISR_timer\000"
+ 573      6F6D5F49 
+ 573      53525F74 
+ 573      696D6572 
+ 573      00
+ 574              	.LASF21:
+ 575 0136 41646342 		.ascii	"AdcBuffer\000"
+ 575      75666665 
+ 575      7200
+ 576              	.LASF8:
+ 577 0140 756E7369 		.ascii	"unsigned int\000"
+ 577      676E6564 
+ 577      20696E74 
+ 577      00
+ 578              	.LASF7:
+ 579 014d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 579      206C6F6E 
+ 579      6720756E 
+ 579      7369676E 
+ 579      65642069 
+ 580              	.LASF26:
+ 581 0164 4144435F 		.ascii	"ADC_DelSig_CountsTo_mVolts\000"
+ 581      44656C53 
+ 581      69675F43 
+ 581      6F756E74 
+ 581      73546F5F 
+ 582              	.LASF10:
+ 583 017f 696E7433 		.ascii	"int32_t\000"
+ 583      325F7400 
+ 584              	.LASF17:
+ 585 0187 73697A65 		.ascii	"sizetype\000"
+ 585      74797065 
+ 585      00
+ 586              	.LASF6:
+ 587 0190 6C6F6E67 		.ascii	"long long int\000"
+ 587      206C6F6E 
+ 587      6720696E 
+ 587      7400
+ 588              	.LASF19:
+ 589 019e 466C6167 		.ascii	"Flag\000"
+ 589      00
+ 590              	.LASF15:
+ 591 01a3 63686172 		.ascii	"char\000"
+ 591      00
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccDfKapa.s 			page 14
+
+
+ 592              	.LASF2:
+ 593 01a8 73686F72 		.ascii	"short int\000"
+ 593      7420696E 
+ 593      7400
+ 594              	.LASF11:
+ 595 01b2 75696E74 		.ascii	"uint8\000"
+ 595      3800
+ 596              	.LASF4:
+ 597 01b8 6C6F6E67 		.ascii	"long int\000"
+ 597      20696E74 
+ 597      00
+ 598              	.LASF23:
+ 599 01c1 76616C75 		.ascii	"value_digit\000"
+ 599      655F6469 
+ 599      67697400 
+ 600              	.LASF16:
+ 601 01cd 6C6F6E67 		.ascii	"long double\000"
+ 601      20646F75 
+ 601      626C6500 
+ 602              	.LASF0:
+ 603 01d9 7369676E 		.ascii	"signed char\000"
+ 603      65642063 
+ 603      68617200 
+ 604              	.LASF29:
+ 605 01e5 433A5C55 		.ascii	"C:\\Users\\cante\\Desktop\\INGEGNERIA BIOMEDICA\\V "
+ 605      73657273 
+ 605      5C63616E 
+ 605      74655C44 
+ 605      65736B74 
+ 606 0213 414E4E4F 		.ascii	"ANNO\\LAB ELETTRONICA\\PSoC\\Progetti DMA\\Workspac"
+ 606      5C4C4142 
+ 606      20454C45 
+ 606      5454524F 
+ 606      4E494341 
+ 607 0242 6530315C 		.ascii	"e01\\Design03.cydsn\000"
+ 607      44657369 
+ 607      676E3033 
+ 607      2E637964 
+ 607      736E00
+ 608              	.LASF28:
+ 609 0255 496E7465 		.ascii	"InterruptRoutines.c\000"
+ 609      72727570 
+ 609      74526F75 
+ 609      74696E65 
+ 609      732E6300 
+ 610              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

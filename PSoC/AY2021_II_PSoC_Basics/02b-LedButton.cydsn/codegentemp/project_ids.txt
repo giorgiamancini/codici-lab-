@@ -1,0 +1,12 @@
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\01-LedBlink.cydsn\01-LedBlink.cyprj|020e2a98-2beb-4e1b-a9a9-a1e7de2d0808
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|c99db051-fd19-4628-b8f8-08ccdc28ca19
+C:\Users\cante\OneDrive\Documenti\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|d8d50792-cdb4-4910-ad7c-741802c68388
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|1b7d9877-0651-4f5c-bc70-d23206dc73fd
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|d12bd23d-5fda-4537-8613-287ab212c58d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a9c584c8-f4ec-451d-9d67-fd5630cba952
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\01b-LedBlink.cydsn\01b-LedBlink.cyprj|6e420f43-32c2-47c7-80c0-b41deafc2c97
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AnnotationLibrary\AnnotationLibrary_lib\AnnotationLibrary_lib.cylib\AnnotationLibrary_lib.cyprj|819d2c9b-8dad-4cd7-9d87-7dada167c42d
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\02-LedButtonReal.cydsn\02-LedButtonReal.cyprj|0050590c-36c5-4ec1-8de9-bce4285862fa
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\03-LedButtonDebounceReal.cydsn\03-LedButtonDebounceReal.cyprj|a3e04e74-8da9-4ee7-a4bb-1de5163eaf06
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\04_RGBled.cydsn\04_RGBled.cyprj|4cb5e9ac-26bd-4e35-a322-613e34bb0dd9
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\02b-LedButton.cydsn\02b-LedButton.cyprj|61b6470a-9599-44f6-ac00-526bff376cd4

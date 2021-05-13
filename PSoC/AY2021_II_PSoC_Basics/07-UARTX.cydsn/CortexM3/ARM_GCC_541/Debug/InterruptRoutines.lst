@@ -1,0 +1,783 @@
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"InterruptRoutines.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Custom_UART_RX_ISR,"ax",%progbits
+  20              		.align	2
+  21              		.global	Custom_UART_RX_ISR
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Custom_UART_RX_ISR, %function
+  25              	Custom_UART_RX_ISR:
+  26              	.LFB64:
+  27              		.file 1 "InterruptRoutines.c"
+   1:InterruptRoutines.c **** /* ========================================
+   2:InterruptRoutines.c ****  *
+   3:InterruptRoutines.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:InterruptRoutines.c ****  * All Rights Reserved
+   5:InterruptRoutines.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:InterruptRoutines.c ****  *
+   7:InterruptRoutines.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:InterruptRoutines.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:InterruptRoutines.c ****  *
+  10:InterruptRoutines.c ****  * ========================================
+  11:InterruptRoutines.c **** */
+  12:InterruptRoutines.c **** 
+  13:InterruptRoutines.c **** #include "InterruptRoutines.h"
+  14:InterruptRoutines.c **** #include "stdio.h"
+  15:InterruptRoutines.c **** 
+  16:InterruptRoutines.c **** static char message [20] = {'\0'}; //inizializzo la stringa a valore nullo
+  17:InterruptRoutines.c **** 
+  18:InterruptRoutines.c **** CY_ISR(Custom_UART_RX_ISR)
+  19:InterruptRoutines.c **** {
+  28              		.loc 1 19 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  20:InterruptRoutines.c ****   //we read the received data and echo it back
+  21:InterruptRoutines.c ****     //there are two ways: one we do everything in the interrupt, in the other
+  22:InterruptRoutines.c ****     // we use a flag in a source file
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 2
+
+
+  23:InterruptRoutines.c ****     if (UART_ReadRxStatus() == UART_RX_STS_FIFO_NOTEMPTY)
+  36              		.loc 1 23 0
+  37 0002 FFF7FEFF 		bl	UART_ReadRxStatus
+  38              	.LVL0:
+  39 0006 2028     		cmp	r0, #32
+  40 0008 0AD1     		bne	.L1
+  41              	.LBB2:
+  24:InterruptRoutines.c ****     // WE HAVE some fata in the receiving buffer that need to be read 
+  25:InterruptRoutines.c ****     {
+  26:InterruptRoutines.c ****         uint8_t received= UART_ReadRxData(); // leggiamo rx data
+  42              		.loc 1 26 0
+  43 000a FFF7FEFF 		bl	UART_ReadRxData
+  44              	.LVL1:
+  27:InterruptRoutines.c ****         //if we have some data in the FIFO
+  28:InterruptRoutines.c ****         sprintf(message, "Received: %c\r\n", received); // formattiamo quello che abbiamo letto
+  45              		.loc 1 28 0
+  46 000e 054C     		ldr	r4, .L4
+  47 0010 0246     		mov	r2, r0
+  48 0012 0549     		ldr	r1, .L4+4
+  49 0014 2046     		mov	r0, r4
+  50              	.LVL2:
+  51 0016 FFF7FEFF 		bl	sprintf
+  52              	.LVL3:
+  29:InterruptRoutines.c ****             //la prima è la stringa che volgiamo scrivere su questo messaggio
+  30:InterruptRoutines.c ****         
+  31:InterruptRoutines.c ****        UART_PutString(message); // lo mandiamo 
+  53              		.loc 1 31 0
+  54 001a 2046     		mov	r0, r4
+  55 001c FFF7FEFF 		bl	UART_PutString
+  56              	.LVL4:
+  57              	.L1:
+  58 0020 10BD     		pop	{r4, pc}
+  59              	.L5:
+  60 0022 00BF     		.align	2
+  61              	.L4:
+  62 0024 00000000 		.word	.LANCHOR0
+  63 0028 00000000 		.word	.LC0
+  64              	.LBE2:
+  65              		.cfi_endproc
+  66              	.LFE64:
+  67              		.size	Custom_UART_RX_ISR, .-Custom_UART_RX_ISR
+  68              		.section	.rodata.str1.4,"aMS",%progbits,1
+  69              		.align	2
+  70              	.LC0:
+  71 0000 52656365 		.ascii	"Received: %c\015\012\000"
+  71      69766564 
+  71      3A202563 
+  71      0D0A00
+  72              		.bss
+  73              		.align	2
+  74              		.set	.LANCHOR0,. + 0
+  75              		.type	message, %object
+  76              		.size	message, 20
+  77              	message:
+  78 0000 00000000 		.space	20
+  78      00000000 
+  78      00000000 
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 3
+
+
+  78      00000000 
+  78      00000000 
+  79              		.text
+  80              	.Letext0:
+  81              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  82              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  83              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+  84              		.file 5 "Generated_Source\\PSoC5/UART.h"
+  85              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  86              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+  87              		.section	.debug_info,"",%progbits
+  88              	.Ldebug_info0:
+  89 0000 93010000 		.4byte	0x193
+  90 0004 0400     		.2byte	0x4
+  91 0006 00000000 		.4byte	.Ldebug_abbrev0
+  92 000a 04       		.byte	0x4
+  93 000b 01       		.uleb128 0x1
+  94 000c 4B000000 		.4byte	.LASF25
+  95 0010 0C       		.byte	0xc
+  96 0011 3A020000 		.4byte	.LASF26
+  97 0015 25010000 		.4byte	.LASF27
+  98 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  99 001d 00000000 		.4byte	0
+ 100 0021 00000000 		.4byte	.Ldebug_line0
+ 101 0025 02       		.uleb128 0x2
+ 102 0026 01       		.byte	0x1
+ 103 0027 06       		.byte	0x6
+ 104 0028 17020000 		.4byte	.LASF0
+ 105 002c 03       		.uleb128 0x3
+ 106 002d 08000000 		.4byte	.LASF4
+ 107 0031 02       		.byte	0x2
+ 108 0032 1D       		.byte	0x1d
+ 109 0033 37000000 		.4byte	0x37
+ 110 0037 02       		.uleb128 0x2
+ 111 0038 01       		.byte	0x1
+ 112 0039 08       		.byte	0x8
+ 113 003a 3D000000 		.4byte	.LASF1
+ 114 003e 02       		.uleb128 0x2
+ 115 003f 02       		.byte	0x2
+ 116 0040 05       		.byte	0x5
+ 117 0041 F2010000 		.4byte	.LASF2
+ 118 0045 02       		.uleb128 0x2
+ 119 0046 02       		.byte	0x2
+ 120 0047 07       		.byte	0x7
+ 121 0048 EB000000 		.4byte	.LASF3
+ 122 004c 03       		.uleb128 0x3
+ 123 004d 24000000 		.4byte	.LASF5
+ 124 0051 02       		.byte	0x2
+ 125 0052 3F       		.byte	0x3f
+ 126 0053 57000000 		.4byte	0x57
+ 127 0057 02       		.uleb128 0x2
+ 128 0058 04       		.byte	0x4
+ 129 0059 05       		.byte	0x5
+ 130 005a 02020000 		.4byte	.LASF6
+ 131 005e 02       		.uleb128 0x2
+ 132 005f 04       		.byte	0x4
+ 133 0060 07       		.byte	0x7
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 4
+
+
+ 134 0061 D9000000 		.4byte	.LASF7
+ 135 0065 02       		.uleb128 0x2
+ 136 0066 08       		.byte	0x8
+ 137 0067 05       		.byte	0x5
+ 138 0068 DF010000 		.4byte	.LASF8
+ 139 006c 02       		.uleb128 0x2
+ 140 006d 08       		.byte	0x8
+ 141 006e 07       		.byte	0x7
+ 142 006f 9F010000 		.4byte	.LASF9
+ 143 0073 04       		.uleb128 0x4
+ 144 0074 04       		.byte	0x4
+ 145 0075 05       		.byte	0x5
+ 146 0076 696E7400 		.ascii	"int\000"
+ 147 007a 02       		.uleb128 0x2
+ 148 007b 04       		.byte	0x4
+ 149 007c 07       		.byte	0x7
+ 150 007d 92010000 		.4byte	.LASF10
+ 151 0081 03       		.uleb128 0x3
+ 152 0082 B6010000 		.4byte	.LASF11
+ 153 0086 03       		.byte	0x3
+ 154 0087 18       		.byte	0x18
+ 155 0088 2C000000 		.4byte	0x2c
+ 156 008c 03       		.uleb128 0x3
+ 157 008d CE010000 		.4byte	.LASF12
+ 158 0091 03       		.byte	0x3
+ 159 0092 2C       		.byte	0x2c
+ 160 0093 4C000000 		.4byte	0x4c
+ 161 0097 05       		.uleb128 0x5
+ 162 0098 FC010000 		.4byte	.LASF13
+ 163 009c 04       		.byte	0x4
+ 164 009d E801     		.2byte	0x1e8
+ 165 009f 37000000 		.4byte	0x37
+ 166 00a3 02       		.uleb128 0x2
+ 167 00a4 04       		.byte	0x4
+ 168 00a5 04       		.byte	0x4
+ 169 00a6 37000000 		.4byte	.LASF14
+ 170 00aa 02       		.uleb128 0x2
+ 171 00ab 08       		.byte	0x8
+ 172 00ac 04       		.byte	0x4
+ 173 00ad 1E010000 		.4byte	.LASF15
+ 174 00b1 02       		.uleb128 0x2
+ 175 00b2 01       		.byte	0x1
+ 176 00b3 08       		.byte	0x8
+ 177 00b4 ED010000 		.4byte	.LASF16
+ 178 00b8 02       		.uleb128 0x2
+ 179 00b9 08       		.byte	0x8
+ 180 00ba 04       		.byte	0x4
+ 181 00bb 0B020000 		.4byte	.LASF17
+ 182 00bf 02       		.uleb128 0x2
+ 183 00c0 04       		.byte	0x4
+ 184 00c1 07       		.byte	0x7
+ 185 00c2 D6010000 		.4byte	.LASF18
+ 186 00c6 06       		.uleb128 0x6
+ 187 00c7 0B010000 		.4byte	.LASF28
+ 188 00cb 01       		.byte	0x1
+ 189 00cc 12       		.byte	0x12
+ 190 00cd 00000000 		.4byte	.LFB64
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 5
+
+
+ 191 00d1 2C000000 		.4byte	.LFE64-.LFB64
+ 192 00d5 01       		.uleb128 0x1
+ 193 00d6 9C       		.byte	0x9c
+ 194 00d7 38010000 		.4byte	0x138
+ 195 00db 07       		.uleb128 0x7
+ 196 00dc 0A000000 		.4byte	.LBB2
+ 197 00e0 22000000 		.4byte	.LBE2-.LBB2
+ 198 00e4 2E010000 		.4byte	0x12e
+ 199 00e8 08       		.uleb128 0x8
+ 200 00e9 2E000000 		.4byte	.LASF19
+ 201 00ed 01       		.byte	0x1
+ 202 00ee 1A       		.byte	0x1a
+ 203 00ef 81000000 		.4byte	0x81
+ 204 00f3 00000000 		.4byte	.LLST0
+ 205 00f7 09       		.uleb128 0x9
+ 206 00f8 0E000000 		.4byte	.LVL1
+ 207 00fc 6A010000 		.4byte	0x16a
+ 208 0100 0A       		.uleb128 0xa
+ 209 0101 1A000000 		.4byte	.LVL3
+ 210 0105 75010000 		.4byte	0x175
+ 211 0109 1D010000 		.4byte	0x11d
+ 212 010d 0B       		.uleb128 0xb
+ 213 010e 01       		.uleb128 0x1
+ 214 010f 50       		.byte	0x50
+ 215 0110 02       		.uleb128 0x2
+ 216 0111 74       		.byte	0x74
+ 217 0112 00       		.sleb128 0
+ 218 0113 0B       		.uleb128 0xb
+ 219 0114 01       		.uleb128 0x1
+ 220 0115 51       		.byte	0x51
+ 221 0116 05       		.uleb128 0x5
+ 222 0117 03       		.byte	0x3
+ 223 0118 00000000 		.4byte	.LC0
+ 224 011c 00       		.byte	0
+ 225 011d 0C       		.uleb128 0xc
+ 226 011e 20000000 		.4byte	.LVL4
+ 227 0122 80010000 		.4byte	0x180
+ 228 0126 0B       		.uleb128 0xb
+ 229 0127 01       		.uleb128 0x1
+ 230 0128 50       		.byte	0x50
+ 231 0129 02       		.uleb128 0x2
+ 232 012a 74       		.byte	0x74
+ 233 012b 00       		.sleb128 0
+ 234 012c 00       		.byte	0
+ 235 012d 00       		.byte	0
+ 236 012e 09       		.uleb128 0x9
+ 237 012f 06000000 		.4byte	.LVL0
+ 238 0133 8B010000 		.4byte	0x18b
+ 239 0137 00       		.byte	0
+ 240 0138 0D       		.uleb128 0xd
+ 241 0139 B1000000 		.4byte	0xb1
+ 242 013d 48010000 		.4byte	0x148
+ 243 0141 0E       		.uleb128 0xe
+ 244 0142 BF000000 		.4byte	0xbf
+ 245 0146 13       		.byte	0x13
+ 246 0147 00       		.byte	0
+ 247 0148 0F       		.uleb128 0xf
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 6
+
+
+ 248 0149 00000000 		.4byte	.LASF20
+ 249 014d 01       		.byte	0x1
+ 250 014e 10       		.byte	0x10
+ 251 014f 38010000 		.4byte	0x138
+ 252 0153 05       		.uleb128 0x5
+ 253 0154 03       		.byte	0x3
+ 254 0155 00000000 		.4byte	message
+ 255 0159 10       		.uleb128 0x10
+ 256 015a FE000000 		.4byte	.LASF29
+ 257 015e 07       		.byte	0x7
+ 258 015f 1207     		.2byte	0x712
+ 259 0161 65010000 		.4byte	0x165
+ 260 0165 11       		.uleb128 0x11
+ 261 0166 8C000000 		.4byte	0x8c
+ 262 016a 12       		.uleb128 0x12
+ 263 016b BE010000 		.4byte	.LASF21
+ 264 016f BE010000 		.4byte	.LASF21
+ 265 0173 05       		.byte	0x5
+ 266 0174 6F       		.byte	0x6f
+ 267 0175 12       		.uleb128 0x12
+ 268 0176 32020000 		.4byte	.LASF22
+ 269 017a 32020000 		.4byte	.LASF22
+ 270 017e 06       		.byte	0x6
+ 271 017f E7       		.byte	0xe7
+ 272 0180 12       		.uleb128 0x12
+ 273 0181 23020000 		.4byte	.LASF23
+ 274 0185 23020000 		.4byte	.LASF23
+ 275 0189 05       		.byte	0x5
+ 276 018a 8B       		.byte	0x8b
+ 277 018b 12       		.uleb128 0x12
+ 278 018c 12000000 		.4byte	.LASF24
+ 279 0190 12000000 		.4byte	.LASF24
+ 280 0194 05       		.byte	0x5
+ 281 0195 70       		.byte	0x70
+ 282 0196 00       		.byte	0
+ 283              		.section	.debug_abbrev,"",%progbits
+ 284              	.Ldebug_abbrev0:
+ 285 0000 01       		.uleb128 0x1
+ 286 0001 11       		.uleb128 0x11
+ 287 0002 01       		.byte	0x1
+ 288 0003 25       		.uleb128 0x25
+ 289 0004 0E       		.uleb128 0xe
+ 290 0005 13       		.uleb128 0x13
+ 291 0006 0B       		.uleb128 0xb
+ 292 0007 03       		.uleb128 0x3
+ 293 0008 0E       		.uleb128 0xe
+ 294 0009 1B       		.uleb128 0x1b
+ 295 000a 0E       		.uleb128 0xe
+ 296 000b 55       		.uleb128 0x55
+ 297 000c 17       		.uleb128 0x17
+ 298 000d 11       		.uleb128 0x11
+ 299 000e 01       		.uleb128 0x1
+ 300 000f 10       		.uleb128 0x10
+ 301 0010 17       		.uleb128 0x17
+ 302 0011 00       		.byte	0
+ 303 0012 00       		.byte	0
+ 304 0013 02       		.uleb128 0x2
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 7
+
+
+ 305 0014 24       		.uleb128 0x24
+ 306 0015 00       		.byte	0
+ 307 0016 0B       		.uleb128 0xb
+ 308 0017 0B       		.uleb128 0xb
+ 309 0018 3E       		.uleb128 0x3e
+ 310 0019 0B       		.uleb128 0xb
+ 311 001a 03       		.uleb128 0x3
+ 312 001b 0E       		.uleb128 0xe
+ 313 001c 00       		.byte	0
+ 314 001d 00       		.byte	0
+ 315 001e 03       		.uleb128 0x3
+ 316 001f 16       		.uleb128 0x16
+ 317 0020 00       		.byte	0
+ 318 0021 03       		.uleb128 0x3
+ 319 0022 0E       		.uleb128 0xe
+ 320 0023 3A       		.uleb128 0x3a
+ 321 0024 0B       		.uleb128 0xb
+ 322 0025 3B       		.uleb128 0x3b
+ 323 0026 0B       		.uleb128 0xb
+ 324 0027 49       		.uleb128 0x49
+ 325 0028 13       		.uleb128 0x13
+ 326 0029 00       		.byte	0
+ 327 002a 00       		.byte	0
+ 328 002b 04       		.uleb128 0x4
+ 329 002c 24       		.uleb128 0x24
+ 330 002d 00       		.byte	0
+ 331 002e 0B       		.uleb128 0xb
+ 332 002f 0B       		.uleb128 0xb
+ 333 0030 3E       		.uleb128 0x3e
+ 334 0031 0B       		.uleb128 0xb
+ 335 0032 03       		.uleb128 0x3
+ 336 0033 08       		.uleb128 0x8
+ 337 0034 00       		.byte	0
+ 338 0035 00       		.byte	0
+ 339 0036 05       		.uleb128 0x5
+ 340 0037 16       		.uleb128 0x16
+ 341 0038 00       		.byte	0
+ 342 0039 03       		.uleb128 0x3
+ 343 003a 0E       		.uleb128 0xe
+ 344 003b 3A       		.uleb128 0x3a
+ 345 003c 0B       		.uleb128 0xb
+ 346 003d 3B       		.uleb128 0x3b
+ 347 003e 05       		.uleb128 0x5
+ 348 003f 49       		.uleb128 0x49
+ 349 0040 13       		.uleb128 0x13
+ 350 0041 00       		.byte	0
+ 351 0042 00       		.byte	0
+ 352 0043 06       		.uleb128 0x6
+ 353 0044 2E       		.uleb128 0x2e
+ 354 0045 01       		.byte	0x1
+ 355 0046 3F       		.uleb128 0x3f
+ 356 0047 19       		.uleb128 0x19
+ 357 0048 03       		.uleb128 0x3
+ 358 0049 0E       		.uleb128 0xe
+ 359 004a 3A       		.uleb128 0x3a
+ 360 004b 0B       		.uleb128 0xb
+ 361 004c 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 8
+
+
+ 362 004d 0B       		.uleb128 0xb
+ 363 004e 27       		.uleb128 0x27
+ 364 004f 19       		.uleb128 0x19
+ 365 0050 11       		.uleb128 0x11
+ 366 0051 01       		.uleb128 0x1
+ 367 0052 12       		.uleb128 0x12
+ 368 0053 06       		.uleb128 0x6
+ 369 0054 40       		.uleb128 0x40
+ 370 0055 18       		.uleb128 0x18
+ 371 0056 9742     		.uleb128 0x2117
+ 372 0058 19       		.uleb128 0x19
+ 373 0059 01       		.uleb128 0x1
+ 374 005a 13       		.uleb128 0x13
+ 375 005b 00       		.byte	0
+ 376 005c 00       		.byte	0
+ 377 005d 07       		.uleb128 0x7
+ 378 005e 0B       		.uleb128 0xb
+ 379 005f 01       		.byte	0x1
+ 380 0060 11       		.uleb128 0x11
+ 381 0061 01       		.uleb128 0x1
+ 382 0062 12       		.uleb128 0x12
+ 383 0063 06       		.uleb128 0x6
+ 384 0064 01       		.uleb128 0x1
+ 385 0065 13       		.uleb128 0x13
+ 386 0066 00       		.byte	0
+ 387 0067 00       		.byte	0
+ 388 0068 08       		.uleb128 0x8
+ 389 0069 34       		.uleb128 0x34
+ 390 006a 00       		.byte	0
+ 391 006b 03       		.uleb128 0x3
+ 392 006c 0E       		.uleb128 0xe
+ 393 006d 3A       		.uleb128 0x3a
+ 394 006e 0B       		.uleb128 0xb
+ 395 006f 3B       		.uleb128 0x3b
+ 396 0070 0B       		.uleb128 0xb
+ 397 0071 49       		.uleb128 0x49
+ 398 0072 13       		.uleb128 0x13
+ 399 0073 02       		.uleb128 0x2
+ 400 0074 17       		.uleb128 0x17
+ 401 0075 00       		.byte	0
+ 402 0076 00       		.byte	0
+ 403 0077 09       		.uleb128 0x9
+ 404 0078 898201   		.uleb128 0x4109
+ 405 007b 00       		.byte	0
+ 406 007c 11       		.uleb128 0x11
+ 407 007d 01       		.uleb128 0x1
+ 408 007e 31       		.uleb128 0x31
+ 409 007f 13       		.uleb128 0x13
+ 410 0080 00       		.byte	0
+ 411 0081 00       		.byte	0
+ 412 0082 0A       		.uleb128 0xa
+ 413 0083 898201   		.uleb128 0x4109
+ 414 0086 01       		.byte	0x1
+ 415 0087 11       		.uleb128 0x11
+ 416 0088 01       		.uleb128 0x1
+ 417 0089 31       		.uleb128 0x31
+ 418 008a 13       		.uleb128 0x13
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 9
+
+
+ 419 008b 01       		.uleb128 0x1
+ 420 008c 13       		.uleb128 0x13
+ 421 008d 00       		.byte	0
+ 422 008e 00       		.byte	0
+ 423 008f 0B       		.uleb128 0xb
+ 424 0090 8A8201   		.uleb128 0x410a
+ 425 0093 00       		.byte	0
+ 426 0094 02       		.uleb128 0x2
+ 427 0095 18       		.uleb128 0x18
+ 428 0096 9142     		.uleb128 0x2111
+ 429 0098 18       		.uleb128 0x18
+ 430 0099 00       		.byte	0
+ 431 009a 00       		.byte	0
+ 432 009b 0C       		.uleb128 0xc
+ 433 009c 898201   		.uleb128 0x4109
+ 434 009f 01       		.byte	0x1
+ 435 00a0 11       		.uleb128 0x11
+ 436 00a1 01       		.uleb128 0x1
+ 437 00a2 31       		.uleb128 0x31
+ 438 00a3 13       		.uleb128 0x13
+ 439 00a4 00       		.byte	0
+ 440 00a5 00       		.byte	0
+ 441 00a6 0D       		.uleb128 0xd
+ 442 00a7 01       		.uleb128 0x1
+ 443 00a8 01       		.byte	0x1
+ 444 00a9 49       		.uleb128 0x49
+ 445 00aa 13       		.uleb128 0x13
+ 446 00ab 01       		.uleb128 0x1
+ 447 00ac 13       		.uleb128 0x13
+ 448 00ad 00       		.byte	0
+ 449 00ae 00       		.byte	0
+ 450 00af 0E       		.uleb128 0xe
+ 451 00b0 21       		.uleb128 0x21
+ 452 00b1 00       		.byte	0
+ 453 00b2 49       		.uleb128 0x49
+ 454 00b3 13       		.uleb128 0x13
+ 455 00b4 2F       		.uleb128 0x2f
+ 456 00b5 0B       		.uleb128 0xb
+ 457 00b6 00       		.byte	0
+ 458 00b7 00       		.byte	0
+ 459 00b8 0F       		.uleb128 0xf
+ 460 00b9 34       		.uleb128 0x34
+ 461 00ba 00       		.byte	0
+ 462 00bb 03       		.uleb128 0x3
+ 463 00bc 0E       		.uleb128 0xe
+ 464 00bd 3A       		.uleb128 0x3a
+ 465 00be 0B       		.uleb128 0xb
+ 466 00bf 3B       		.uleb128 0x3b
+ 467 00c0 0B       		.uleb128 0xb
+ 468 00c1 49       		.uleb128 0x49
+ 469 00c2 13       		.uleb128 0x13
+ 470 00c3 02       		.uleb128 0x2
+ 471 00c4 18       		.uleb128 0x18
+ 472 00c5 00       		.byte	0
+ 473 00c6 00       		.byte	0
+ 474 00c7 10       		.uleb128 0x10
+ 475 00c8 34       		.uleb128 0x34
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 10
+
+
+ 476 00c9 00       		.byte	0
+ 477 00ca 03       		.uleb128 0x3
+ 478 00cb 0E       		.uleb128 0xe
+ 479 00cc 3A       		.uleb128 0x3a
+ 480 00cd 0B       		.uleb128 0xb
+ 481 00ce 3B       		.uleb128 0x3b
+ 482 00cf 05       		.uleb128 0x5
+ 483 00d0 49       		.uleb128 0x49
+ 484 00d1 13       		.uleb128 0x13
+ 485 00d2 3F       		.uleb128 0x3f
+ 486 00d3 19       		.uleb128 0x19
+ 487 00d4 3C       		.uleb128 0x3c
+ 488 00d5 19       		.uleb128 0x19
+ 489 00d6 00       		.byte	0
+ 490 00d7 00       		.byte	0
+ 491 00d8 11       		.uleb128 0x11
+ 492 00d9 35       		.uleb128 0x35
+ 493 00da 00       		.byte	0
+ 494 00db 49       		.uleb128 0x49
+ 495 00dc 13       		.uleb128 0x13
+ 496 00dd 00       		.byte	0
+ 497 00de 00       		.byte	0
+ 498 00df 12       		.uleb128 0x12
+ 499 00e0 2E       		.uleb128 0x2e
+ 500 00e1 00       		.byte	0
+ 501 00e2 3F       		.uleb128 0x3f
+ 502 00e3 19       		.uleb128 0x19
+ 503 00e4 3C       		.uleb128 0x3c
+ 504 00e5 19       		.uleb128 0x19
+ 505 00e6 6E       		.uleb128 0x6e
+ 506 00e7 0E       		.uleb128 0xe
+ 507 00e8 03       		.uleb128 0x3
+ 508 00e9 0E       		.uleb128 0xe
+ 509 00ea 3A       		.uleb128 0x3a
+ 510 00eb 0B       		.uleb128 0xb
+ 511 00ec 3B       		.uleb128 0x3b
+ 512 00ed 0B       		.uleb128 0xb
+ 513 00ee 00       		.byte	0
+ 514 00ef 00       		.byte	0
+ 515 00f0 00       		.byte	0
+ 516              		.section	.debug_loc,"",%progbits
+ 517              	.Ldebug_loc0:
+ 518              	.LLST0:
+ 519 0000 0E000000 		.4byte	.LVL1
+ 520 0004 16000000 		.4byte	.LVL2
+ 521 0008 0100     		.2byte	0x1
+ 522 000a 50       		.byte	0x50
+ 523 000b 00000000 		.4byte	0
+ 524 000f 00000000 		.4byte	0
+ 525              		.section	.debug_aranges,"",%progbits
+ 526 0000 1C000000 		.4byte	0x1c
+ 527 0004 0200     		.2byte	0x2
+ 528 0006 00000000 		.4byte	.Ldebug_info0
+ 529 000a 04       		.byte	0x4
+ 530 000b 00       		.byte	0
+ 531 000c 0000     		.2byte	0
+ 532 000e 0000     		.2byte	0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 11
+
+
+ 533 0010 00000000 		.4byte	.LFB64
+ 534 0014 2C000000 		.4byte	.LFE64-.LFB64
+ 535 0018 00000000 		.4byte	0
+ 536 001c 00000000 		.4byte	0
+ 537              		.section	.debug_ranges,"",%progbits
+ 538              	.Ldebug_ranges0:
+ 539 0000 00000000 		.4byte	.LFB64
+ 540 0004 2C000000 		.4byte	.LFE64
+ 541 0008 00000000 		.4byte	0
+ 542 000c 00000000 		.4byte	0
+ 543              		.section	.debug_line,"",%progbits
+ 544              	.Ldebug_line0:
+ 545 0000 EF010000 		.section	.debug_str,"MS",%progbits,1
+ 545      0200D601 
+ 545      00000201 
+ 545      FB0E0D00 
+ 545      01010101 
+ 546              	.LASF20:
+ 547 0000 6D657373 		.ascii	"message\000"
+ 547      61676500 
+ 548              	.LASF4:
+ 549 0008 5F5F7569 		.ascii	"__uint8_t\000"
+ 549      6E74385F 
+ 549      7400
+ 550              	.LASF24:
+ 551 0012 55415254 		.ascii	"UART_ReadRxStatus\000"
+ 551      5F526561 
+ 551      64527853 
+ 551      74617475 
+ 551      7300
+ 552              	.LASF5:
+ 553 0024 5F5F696E 		.ascii	"__int32_t\000"
+ 553      7433325F 
+ 553      7400
+ 554              	.LASF19:
+ 555 002e 72656365 		.ascii	"received\000"
+ 555      69766564 
+ 555      00
+ 556              	.LASF14:
+ 557 0037 666C6F61 		.ascii	"float\000"
+ 557      7400
+ 558              	.LASF1:
+ 559 003d 756E7369 		.ascii	"unsigned char\000"
+ 559      676E6564 
+ 559      20636861 
+ 559      7200
+ 560              	.LASF25:
+ 561 004b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 561      43313120 
+ 561      352E342E 
+ 561      31203230 
+ 561      31363036 
+ 562 007e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 562      20726576 
+ 562      6973696F 
+ 562      6E203233 
+ 562      37373135 
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 12
+
+
+ 563 00b1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 563      66756E63 
+ 563      74696F6E 
+ 563      2D736563 
+ 563      74696F6E 
+ 564              	.LASF7:
+ 565 00d9 6C6F6E67 		.ascii	"long unsigned int\000"
+ 565      20756E73 
+ 565      69676E65 
+ 565      6420696E 
+ 565      7400
+ 566              	.LASF3:
+ 567 00eb 73686F72 		.ascii	"short unsigned int\000"
+ 567      7420756E 
+ 567      7369676E 
+ 567      65642069 
+ 567      6E7400
+ 568              	.LASF29:
+ 569 00fe 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 569      52784275 
+ 569      66666572 
+ 569      00
+ 570              	.LASF28:
+ 571 010b 43757374 		.ascii	"Custom_UART_RX_ISR\000"
+ 571      6F6D5F55 
+ 571      4152545F 
+ 571      52585F49 
+ 571      535200
+ 572              	.LASF15:
+ 573 011e 646F7562 		.ascii	"double\000"
+ 573      6C6500
+ 574              	.LASF27:
+ 575 0125 433A5C55 		.ascii	"C:\\Users\\cante\\Desktop\\INGEGNERIA BIOMEDICA\\V "
+ 575      73657273 
+ 575      5C63616E 
+ 575      74655C44 
+ 575      65736B74 
+ 576 0153 414E4E4F 		.ascii	"ANNO\\LAB ELETTRONICA\\PSoC\\AY2021_II_PSoC_Basics\\"
+ 576      5C4C4142 
+ 576      20454C45 
+ 576      5454524F 
+ 576      4E494341 
+ 577 0183 30372D55 		.ascii	"07-UARTX.cydsn\000"
+ 577      41525458 
+ 577      2E637964 
+ 577      736E00
+ 578              	.LASF10:
+ 579 0192 756E7369 		.ascii	"unsigned int\000"
+ 579      676E6564 
+ 579      20696E74 
+ 579      00
+ 580              	.LASF9:
+ 581 019f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 581      206C6F6E 
+ 581      6720756E 
+ 581      7369676E 
+ 581      65642069 
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 13
+
+
+ 582              	.LASF11:
+ 583 01b6 75696E74 		.ascii	"uint8_t\000"
+ 583      385F7400 
+ 584              	.LASF21:
+ 585 01be 55415254 		.ascii	"UART_ReadRxData\000"
+ 585      5F526561 
+ 585      64527844 
+ 585      61746100 
+ 586              	.LASF12:
+ 587 01ce 696E7433 		.ascii	"int32_t\000"
+ 587      325F7400 
+ 588              	.LASF18:
+ 589 01d6 73697A65 		.ascii	"sizetype\000"
+ 589      74797065 
+ 589      00
+ 590              	.LASF8:
+ 591 01df 6C6F6E67 		.ascii	"long long int\000"
+ 591      206C6F6E 
+ 591      6720696E 
+ 591      7400
+ 592              	.LASF16:
+ 593 01ed 63686172 		.ascii	"char\000"
+ 593      00
+ 594              	.LASF2:
+ 595 01f2 73686F72 		.ascii	"short int\000"
+ 595      7420696E 
+ 595      7400
+ 596              	.LASF13:
+ 597 01fc 75696E74 		.ascii	"uint8\000"
+ 597      3800
+ 598              	.LASF6:
+ 599 0202 6C6F6E67 		.ascii	"long int\000"
+ 599      20696E74 
+ 599      00
+ 600              	.LASF17:
+ 601 020b 6C6F6E67 		.ascii	"long double\000"
+ 601      20646F75 
+ 601      626C6500 
+ 602              	.LASF0:
+ 603 0217 7369676E 		.ascii	"signed char\000"
+ 603      65642063 
+ 603      68617200 
+ 604              	.LASF23:
+ 605 0223 55415254 		.ascii	"UART_PutString\000"
+ 605      5F507574 
+ 605      53747269 
+ 605      6E6700
+ 606              	.LASF22:
+ 607 0232 73707269 		.ascii	"sprintf\000"
+ 607      6E746600 
+ 608              	.LASF26:
+ 609 023a 496E7465 		.ascii	"InterruptRoutines.c\000"
+ 609      72727570 
+ 609      74526F75 
+ 609      74696E65 
+ 609      732E6300 
+ 610              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccBICmwt.s 			page 14
+
+

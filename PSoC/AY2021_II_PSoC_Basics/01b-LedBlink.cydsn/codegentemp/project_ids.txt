@@ -1,0 +1,17 @@
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\01-LedBlink.cydsn\01-LedBlink.cyprj|2eb88ac8-b7e7-4b12-9dbf-9102c4e5090d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|d96caeec-dbc8-4f32-bf2c-079ab8534df1
+C:\Users\cante\OneDrive\Documenti\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|f47dda42-1e8d-4d0a-80e8-bd5c44f73435
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|c2331c05-1386-44eb-95a2-c4c5c4fbded3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|b8097cd3-4133-442e-bb94-b8cd4b383d3f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a8955eaf-9038-4ceb-aa0f-9a2c4843d894
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\01b-LedBlink.cydsn\01b-LedBlink.cyprj|fd0ff6e1-40d2-4027-815c-f9b497a64692
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AnnotationLibrary\AnnotationLibrary_lib\AnnotationLibrary_lib.cylib\AnnotationLibrary_lib.cyprj|792126b1-c489-4938-bb13-c2fc8ca8516e
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\02-LedButtonReal.cydsn\02-LedButtonReal.cyprj|6f991925-0067-43bf-84f1-70fd6cce5f51
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\03-LedButtonDebounceReal.cydsn\03-LedButtonDebounceReal.cyprj|c38e86bd-940e-4cc1-aefc-d402afe9ac42
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\04_RGBled.cydsn\04_RGBled.cyprj|bfdc29b4-48ae-4935-8735-bb33aee1cd50
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\02b-LedButton.cydsn\02b-LedButton.cyprj|73fc194b-1f68-48df-8c02-86e267cbd024
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\04b_RGBled.cydsn\04b_RGBled.cyprj|5c5915c7-ac5d-4fad-948a-0ce1ca3337fe
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\05-RGBLedDriver.cydsn\05-RGBLedDriver.cyprj|31440f28-cbf9-4b15-8514-ed661c20fa08
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\06-UART.cydsn\06-UART.cyprj|538e3454-4aaf-424a-aa65-38de1011b935
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\07-UARTX.cydsn\07-UARTX.cyprj|2d0eb9da-64b4-40cd-a928-4ef42fac5fcc
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\08-UARTLED.cydsn\08-UARTLED.cyprj|b20532fb-88b8-4794-a2b7-c3b50c449401

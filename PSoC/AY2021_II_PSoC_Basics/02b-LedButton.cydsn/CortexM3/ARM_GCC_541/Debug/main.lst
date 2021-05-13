@@ -1,0 +1,670 @@
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** 
+  13:main.c        **** 
+  14:main.c        **** /*
+  15:main.c        **** when the button is pressed, the LED is on
+  16:main.c        **** */ 
+  17:main.c        **** 
+  18:main.c        **** 
+  19:main.c        **** 
+  20:main.c        **** #include "project.h"
+  21:main.c        **** 
+  22:main.c        **** #define LED_ON 1 //high digital state
+  23:main.c        **** #define LED_OFF 0 // low digital state
+  24:main.c        **** #define PUSHBUTTON_PRESSED 0 //perchè ho la resistenza di pullup
+  25:main.c        **** 
+  26:main.c        **** 
+  27:main.c        **** int main(void)
+  28:main.c        **** {
+  28              		.loc 1 28 0
+  29              		.cfi_startproc
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 2
+
+
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  29:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  36              		.loc 1 29 0
+  37              		.syntax unified
+  38              	@ 29 "main.c" 1
+  39 0002 62B6     		CPSIE   i
+  40              	@ 0 "" 2
+  41              		.thumb
+  42              		.syntax unified
+  43              	.L2:
+  44              	.LBB2:
+  30:main.c        **** 
+  31:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  32:main.c        **** 
+  33:main.c        ****     for(;;)
+  34:main.c        ****     {
+  35:main.c        ****       uint8_t push_button_state = PushButton_Read();
+  45              		.loc 1 35 0
+  46 0004 FFF7FEFF 		bl	PushButton_Read
+  47              	.LVL0:
+  36:main.c        ****       if (push_button_state == PUSHBUTTON_PRESSED) {
+  48              		.loc 1 36 0
+  49 0008 18B9     		cbnz	r0, .L3
+  37:main.c        ****         // if the button is pressed, the led is on
+  38:main.c        ****         Blue_LED_Write(LED_ON);
+  50              		.loc 1 38 0
+  51 000a 0120     		movs	r0, #1
+  52              	.LVL1:
+  53 000c FFF7FEFF 		bl	Blue_LED_Write
+  54              	.LVL2:
+  55 0010 F8E7     		b	.L2
+  56              	.LVL3:
+  57              	.L3:
+  39:main.c        ****       }
+  40:main.c        ****       else {
+  41:main.c        ****         // if the button is not pressed, the led is off
+  42:main.c        ****         Blue_LED_Write(LED_OFF);
+  58              		.loc 1 42 0
+  59 0012 0020     		movs	r0, #0
+  60              	.LVL4:
+  61 0014 FFF7FEFF 		bl	Blue_LED_Write
+  62              	.LVL5:
+  63 0018 F4E7     		b	.L2
+  64              	.LBE2:
+  65              		.cfi_endproc
+  66              	.LFE63:
+  67              		.size	main, .-main
+  68 001a 00BF     		.text
+  69              	.Letext0:
+  70              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  71              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+  72              		.file 4 "Generated_Source\\PSoC5/PushButton.h"
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 3
+
+
+  73              		.file 5 "Generated_Source\\PSoC5/Blue_LED.h"
+  74              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+  75              		.section	.debug_info,"",%progbits
+  76              	.Ldebug_info0:
+  77 0000 3C010000 		.4byte	0x13c
+  78 0004 0400     		.2byte	0x4
+  79 0006 00000000 		.4byte	.Ldebug_abbrev0
+  80 000a 04       		.byte	0x4
+  81 000b 01       		.uleb128 0x1
+  82 000c 4A000000 		.4byte	.LASF20
+  83 0010 0C       		.byte	0xc
+  84 0011 3E000000 		.4byte	.LASF21
+  85 0015 EA000000 		.4byte	.LASF22
+  86 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  87 001d 00000000 		.4byte	0
+  88 0021 00000000 		.4byte	.Ldebug_line0
+  89 0025 02       		.uleb128 0x2
+  90 0026 01       		.byte	0x1
+  91 0027 06       		.byte	0x6
+  92 0028 C7010000 		.4byte	.LASF0
+  93 002c 03       		.uleb128 0x3
+  94 002d 85010000 		.4byte	.LASF4
+  95 0031 02       		.byte	0x2
+  96 0032 1D       		.byte	0x1d
+  97 0033 37000000 		.4byte	0x37
+  98 0037 02       		.uleb128 0x2
+  99 0038 01       		.byte	0x1
+ 100 0039 08       		.byte	0x8
+ 101 003a 97010000 		.4byte	.LASF1
+ 102 003e 02       		.uleb128 0x2
+ 103 003f 02       		.byte	0x2
+ 104 0040 05       		.byte	0x5
+ 105 0041 FE010000 		.4byte	.LASF2
+ 106 0045 02       		.uleb128 0x2
+ 107 0046 02       		.byte	0x2
+ 108 0047 07       		.byte	0x7
+ 109 0048 0E000000 		.4byte	.LASF3
+ 110 004c 03       		.uleb128 0x3
+ 111 004d DF010000 		.4byte	.LASF5
+ 112 0051 02       		.byte	0x2
+ 113 0052 3F       		.byte	0x3f
+ 114 0053 57000000 		.4byte	0x57
+ 115 0057 02       		.uleb128 0x2
+ 116 0058 04       		.byte	0x4
+ 117 0059 05       		.byte	0x5
+ 118 005a AA010000 		.4byte	.LASF6
+ 119 005e 02       		.uleb128 0x2
+ 120 005f 04       		.byte	0x4
+ 121 0060 07       		.byte	0x7
+ 122 0061 5C010000 		.4byte	.LASF7
+ 123 0065 02       		.uleb128 0x2
+ 124 0066 08       		.byte	0x8
+ 125 0067 05       		.byte	0x5
+ 126 0068 00000000 		.4byte	.LASF8
+ 127 006c 02       		.uleb128 0x2
+ 128 006d 08       		.byte	0x8
+ 129 006e 07       		.byte	0x7
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 4
+
+
+ 130 006f 6E010000 		.4byte	.LASF9
+ 131 0073 04       		.uleb128 0x4
+ 132 0074 04       		.byte	0x4
+ 133 0075 05       		.byte	0x5
+ 134 0076 696E7400 		.ascii	"int\000"
+ 135 007a 02       		.uleb128 0x2
+ 136 007b 04       		.byte	0x4
+ 137 007c 07       		.byte	0x7
+ 138 007d 21000000 		.4byte	.LASF10
+ 139 0081 03       		.uleb128 0x3
+ 140 0082 8F010000 		.4byte	.LASF11
+ 141 0086 03       		.byte	0x3
+ 142 0087 18       		.byte	0x18
+ 143 0088 2C000000 		.4byte	0x2c
+ 144 008c 03       		.uleb128 0x3
+ 145 008d 08020000 		.4byte	.LASF12
+ 146 0091 03       		.byte	0x3
+ 147 0092 2C       		.byte	0x2c
+ 148 0093 4C000000 		.4byte	0x4c
+ 149 0097 02       		.uleb128 0x2
+ 150 0098 04       		.byte	0x4
+ 151 0099 04       		.byte	0x4
+ 152 009a F8010000 		.4byte	.LASF13
+ 153 009e 02       		.uleb128 0x2
+ 154 009f 08       		.byte	0x8
+ 155 00a0 04       		.byte	0x4
+ 156 00a1 B3010000 		.4byte	.LASF14
+ 157 00a5 02       		.uleb128 0x2
+ 158 00a6 01       		.byte	0x1
+ 159 00a7 08       		.byte	0x8
+ 160 00a8 A5010000 		.4byte	.LASF15
+ 161 00ac 02       		.uleb128 0x2
+ 162 00ad 04       		.byte	0x4
+ 163 00ae 07       		.byte	0x7
+ 164 00af 10020000 		.4byte	.LASF16
+ 165 00b3 02       		.uleb128 0x2
+ 166 00b4 08       		.byte	0x8
+ 167 00b5 04       		.byte	0x4
+ 168 00b6 D3010000 		.4byte	.LASF17
+ 169 00ba 05       		.uleb128 0x5
+ 170 00bb 45000000 		.4byte	.LASF23
+ 171 00bf 01       		.byte	0x1
+ 172 00c0 1B       		.byte	0x1b
+ 173 00c1 73000000 		.4byte	0x73
+ 174 00c5 00000000 		.4byte	.LFB63
+ 175 00c9 1A000000 		.4byte	.LFE63-.LFB63
+ 176 00cd 01       		.uleb128 0x1
+ 177 00ce 9C       		.byte	0x9c
+ 178 00cf 18010000 		.4byte	0x118
+ 179 00d3 06       		.uleb128 0x6
+ 180 00d4 04000000 		.4byte	.LBB2
+ 181 00d8 16000000 		.4byte	.LBE2-.LBB2
+ 182 00dc 07       		.uleb128 0x7
+ 183 00dd D8000000 		.4byte	.LASF24
+ 184 00e1 01       		.byte	0x1
+ 185 00e2 23       		.byte	0x23
+ 186 00e3 81000000 		.4byte	0x81
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 5
+
+
+ 187 00e7 00000000 		.4byte	.LLST0
+ 188 00eb 08       		.uleb128 0x8
+ 189 00ec 08000000 		.4byte	.LVL0
+ 190 00f0 29010000 		.4byte	0x129
+ 191 00f4 09       		.uleb128 0x9
+ 192 00f5 10000000 		.4byte	.LVL2
+ 193 00f9 34010000 		.4byte	0x134
+ 194 00fd 07010000 		.4byte	0x107
+ 195 0101 0A       		.uleb128 0xa
+ 196 0102 01       		.uleb128 0x1
+ 197 0103 50       		.byte	0x50
+ 198 0104 01       		.uleb128 0x1
+ 199 0105 31       		.byte	0x31
+ 200 0106 00       		.byte	0
+ 201 0107 0B       		.uleb128 0xb
+ 202 0108 18000000 		.4byte	.LVL5
+ 203 010c 34010000 		.4byte	0x134
+ 204 0110 0A       		.uleb128 0xa
+ 205 0111 01       		.uleb128 0x1
+ 206 0112 50       		.byte	0x50
+ 207 0113 01       		.uleb128 0x1
+ 208 0114 30       		.byte	0x30
+ 209 0115 00       		.byte	0
+ 210 0116 00       		.byte	0
+ 211 0117 00       		.byte	0
+ 212 0118 0C       		.uleb128 0xc
+ 213 0119 BA010000 		.4byte	.LASF25
+ 214 011d 06       		.byte	0x6
+ 215 011e 1207     		.2byte	0x712
+ 216 0120 24010000 		.4byte	0x124
+ 217 0124 0D       		.uleb128 0xd
+ 218 0125 8C000000 		.4byte	0x8c
+ 219 0129 0E       		.uleb128 0xe
+ 220 012a 2E000000 		.4byte	.LASF18
+ 221 012e 2E000000 		.4byte	.LASF18
+ 222 0132 04       		.byte	0x4
+ 223 0133 29       		.byte	0x29
+ 224 0134 0E       		.uleb128 0xe
+ 225 0135 E9010000 		.4byte	.LASF19
+ 226 0139 E9010000 		.4byte	.LASF19
+ 227 013d 05       		.byte	0x5
+ 228 013e 26       		.byte	0x26
+ 229 013f 00       		.byte	0
+ 230              		.section	.debug_abbrev,"",%progbits
+ 231              	.Ldebug_abbrev0:
+ 232 0000 01       		.uleb128 0x1
+ 233 0001 11       		.uleb128 0x11
+ 234 0002 01       		.byte	0x1
+ 235 0003 25       		.uleb128 0x25
+ 236 0004 0E       		.uleb128 0xe
+ 237 0005 13       		.uleb128 0x13
+ 238 0006 0B       		.uleb128 0xb
+ 239 0007 03       		.uleb128 0x3
+ 240 0008 0E       		.uleb128 0xe
+ 241 0009 1B       		.uleb128 0x1b
+ 242 000a 0E       		.uleb128 0xe
+ 243 000b 55       		.uleb128 0x55
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 6
+
+
+ 244 000c 17       		.uleb128 0x17
+ 245 000d 11       		.uleb128 0x11
+ 246 000e 01       		.uleb128 0x1
+ 247 000f 10       		.uleb128 0x10
+ 248 0010 17       		.uleb128 0x17
+ 249 0011 00       		.byte	0
+ 250 0012 00       		.byte	0
+ 251 0013 02       		.uleb128 0x2
+ 252 0014 24       		.uleb128 0x24
+ 253 0015 00       		.byte	0
+ 254 0016 0B       		.uleb128 0xb
+ 255 0017 0B       		.uleb128 0xb
+ 256 0018 3E       		.uleb128 0x3e
+ 257 0019 0B       		.uleb128 0xb
+ 258 001a 03       		.uleb128 0x3
+ 259 001b 0E       		.uleb128 0xe
+ 260 001c 00       		.byte	0
+ 261 001d 00       		.byte	0
+ 262 001e 03       		.uleb128 0x3
+ 263 001f 16       		.uleb128 0x16
+ 264 0020 00       		.byte	0
+ 265 0021 03       		.uleb128 0x3
+ 266 0022 0E       		.uleb128 0xe
+ 267 0023 3A       		.uleb128 0x3a
+ 268 0024 0B       		.uleb128 0xb
+ 269 0025 3B       		.uleb128 0x3b
+ 270 0026 0B       		.uleb128 0xb
+ 271 0027 49       		.uleb128 0x49
+ 272 0028 13       		.uleb128 0x13
+ 273 0029 00       		.byte	0
+ 274 002a 00       		.byte	0
+ 275 002b 04       		.uleb128 0x4
+ 276 002c 24       		.uleb128 0x24
+ 277 002d 00       		.byte	0
+ 278 002e 0B       		.uleb128 0xb
+ 279 002f 0B       		.uleb128 0xb
+ 280 0030 3E       		.uleb128 0x3e
+ 281 0031 0B       		.uleb128 0xb
+ 282 0032 03       		.uleb128 0x3
+ 283 0033 08       		.uleb128 0x8
+ 284 0034 00       		.byte	0
+ 285 0035 00       		.byte	0
+ 286 0036 05       		.uleb128 0x5
+ 287 0037 2E       		.uleb128 0x2e
+ 288 0038 01       		.byte	0x1
+ 289 0039 3F       		.uleb128 0x3f
+ 290 003a 19       		.uleb128 0x19
+ 291 003b 03       		.uleb128 0x3
+ 292 003c 0E       		.uleb128 0xe
+ 293 003d 3A       		.uleb128 0x3a
+ 294 003e 0B       		.uleb128 0xb
+ 295 003f 3B       		.uleb128 0x3b
+ 296 0040 0B       		.uleb128 0xb
+ 297 0041 27       		.uleb128 0x27
+ 298 0042 19       		.uleb128 0x19
+ 299 0043 49       		.uleb128 0x49
+ 300 0044 13       		.uleb128 0x13
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 7
+
+
+ 301 0045 8701     		.uleb128 0x87
+ 302 0047 19       		.uleb128 0x19
+ 303 0048 11       		.uleb128 0x11
+ 304 0049 01       		.uleb128 0x1
+ 305 004a 12       		.uleb128 0x12
+ 306 004b 06       		.uleb128 0x6
+ 307 004c 40       		.uleb128 0x40
+ 308 004d 18       		.uleb128 0x18
+ 309 004e 9742     		.uleb128 0x2117
+ 310 0050 19       		.uleb128 0x19
+ 311 0051 01       		.uleb128 0x1
+ 312 0052 13       		.uleb128 0x13
+ 313 0053 00       		.byte	0
+ 314 0054 00       		.byte	0
+ 315 0055 06       		.uleb128 0x6
+ 316 0056 0B       		.uleb128 0xb
+ 317 0057 01       		.byte	0x1
+ 318 0058 11       		.uleb128 0x11
+ 319 0059 01       		.uleb128 0x1
+ 320 005a 12       		.uleb128 0x12
+ 321 005b 06       		.uleb128 0x6
+ 322 005c 00       		.byte	0
+ 323 005d 00       		.byte	0
+ 324 005e 07       		.uleb128 0x7
+ 325 005f 34       		.uleb128 0x34
+ 326 0060 00       		.byte	0
+ 327 0061 03       		.uleb128 0x3
+ 328 0062 0E       		.uleb128 0xe
+ 329 0063 3A       		.uleb128 0x3a
+ 330 0064 0B       		.uleb128 0xb
+ 331 0065 3B       		.uleb128 0x3b
+ 332 0066 0B       		.uleb128 0xb
+ 333 0067 49       		.uleb128 0x49
+ 334 0068 13       		.uleb128 0x13
+ 335 0069 02       		.uleb128 0x2
+ 336 006a 17       		.uleb128 0x17
+ 337 006b 00       		.byte	0
+ 338 006c 00       		.byte	0
+ 339 006d 08       		.uleb128 0x8
+ 340 006e 898201   		.uleb128 0x4109
+ 341 0071 00       		.byte	0
+ 342 0072 11       		.uleb128 0x11
+ 343 0073 01       		.uleb128 0x1
+ 344 0074 31       		.uleb128 0x31
+ 345 0075 13       		.uleb128 0x13
+ 346 0076 00       		.byte	0
+ 347 0077 00       		.byte	0
+ 348 0078 09       		.uleb128 0x9
+ 349 0079 898201   		.uleb128 0x4109
+ 350 007c 01       		.byte	0x1
+ 351 007d 11       		.uleb128 0x11
+ 352 007e 01       		.uleb128 0x1
+ 353 007f 31       		.uleb128 0x31
+ 354 0080 13       		.uleb128 0x13
+ 355 0081 01       		.uleb128 0x1
+ 356 0082 13       		.uleb128 0x13
+ 357 0083 00       		.byte	0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 8
+
+
+ 358 0084 00       		.byte	0
+ 359 0085 0A       		.uleb128 0xa
+ 360 0086 8A8201   		.uleb128 0x410a
+ 361 0089 00       		.byte	0
+ 362 008a 02       		.uleb128 0x2
+ 363 008b 18       		.uleb128 0x18
+ 364 008c 9142     		.uleb128 0x2111
+ 365 008e 18       		.uleb128 0x18
+ 366 008f 00       		.byte	0
+ 367 0090 00       		.byte	0
+ 368 0091 0B       		.uleb128 0xb
+ 369 0092 898201   		.uleb128 0x4109
+ 370 0095 01       		.byte	0x1
+ 371 0096 11       		.uleb128 0x11
+ 372 0097 01       		.uleb128 0x1
+ 373 0098 31       		.uleb128 0x31
+ 374 0099 13       		.uleb128 0x13
+ 375 009a 00       		.byte	0
+ 376 009b 00       		.byte	0
+ 377 009c 0C       		.uleb128 0xc
+ 378 009d 34       		.uleb128 0x34
+ 379 009e 00       		.byte	0
+ 380 009f 03       		.uleb128 0x3
+ 381 00a0 0E       		.uleb128 0xe
+ 382 00a1 3A       		.uleb128 0x3a
+ 383 00a2 0B       		.uleb128 0xb
+ 384 00a3 3B       		.uleb128 0x3b
+ 385 00a4 05       		.uleb128 0x5
+ 386 00a5 49       		.uleb128 0x49
+ 387 00a6 13       		.uleb128 0x13
+ 388 00a7 3F       		.uleb128 0x3f
+ 389 00a8 19       		.uleb128 0x19
+ 390 00a9 3C       		.uleb128 0x3c
+ 391 00aa 19       		.uleb128 0x19
+ 392 00ab 00       		.byte	0
+ 393 00ac 00       		.byte	0
+ 394 00ad 0D       		.uleb128 0xd
+ 395 00ae 35       		.uleb128 0x35
+ 396 00af 00       		.byte	0
+ 397 00b0 49       		.uleb128 0x49
+ 398 00b1 13       		.uleb128 0x13
+ 399 00b2 00       		.byte	0
+ 400 00b3 00       		.byte	0
+ 401 00b4 0E       		.uleb128 0xe
+ 402 00b5 2E       		.uleb128 0x2e
+ 403 00b6 00       		.byte	0
+ 404 00b7 3F       		.uleb128 0x3f
+ 405 00b8 19       		.uleb128 0x19
+ 406 00b9 3C       		.uleb128 0x3c
+ 407 00ba 19       		.uleb128 0x19
+ 408 00bb 6E       		.uleb128 0x6e
+ 409 00bc 0E       		.uleb128 0xe
+ 410 00bd 03       		.uleb128 0x3
+ 411 00be 0E       		.uleb128 0xe
+ 412 00bf 3A       		.uleb128 0x3a
+ 413 00c0 0B       		.uleb128 0xb
+ 414 00c1 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 9
+
+
+ 415 00c2 0B       		.uleb128 0xb
+ 416 00c3 00       		.byte	0
+ 417 00c4 00       		.byte	0
+ 418 00c5 00       		.byte	0
+ 419              		.section	.debug_loc,"",%progbits
+ 420              	.Ldebug_loc0:
+ 421              	.LLST0:
+ 422 0000 08000000 		.4byte	.LVL0
+ 423 0004 0C000000 		.4byte	.LVL1
+ 424 0008 0100     		.2byte	0x1
+ 425 000a 50       		.byte	0x50
+ 426 000b 12000000 		.4byte	.LVL3
+ 427 000f 14000000 		.4byte	.LVL4
+ 428 0013 0100     		.2byte	0x1
+ 429 0015 50       		.byte	0x50
+ 430 0016 00000000 		.4byte	0
+ 431 001a 00000000 		.4byte	0
+ 432              		.section	.debug_aranges,"",%progbits
+ 433 0000 1C000000 		.4byte	0x1c
+ 434 0004 0200     		.2byte	0x2
+ 435 0006 00000000 		.4byte	.Ldebug_info0
+ 436 000a 04       		.byte	0x4
+ 437 000b 00       		.byte	0
+ 438 000c 0000     		.2byte	0
+ 439 000e 0000     		.2byte	0
+ 440 0010 00000000 		.4byte	.LFB63
+ 441 0014 1A000000 		.4byte	.LFE63-.LFB63
+ 442 0018 00000000 		.4byte	0
+ 443 001c 00000000 		.4byte	0
+ 444              		.section	.debug_ranges,"",%progbits
+ 445              	.Ldebug_ranges0:
+ 446 0000 00000000 		.4byte	.LFB63
+ 447 0004 1A000000 		.4byte	.LFE63
+ 448 0008 00000000 		.4byte	0
+ 449 000c 00000000 		.4byte	0
+ 450              		.section	.debug_line,"",%progbits
+ 451              	.Ldebug_line0:
+ 452 0000 77010000 		.section	.debug_str,"MS",%progbits,1
+ 452      02005D01 
+ 452      00000201 
+ 452      FB0E0D00 
+ 452      01010101 
+ 453              	.LASF8:
+ 454 0000 6C6F6E67 		.ascii	"long long int\000"
+ 454      206C6F6E 
+ 454      6720696E 
+ 454      7400
+ 455              	.LASF3:
+ 456 000e 73686F72 		.ascii	"short unsigned int\000"
+ 456      7420756E 
+ 456      7369676E 
+ 456      65642069 
+ 456      6E7400
+ 457              	.LASF10:
+ 458 0021 756E7369 		.ascii	"unsigned int\000"
+ 458      676E6564 
+ 458      20696E74 
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 10
+
+
+ 458      00
+ 459              	.LASF18:
+ 460 002e 50757368 		.ascii	"PushButton_Read\000"
+ 460      42757474 
+ 460      6F6E5F52 
+ 460      65616400 
+ 461              	.LASF21:
+ 462 003e 6D61696E 		.ascii	"main.c\000"
+ 462      2E6300
+ 463              	.LASF23:
+ 464 0045 6D61696E 		.ascii	"main\000"
+ 464      00
+ 465              	.LASF20:
+ 466 004a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 466      43313120 
+ 466      352E342E 
+ 466      31203230 
+ 466      31363036 
+ 467 007d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 467      20726576 
+ 467      6973696F 
+ 467      6E203233 
+ 467      37373135 
+ 468 00b0 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 468      66756E63 
+ 468      74696F6E 
+ 468      2D736563 
+ 468      74696F6E 
+ 469              	.LASF24:
+ 470 00d8 70757368 		.ascii	"push_button_state\000"
+ 470      5F627574 
+ 470      746F6E5F 
+ 470      73746174 
+ 470      6500
+ 471              	.LASF22:
+ 472 00ea 433A5C55 		.ascii	"C:\\Users\\cante\\Desktop\\INGEGNERIA BIOMEDICA\\V "
+ 472      73657273 
+ 472      5C63616E 
+ 472      74655C44 
+ 472      65736B74 
+ 473 0118 414E4E4F 		.ascii	"ANNO\\LAB ELETTRONICA\\PSoC\\AY2021_II_PSoC_Basics\\"
+ 473      5C4C4142 
+ 473      20454C45 
+ 473      5454524F 
+ 473      4E494341 
+ 474 0148 3032622D 		.ascii	"02b-LedButton.cydsn\000"
+ 474      4C656442 
+ 474      7574746F 
+ 474      6E2E6379 
+ 474      64736E00 
+ 475              	.LASF7:
+ 476 015c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 476      20756E73 
+ 476      69676E65 
+ 476      6420696E 
+ 476      7400
+ 477              	.LASF9:
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 11
+
+
+ 478 016e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 478      206C6F6E 
+ 478      6720756E 
+ 478      7369676E 
+ 478      65642069 
+ 479              	.LASF4:
+ 480 0185 5F5F7569 		.ascii	"__uint8_t\000"
+ 480      6E74385F 
+ 480      7400
+ 481              	.LASF11:
+ 482 018f 75696E74 		.ascii	"uint8_t\000"
+ 482      385F7400 
+ 483              	.LASF1:
+ 484 0197 756E7369 		.ascii	"unsigned char\000"
+ 484      676E6564 
+ 484      20636861 
+ 484      7200
+ 485              	.LASF15:
+ 486 01a5 63686172 		.ascii	"char\000"
+ 486      00
+ 487              	.LASF6:
+ 488 01aa 6C6F6E67 		.ascii	"long int\000"
+ 488      20696E74 
+ 488      00
+ 489              	.LASF14:
+ 490 01b3 646F7562 		.ascii	"double\000"
+ 490      6C6500
+ 491              	.LASF25:
+ 492 01ba 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 492      52784275 
+ 492      66666572 
+ 492      00
+ 493              	.LASF0:
+ 494 01c7 7369676E 		.ascii	"signed char\000"
+ 494      65642063 
+ 494      68617200 
+ 495              	.LASF17:
+ 496 01d3 6C6F6E67 		.ascii	"long double\000"
+ 496      20646F75 
+ 496      626C6500 
+ 497              	.LASF5:
+ 498 01df 5F5F696E 		.ascii	"__int32_t\000"
+ 498      7433325F 
+ 498      7400
+ 499              	.LASF19:
+ 500 01e9 426C7565 		.ascii	"Blue_LED_Write\000"
+ 500      5F4C4544 
+ 500      5F577269 
+ 500      746500
+ 501              	.LASF13:
+ 502 01f8 666C6F61 		.ascii	"float\000"
+ 502      7400
+ 503              	.LASF2:
+ 504 01fe 73686F72 		.ascii	"short int\000"
+ 504      7420696E 
+ 504      7400
+ 505              	.LASF12:
+ARM GAS  C:\Users\cante\AppData\Local\Temp\cchxeXNy.s 			page 12
+
+
+ 506 0208 696E7433 		.ascii	"int32_t\000"
+ 506      325F7400 
+ 507              	.LASF16:
+ 508 0210 73697A65 		.ascii	"sizetype\000"
+ 508      74797065 
+ 508      00
+ 509              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,9 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|5f8e0b5d-97c5-4750-b8b2-7971e1b4e8b7
+C:\Users\cante\OneDrive\Documenti\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|326eaafa-b8e6-495b-9f1d-ad531a143333
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|b2048d5f-9ee2-44bd-ae8a-0630e10e9f39
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|459ede21-65bb-4734-ad0a-de9ddd4a1ef2
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|856a2e8f-6745-4247-a50c-3a331e3c91da
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\01-LedBlink.cydsn\01-LedBlink.cyprj|61624cb8-d0d7-4d7b-b87a-f6bfd48baa64
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\01b-LedBlink.cydsn\01b-LedBlink.cyprj|91416339-25f3-47b5-8de4-26a8a3a12603
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AnnotationLibrary\AnnotationLibrary_lib\AnnotationLibrary_lib.cylib\AnnotationLibrary_lib.cyprj|54913bc5-1606-4548-9f04-05a741fb11a2
+C:\Users\cante\Desktop\INGEGNERIA BIOMEDICA\V ANNO\LAB ELETTRONICA\PSoC\AY2021_II_PSoC_Basics\02-LedButtonReal.cydsn\02-LedButtonReal.cyprj|a598f94c-3cc9-4f40-9530-28a554a29703

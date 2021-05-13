@@ -1,0 +1,1481 @@
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"DMA_Routines.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.DMA_ADC_2_MEM_Config,"ax",%progbits
+  20              		.align	2
+  21              		.global	DMA_ADC_2_MEM_Config
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	DMA_ADC_2_MEM_Config, %function
+  25              	DMA_ADC_2_MEM_Config:
+  26              	.LFB64:
+  27              		.file 1 "DMA_Routines.c"
+   1:DMA_Routines.c **** /* ========================================
+   2:DMA_Routines.c ****  *
+   3:DMA_Routines.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:DMA_Routines.c ****  * All Rights Reserved
+   5:DMA_Routines.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:DMA_Routines.c ****  *
+   7:DMA_Routines.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:DMA_Routines.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:DMA_Routines.c ****  *
+  10:DMA_Routines.c ****  * ========================================
+  11:DMA_Routines.c **** */
+  12:DMA_Routines.c **** 
+  13:DMA_Routines.c **** #include "DMA_Routines.h"
+  14:DMA_Routines.c **** #include "project.h"
+  15:DMA_Routines.c **** 
+  16:DMA_Routines.c **** void DMA_ADC_2_MEM_Config(void) {
+  28              		.loc 1 16 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 38B5     		push	{r3, r4, r5, lr}
+  33              		.cfi_def_cfa_offset 16
+  34              		.cfi_offset 3, -16
+  35              		.cfi_offset 4, -12
+  36              		.cfi_offset 5, -8
+  37              		.cfi_offset 14, -4
+  17:DMA_Routines.c ****     
+  18:DMA_Routines.c **** 
+  19:DMA_Routines.c ****     /* Variable declarations for DMA */
+  20:DMA_Routines.c ****     /* Move these variable declarations to the top of the function */
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 2
+
+
+  21:DMA_Routines.c ****     
+  22:DMA_Routines.c ****     //handle the dma channel
+  23:DMA_Routines.c ****     uint8 DMA_Chan;
+  24:DMA_Routines.c ****     
+  25:DMA_Routines.c ****     //handle to the dma to transaction descriptor
+  26:DMA_Routines.c ****     uint8 DMA_TD[1];
+  27:DMA_Routines.c **** 
+  28:DMA_Routines.c ****     /* DMA Configuration for DMA */
+  29:DMA_Routines.c ****     
+  30:DMA_Routines.c ****     //initialize the dma channel
+  31:DMA_Routines.c ****     DMA_Chan = DMA_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, 
+  38              		.loc 1 31 0
+  39 0002 41F6FF73 		movw	r3, #8191
+  40 0006 4FF48042 		mov	r2, #16384
+  41 000a 0121     		movs	r1, #1
+  42 000c 0220     		movs	r0, #2
+  43 000e FFF7FEFF 		bl	DMA_DmaInitialize
+  44              	.LVL0:
+  45 0012 0546     		mov	r5, r0
+  46              	.LVL1:
+  32:DMA_Routines.c ****         HI16(DMA_SRC_BASE), HI16(DMA_DST_BASE));
+  33:DMA_Routines.c ****     
+  34:DMA_Routines.c ****     //allocation of TD
+  35:DMA_Routines.c ****     DMA_TD[0] = CyDmaTdAllocate();
+  47              		.loc 1 35 0
+  48 0014 FFF7FEFF 		bl	CyDmaTdAllocate
+  49              	.LVL2:
+  50 0018 0446     		mov	r4, r0
+  36:DMA_Routines.c ****     
+  37:DMA_Routines.c ****     //Configuration of transaction descriptor (TD)
+  38:DMA_Routines.c ****     CyDmaTdSetConfiguration(DMA_TD[0], 2, DMA_TD[0], CY_DMA_TD_INC_DST_ADR);
+  51              		.loc 1 38 0
+  52 001a 0223     		movs	r3, #2
+  53 001c 0246     		mov	r2, r0
+  54 001e 1946     		mov	r1, r3
+  55 0020 FFF7FEFF 		bl	CyDmaTdSetConfiguration
+  56              	.LVL3:
+  39:DMA_Routines.c ****     
+  40:DMA_Routines.c ****     //specify the address (lower part)
+  41:DMA_Routines.c ****     CyDmaTdSetAddress(DMA_TD[0], LO16((uint32)ADC_DelSig_DEC_SAMP_PTR), LO16((uint32)AdcBuffer));
+  57              		.loc 1 41 0
+  58 0024 074A     		ldr	r2, .L3
+  59 0026 92B2     		uxth	r2, r2
+  60 0028 44F61061 		movw	r1, #19984
+  61 002c 2046     		mov	r0, r4
+  62 002e FFF7FEFF 		bl	CyDmaTdSetAddress
+  63              	.LVL4:
+  42:DMA_Routines.c ****     
+  43:DMA_Routines.c ****     //association between dma channel with TD
+  44:DMA_Routines.c ****     CyDmaChSetInitialTd(DMA_Chan, DMA_TD[0]);
+  64              		.loc 1 44 0
+  65 0032 2146     		mov	r1, r4
+  66 0034 2846     		mov	r0, r5
+  67 0036 FFF7FEFF 		bl	CyDmaChSetInitialTd
+  68              	.LVL5:
+  45:DMA_Routines.c ****     
+  46:DMA_Routines.c ****     // start of dma
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 3
+
+
+  47:DMA_Routines.c ****     CyDmaChEnable(DMA_Chan, 1);
+  69              		.loc 1 47 0
+  70 003a 0121     		movs	r1, #1
+  71 003c 2846     		mov	r0, r5
+  72 003e FFF7FEFF 		bl	CyDmaChEnable
+  73              	.LVL6:
+  74 0042 38BD     		pop	{r3, r4, r5, pc}
+  75              	.LVL7:
+  76              	.L4:
+  77              		.align	2
+  78              	.L3:
+  79 0044 00000000 		.word	AdcBuffer
+  80              		.cfi_endproc
+  81              	.LFE64:
+  82              		.size	DMA_ADC_2_MEM_Config, .-DMA_ADC_2_MEM_Config
+  83              		.section	.text.DMA_FILTER_2_MEM_Config,"ax",%progbits
+  84              		.align	2
+  85              		.global	DMA_FILTER_2_MEM_Config
+  86              		.thumb
+  87              		.thumb_func
+  88              		.type	DMA_FILTER_2_MEM_Config, %function
+  89              	DMA_FILTER_2_MEM_Config:
+  90              	.LFB65:
+  48:DMA_Routines.c ****     
+  49:DMA_Routines.c **** }
+  50:DMA_Routines.c **** 
+  51:DMA_Routines.c **** 
+  52:DMA_Routines.c **** void DMA_FILTER_2_MEM_Config(void) {
+  91              		.loc 1 52 0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95 0000 38B5     		push	{r3, r4, r5, lr}
+  96              		.cfi_def_cfa_offset 16
+  97              		.cfi_offset 3, -16
+  98              		.cfi_offset 4, -12
+  99              		.cfi_offset 5, -8
+ 100              		.cfi_offset 14, -4
+  53:DMA_Routines.c **** 
+  54:DMA_Routines.c **** 
+  55:DMA_Routines.c ****     
+  56:DMA_Routines.c ****     /* Variable declarations for DMA_FM */
+  57:DMA_Routines.c ****     /* Move these variable declarations to the top of the function */
+  58:DMA_Routines.c ****     uint8 DMA_FM_Chan;
+  59:DMA_Routines.c ****     uint8 DMA_FM_TD[1];
+  60:DMA_Routines.c **** 
+  61:DMA_Routines.c ****     /* DMA Configuration for DMA_FM */
+  62:DMA_Routines.c ****     DMA_FM_Chan = DMA_FM_DmaInitialize(DMA_FM_BYTES_PER_BURST, DMA_FM_REQUEST_PER_BURST, 
+ 101              		.loc 1 62 0
+ 102 0002 41F6FF73 		movw	r3, #8191
+ 103 0006 4FF48042 		mov	r2, #16384
+ 104 000a 0121     		movs	r1, #1
+ 105 000c 0220     		movs	r0, #2
+ 106 000e FFF7FEFF 		bl	DMA_FM_DmaInitialize
+ 107              	.LVL8:
+ 108 0012 0546     		mov	r5, r0
+ 109              	.LVL9:
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 4
+
+
+  63:DMA_Routines.c ****         HI16(DMA_FM_SRC_BASE), HI16(DMA_FM_DST_BASE));
+  64:DMA_Routines.c ****     DMA_FM_TD[0] = CyDmaTdAllocate();
+ 110              		.loc 1 64 0
+ 111 0014 FFF7FEFF 		bl	CyDmaTdAllocate
+ 112              	.LVL10:
+ 113 0018 0446     		mov	r4, r0
+  65:DMA_Routines.c ****     CyDmaTdSetConfiguration(DMA_FM_TD[0], 2, DMA_FM_TD[0], CY_DMA_TD_INC_DST_ADR);
+ 114              		.loc 1 65 0
+ 115 001a 0223     		movs	r3, #2
+ 116 001c 0246     		mov	r2, r0
+ 117 001e 1946     		mov	r1, r3
+ 118 0020 FFF7FEFF 		bl	CyDmaTdSetConfiguration
+ 119              	.LVL11:
+  66:DMA_Routines.c ****     CyDmaTdSetAddress(DMA_FM_TD[0], LO16((uint32)Filter_1_HOLDA_PTR), LO16((uint32)FilterBuffer));
+ 120              		.loc 1 66 0
+ 121 0024 074A     		ldr	r2, .L7
+ 122 0026 92B2     		uxth	r2, r2
+ 123 0028 4CF2A871 		movw	r1, #51112
+ 124 002c 2046     		mov	r0, r4
+ 125 002e FFF7FEFF 		bl	CyDmaTdSetAddress
+ 126              	.LVL12:
+  67:DMA_Routines.c ****     CyDmaChSetInitialTd(DMA_FM_Chan, DMA_FM_TD[0]);
+ 127              		.loc 1 67 0
+ 128 0032 2146     		mov	r1, r4
+ 129 0034 2846     		mov	r0, r5
+ 130 0036 FFF7FEFF 		bl	CyDmaChSetInitialTd
+ 131              	.LVL13:
+  68:DMA_Routines.c ****     CyDmaChEnable(DMA_FM_Chan, 1);
+ 132              		.loc 1 68 0
+ 133 003a 0121     		movs	r1, #1
+ 134 003c 2846     		mov	r0, r5
+ 135 003e FFF7FEFF 		bl	CyDmaChEnable
+ 136              	.LVL14:
+ 137 0042 38BD     		pop	{r3, r4, r5, pc}
+ 138              	.LVL15:
+ 139              	.L8:
+ 140              		.align	2
+ 141              	.L7:
+ 142 0044 00000000 		.word	FilterBuffer
+ 143              		.cfi_endproc
+ 144              	.LFE65:
+ 145              		.size	DMA_FILTER_2_MEM_Config, .-DMA_FILTER_2_MEM_Config
+ 146              		.section	.text.DMA_MEM_2_FILTER_Config,"ax",%progbits
+ 147              		.align	2
+ 148              		.global	DMA_MEM_2_FILTER_Config
+ 149              		.thumb
+ 150              		.thumb_func
+ 151              		.type	DMA_MEM_2_FILTER_Config, %function
+ 152              	DMA_MEM_2_FILTER_Config:
+ 153              	.LFB66:
+  69:DMA_Routines.c ****     
+  70:DMA_Routines.c ****     
+  71:DMA_Routines.c **** }
+  72:DMA_Routines.c **** 
+  73:DMA_Routines.c **** 
+  74:DMA_Routines.c **** void DMA_MEM_2_FILTER_Config(void){
+ 154              		.loc 1 74 0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 5
+
+
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158 0000 38B5     		push	{r3, r4, r5, lr}
+ 159              		.cfi_def_cfa_offset 16
+ 160              		.cfi_offset 3, -16
+ 161              		.cfi_offset 4, -12
+ 162              		.cfi_offset 5, -8
+ 163              		.cfi_offset 14, -4
+  75:DMA_Routines.c **** 
+  76:DMA_Routines.c ****     
+  77:DMA_Routines.c ****     /* Variable declarations for DMA_MF */
+  78:DMA_Routines.c ****     /* Move these variable declarations to the top of the function */
+  79:DMA_Routines.c ****     uint8 DMA_MF_Chan;
+  80:DMA_Routines.c ****     uint8 DMA_MF_TD[1];
+  81:DMA_Routines.c **** 
+  82:DMA_Routines.c ****     /* DMA Configuration for DMA_MF */
+  83:DMA_Routines.c ****     DMA_MF_Chan = DMA_MF_DmaInitialize(DMA_MF_BYTES_PER_BURST, DMA_MF_REQUEST_PER_BURST, 
+ 164              		.loc 1 83 0
+ 165 0002 4FF48043 		mov	r3, #16384
+ 166 0006 41F6FF72 		movw	r2, #8191
+ 167 000a 0121     		movs	r1, #1
+ 168 000c 0220     		movs	r0, #2
+ 169 000e FFF7FEFF 		bl	DMA_MF_DmaInitialize
+ 170              	.LVL16:
+ 171 0012 0546     		mov	r5, r0
+ 172              	.LVL17:
+  84:DMA_Routines.c ****         HI16(DMA_MF_SRC_BASE), HI16(DMA_MF_DST_BASE));
+  85:DMA_Routines.c ****     DMA_MF_TD[0] = CyDmaTdAllocate();
+ 173              		.loc 1 85 0
+ 174 0014 FFF7FEFF 		bl	CyDmaTdAllocate
+ 175              	.LVL18:
+ 176 0018 0446     		mov	r4, r0
+  86:DMA_Routines.c ****     CyDmaTdSetConfiguration(DMA_MF_TD[0], 2, DMA_MF_TD[0], CY_DMA_TD_INC_SRC_ADR);
+ 177              		.loc 1 86 0
+ 178 001a 0123     		movs	r3, #1
+ 179 001c 0246     		mov	r2, r0
+ 180 001e 0221     		movs	r1, #2
+ 181 0020 FFF7FEFF 		bl	CyDmaTdSetConfiguration
+ 182              	.LVL19:
+  87:DMA_Routines.c ****     CyDmaTdSetAddress(DMA_MF_TD[0], LO16((uint32)AdcBuffer), LO16((uint32)Filter_1_STAGEA_PTR));
+ 183              		.loc 1 87 0
+ 184 0024 4CF2A072 		movw	r2, #51104
+ 185 0028 0649     		ldr	r1, .L11
+ 186 002a 89B2     		uxth	r1, r1
+ 187 002c 2046     		mov	r0, r4
+ 188 002e FFF7FEFF 		bl	CyDmaTdSetAddress
+ 189              	.LVL20:
+  88:DMA_Routines.c ****     CyDmaChSetInitialTd(DMA_MF_Chan, DMA_MF_TD[0]);
+ 190              		.loc 1 88 0
+ 191 0032 2146     		mov	r1, r4
+ 192 0034 2846     		mov	r0, r5
+ 193 0036 FFF7FEFF 		bl	CyDmaChSetInitialTd
+ 194              	.LVL21:
+  89:DMA_Routines.c ****     CyDmaChEnable(DMA_MF_Chan, 1);
+ 195              		.loc 1 89 0
+ 196 003a 0121     		movs	r1, #1
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 6
+
+
+ 197 003c 2846     		mov	r0, r5
+ 198 003e FFF7FEFF 		bl	CyDmaChEnable
+ 199              	.LVL22:
+ 200 0042 38BD     		pop	{r3, r4, r5, pc}
+ 201              	.LVL23:
+ 202              	.L12:
+ 203              		.align	2
+ 204              	.L11:
+ 205 0044 00000000 		.word	AdcBuffer
+ 206              		.cfi_endproc
+ 207              	.LFE66:
+ 208              		.size	DMA_MEM_2_FILTER_Config, .-DMA_MEM_2_FILTER_Config
+ 209              		.comm	FilterBuffer,2,4
+ 210              		.comm	AdcBuffer,2,4
+ 211              		.text
+ 212              	.Letext0:
+ 213              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 214              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 215              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 216              		.file 5 "DMA_Routines.h"
+ 217              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 218              		.file 7 "Generated_Source\\PSoC5/DMA_dma.h"
+ 219              		.file 8 "Generated_Source\\PSoC5/CYDMAC.H"
+ 220              		.file 9 "Generated_Source\\PSoC5/DMA_FM_dma.h"
+ 221              		.file 10 "Generated_Source\\PSoC5/DMA_MF_dma.h"
+ 222              		.section	.debug_info,"",%progbits
+ 223              	.Ldebug_info0:
+ 224 0000 03040000 		.4byte	0x403
+ 225 0004 0400     		.2byte	0x4
+ 226 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 227 000a 04       		.byte	0x4
+ 228 000b 01       		.uleb128 0x1
+ 229 000c DB000000 		.4byte	.LASF40
+ 230 0010 0C       		.byte	0xc
+ 231 0011 4D000000 		.4byte	.LASF41
+ 232 0015 A4020000 		.4byte	.LASF42
+ 233 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 234 001d 00000000 		.4byte	0
+ 235 0021 00000000 		.4byte	.Ldebug_line0
+ 236 0025 02       		.uleb128 0x2
+ 237 0026 01       		.byte	0x1
+ 238 0027 06       		.byte	0x6
+ 239 0028 98020000 		.4byte	.LASF0
+ 240 002c 02       		.uleb128 0x2
+ 241 002d 01       		.byte	0x1
+ 242 002e 08       		.byte	0x8
+ 243 002f CD000000 		.4byte	.LASF1
+ 244 0033 02       		.uleb128 0x2
+ 245 0034 02       		.byte	0x2
+ 246 0035 05       		.byte	0x5
+ 247 0036 69020000 		.4byte	.LASF2
+ 248 003a 02       		.uleb128 0x2
+ 249 003b 02       		.byte	0x2
+ 250 003c 07       		.byte	0x7
+ 251 003d 98010000 		.4byte	.LASF3
+ 252 0041 03       		.uleb128 0x3
+ 253 0042 31000000 		.4byte	.LASF9
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 7
+
+
+ 254 0046 02       		.byte	0x2
+ 255 0047 3F       		.byte	0x3f
+ 256 0048 4C000000 		.4byte	0x4c
+ 257 004c 02       		.uleb128 0x2
+ 258 004d 04       		.byte	0x4
+ 259 004e 05       		.byte	0x5
+ 260 004f 79020000 		.4byte	.LASF4
+ 261 0053 02       		.uleb128 0x2
+ 262 0054 04       		.byte	0x4
+ 263 0055 07       		.byte	0x7
+ 264 0056 86010000 		.4byte	.LASF5
+ 265 005a 02       		.uleb128 0x2
+ 266 005b 08       		.byte	0x8
+ 267 005c 05       		.byte	0x5
+ 268 005d 56020000 		.4byte	.LASF6
+ 269 0061 02       		.uleb128 0x2
+ 270 0062 08       		.byte	0x8
+ 271 0063 07       		.byte	0x7
+ 272 0064 14020000 		.4byte	.LASF7
+ 273 0068 04       		.uleb128 0x4
+ 274 0069 04       		.byte	0x4
+ 275 006a 05       		.byte	0x5
+ 276 006b 696E7400 		.ascii	"int\000"
+ 277 006f 02       		.uleb128 0x2
+ 278 0070 04       		.byte	0x4
+ 279 0071 07       		.byte	0x7
+ 280 0072 07020000 		.4byte	.LASF8
+ 281 0076 03       		.uleb128 0x3
+ 282 0077 82000000 		.4byte	.LASF10
+ 283 007b 03       		.byte	0x3
+ 284 007c 2C       		.byte	0x2c
+ 285 007d 41000000 		.4byte	0x41
+ 286 0081 05       		.uleb128 0x5
+ 287 0082 73020000 		.4byte	.LASF11
+ 288 0086 04       		.byte	0x4
+ 289 0087 E901     		.2byte	0x1e9
+ 290 0089 2C000000 		.4byte	0x2c
+ 291 008d 05       		.uleb128 0x5
+ 292 008e CC010000 		.4byte	.LASF12
+ 293 0092 04       		.byte	0x4
+ 294 0093 EA01     		.2byte	0x1ea
+ 295 0095 3A000000 		.4byte	0x3a
+ 296 0099 05       		.uleb128 0x5
+ 297 009a 00020000 		.4byte	.LASF13
+ 298 009e 04       		.byte	0x4
+ 299 009f EB01     		.2byte	0x1eb
+ 300 00a1 53000000 		.4byte	0x53
+ 301 00a5 02       		.uleb128 0x2
+ 302 00a6 04       		.byte	0x4
+ 303 00a7 04       		.byte	0x4
+ 304 00a8 B2000000 		.4byte	.LASF14
+ 305 00ac 02       		.uleb128 0x2
+ 306 00ad 08       		.byte	0x8
+ 307 00ae 04       		.byte	0x4
+ 308 00af C5010000 		.4byte	.LASF15
+ 309 00b3 02       		.uleb128 0x2
+ 310 00b4 01       		.byte	0x1
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 8
+
+
+ 311 00b5 08       		.byte	0x8
+ 312 00b6 64020000 		.4byte	.LASF16
+ 313 00ba 05       		.uleb128 0x5
+ 314 00bb 69010000 		.4byte	.LASF17
+ 315 00bf 04       		.byte	0x4
+ 316 00c0 9302     		.2byte	0x293
+ 317 00c2 C6000000 		.4byte	0xc6
+ 318 00c6 06       		.uleb128 0x6
+ 319 00c7 81000000 		.4byte	0x81
+ 320 00cb 02       		.uleb128 0x2
+ 321 00cc 08       		.byte	0x8
+ 322 00cd 04       		.byte	0x4
+ 323 00ce 82020000 		.4byte	.LASF18
+ 324 00d2 02       		.uleb128 0x2
+ 325 00d3 04       		.byte	0x4
+ 326 00d4 07       		.byte	0x7
+ 327 00d5 4D020000 		.4byte	.LASF19
+ 328 00d9 07       		.uleb128 0x7
+ 329 00da 00000000 		.4byte	.LASF20
+ 330 00de 01       		.byte	0x1
+ 331 00df 10       		.byte	0x10
+ 332 00e0 00000000 		.4byte	.LFB64
+ 333 00e4 48000000 		.4byte	.LFE64-.LFB64
+ 334 00e8 01       		.uleb128 0x1
+ 335 00e9 9C       		.byte	0x9c
+ 336 00ea AF010000 		.4byte	0x1af
+ 337 00ee 08       		.uleb128 0x8
+ 338 00ef C4000000 		.4byte	.LASF22
+ 339 00f3 01       		.byte	0x1
+ 340 00f4 17       		.byte	0x17
+ 341 00f5 81000000 		.4byte	0x81
+ 342 00f9 00000000 		.4byte	.LLST0
+ 343 00fd 09       		.uleb128 0x9
+ 344 00fe 2A000000 		.4byte	.LASF24
+ 345 0102 01       		.byte	0x1
+ 346 0103 1A       		.byte	0x1a
+ 347 0104 AF010000 		.4byte	0x1af
+ 348 0108 0A       		.uleb128 0xa
+ 349 0109 12000000 		.4byte	.LVL0
+ 350 010d AE030000 		.4byte	0x3ae
+ 351 0111 2E010000 		.4byte	0x12e
+ 352 0115 0B       		.uleb128 0xb
+ 353 0116 01       		.uleb128 0x1
+ 354 0117 50       		.byte	0x50
+ 355 0118 01       		.uleb128 0x1
+ 356 0119 32       		.byte	0x32
+ 357 011a 0B       		.uleb128 0xb
+ 358 011b 01       		.uleb128 0x1
+ 359 011c 51       		.byte	0x51
+ 360 011d 01       		.uleb128 0x1
+ 361 011e 31       		.byte	0x31
+ 362 011f 0B       		.uleb128 0xb
+ 363 0120 01       		.uleb128 0x1
+ 364 0121 52       		.byte	0x52
+ 365 0122 03       		.uleb128 0x3
+ 366 0123 0A       		.byte	0xa
+ 367 0124 0040     		.2byte	0x4000
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 9
+
+
+ 368 0126 0B       		.uleb128 0xb
+ 369 0127 01       		.uleb128 0x1
+ 370 0128 53       		.byte	0x53
+ 371 0129 03       		.uleb128 0x3
+ 372 012a 0A       		.byte	0xa
+ 373 012b FF1F     		.2byte	0x1fff
+ 374 012d 00       		.byte	0
+ 375 012e 0C       		.uleb128 0xc
+ 376 012f 18000000 		.4byte	.LVL2
+ 377 0133 B9030000 		.4byte	0x3b9
+ 378 0137 0A       		.uleb128 0xa
+ 379 0138 24000000 		.4byte	.LVL3
+ 380 013c C4030000 		.4byte	0x3c4
+ 381 0140 5B010000 		.4byte	0x15b
+ 382 0144 0B       		.uleb128 0xb
+ 383 0145 01       		.uleb128 0x1
+ 384 0146 50       		.byte	0x50
+ 385 0147 02       		.uleb128 0x2
+ 386 0148 74       		.byte	0x74
+ 387 0149 00       		.sleb128 0
+ 388 014a 0B       		.uleb128 0xb
+ 389 014b 01       		.uleb128 0x1
+ 390 014c 51       		.byte	0x51
+ 391 014d 01       		.uleb128 0x1
+ 392 014e 32       		.byte	0x32
+ 393 014f 0B       		.uleb128 0xb
+ 394 0150 01       		.uleb128 0x1
+ 395 0151 52       		.byte	0x52
+ 396 0152 02       		.uleb128 0x2
+ 397 0153 74       		.byte	0x74
+ 398 0154 00       		.sleb128 0
+ 399 0155 0B       		.uleb128 0xb
+ 400 0156 01       		.uleb128 0x1
+ 401 0157 53       		.byte	0x53
+ 402 0158 01       		.uleb128 0x1
+ 403 0159 32       		.byte	0x32
+ 404 015a 00       		.byte	0
+ 405 015b 0A       		.uleb128 0xa
+ 406 015c 32000000 		.4byte	.LVL4
+ 407 0160 CF030000 		.4byte	0x3cf
+ 408 0164 7F010000 		.4byte	0x17f
+ 409 0168 0B       		.uleb128 0xb
+ 410 0169 01       		.uleb128 0x1
+ 411 016a 50       		.byte	0x50
+ 412 016b 02       		.uleb128 0x2
+ 413 016c 74       		.byte	0x74
+ 414 016d 00       		.sleb128 0
+ 415 016e 0B       		.uleb128 0xb
+ 416 016f 01       		.uleb128 0x1
+ 417 0170 51       		.byte	0x51
+ 418 0171 03       		.uleb128 0x3
+ 419 0172 0A       		.byte	0xa
+ 420 0173 104E     		.2byte	0x4e10
+ 421 0175 0B       		.uleb128 0xb
+ 422 0176 01       		.uleb128 0x1
+ 423 0177 52       		.byte	0x52
+ 424 0178 05       		.uleb128 0x5
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 10
+
+
+ 425 0179 03       		.byte	0x3
+ 426 017a 00000000 		.4byte	AdcBuffer
+ 427 017e 00       		.byte	0
+ 428 017f 0A       		.uleb128 0xa
+ 429 0180 3A000000 		.4byte	.LVL5
+ 430 0184 DA030000 		.4byte	0x3da
+ 431 0188 99010000 		.4byte	0x199
+ 432 018c 0B       		.uleb128 0xb
+ 433 018d 01       		.uleb128 0x1
+ 434 018e 50       		.byte	0x50
+ 435 018f 02       		.uleb128 0x2
+ 436 0190 75       		.byte	0x75
+ 437 0191 00       		.sleb128 0
+ 438 0192 0B       		.uleb128 0xb
+ 439 0193 01       		.uleb128 0x1
+ 440 0194 51       		.byte	0x51
+ 441 0195 02       		.uleb128 0x2
+ 442 0196 74       		.byte	0x74
+ 443 0197 00       		.sleb128 0
+ 444 0198 00       		.byte	0
+ 445 0199 0D       		.uleb128 0xd
+ 446 019a 42000000 		.4byte	.LVL6
+ 447 019e E5030000 		.4byte	0x3e5
+ 448 01a2 0B       		.uleb128 0xb
+ 449 01a3 01       		.uleb128 0x1
+ 450 01a4 50       		.byte	0x50
+ 451 01a5 02       		.uleb128 0x2
+ 452 01a6 75       		.byte	0x75
+ 453 01a7 00       		.sleb128 0
+ 454 01a8 0B       		.uleb128 0xb
+ 455 01a9 01       		.uleb128 0x1
+ 456 01aa 51       		.byte	0x51
+ 457 01ab 01       		.uleb128 0x1
+ 458 01ac 31       		.byte	0x31
+ 459 01ad 00       		.byte	0
+ 460 01ae 00       		.byte	0
+ 461 01af 0E       		.uleb128 0xe
+ 462 01b0 81000000 		.4byte	0x81
+ 463 01b4 BF010000 		.4byte	0x1bf
+ 464 01b8 0F       		.uleb128 0xf
+ 465 01b9 D2000000 		.4byte	0xd2
+ 466 01bd 00       		.byte	0
+ 467 01be 00       		.byte	0
+ 468 01bf 07       		.uleb128 0x7
+ 469 01c0 9A000000 		.4byte	.LASF21
+ 470 01c4 01       		.byte	0x1
+ 471 01c5 34       		.byte	0x34
+ 472 01c6 00000000 		.4byte	.LFB65
+ 473 01ca 48000000 		.4byte	.LFE65-.LFB65
+ 474 01ce 01       		.uleb128 0x1
+ 475 01cf 9C       		.byte	0x9c
+ 476 01d0 95020000 		.4byte	0x295
+ 477 01d4 08       		.uleb128 0x8
+ 478 01d5 14030000 		.4byte	.LASF23
+ 479 01d9 01       		.byte	0x1
+ 480 01da 3A       		.byte	0x3a
+ 481 01db 81000000 		.4byte	0x81
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 11
+
+
+ 482 01df 13000000 		.4byte	.LLST1
+ 483 01e3 09       		.uleb128 0x9
+ 484 01e4 43020000 		.4byte	.LASF25
+ 485 01e8 01       		.byte	0x1
+ 486 01e9 3B       		.byte	0x3b
+ 487 01ea AF010000 		.4byte	0x1af
+ 488 01ee 0A       		.uleb128 0xa
+ 489 01ef 12000000 		.4byte	.LVL8
+ 490 01f3 F0030000 		.4byte	0x3f0
+ 491 01f7 14020000 		.4byte	0x214
+ 492 01fb 0B       		.uleb128 0xb
+ 493 01fc 01       		.uleb128 0x1
+ 494 01fd 50       		.byte	0x50
+ 495 01fe 01       		.uleb128 0x1
+ 496 01ff 32       		.byte	0x32
+ 497 0200 0B       		.uleb128 0xb
+ 498 0201 01       		.uleb128 0x1
+ 499 0202 51       		.byte	0x51
+ 500 0203 01       		.uleb128 0x1
+ 501 0204 31       		.byte	0x31
+ 502 0205 0B       		.uleb128 0xb
+ 503 0206 01       		.uleb128 0x1
+ 504 0207 52       		.byte	0x52
+ 505 0208 03       		.uleb128 0x3
+ 506 0209 0A       		.byte	0xa
+ 507 020a 0040     		.2byte	0x4000
+ 508 020c 0B       		.uleb128 0xb
+ 509 020d 01       		.uleb128 0x1
+ 510 020e 53       		.byte	0x53
+ 511 020f 03       		.uleb128 0x3
+ 512 0210 0A       		.byte	0xa
+ 513 0211 FF1F     		.2byte	0x1fff
+ 514 0213 00       		.byte	0
+ 515 0214 0C       		.uleb128 0xc
+ 516 0215 18000000 		.4byte	.LVL10
+ 517 0219 B9030000 		.4byte	0x3b9
+ 518 021d 0A       		.uleb128 0xa
+ 519 021e 24000000 		.4byte	.LVL11
+ 520 0222 C4030000 		.4byte	0x3c4
+ 521 0226 41020000 		.4byte	0x241
+ 522 022a 0B       		.uleb128 0xb
+ 523 022b 01       		.uleb128 0x1
+ 524 022c 50       		.byte	0x50
+ 525 022d 02       		.uleb128 0x2
+ 526 022e 74       		.byte	0x74
+ 527 022f 00       		.sleb128 0
+ 528 0230 0B       		.uleb128 0xb
+ 529 0231 01       		.uleb128 0x1
+ 530 0232 51       		.byte	0x51
+ 531 0233 01       		.uleb128 0x1
+ 532 0234 32       		.byte	0x32
+ 533 0235 0B       		.uleb128 0xb
+ 534 0236 01       		.uleb128 0x1
+ 535 0237 52       		.byte	0x52
+ 536 0238 02       		.uleb128 0x2
+ 537 0239 74       		.byte	0x74
+ 538 023a 00       		.sleb128 0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 12
+
+
+ 539 023b 0B       		.uleb128 0xb
+ 540 023c 01       		.uleb128 0x1
+ 541 023d 53       		.byte	0x53
+ 542 023e 01       		.uleb128 0x1
+ 543 023f 32       		.byte	0x32
+ 544 0240 00       		.byte	0
+ 545 0241 0A       		.uleb128 0xa
+ 546 0242 32000000 		.4byte	.LVL12
+ 547 0246 CF030000 		.4byte	0x3cf
+ 548 024a 65020000 		.4byte	0x265
+ 549 024e 0B       		.uleb128 0xb
+ 550 024f 01       		.uleb128 0x1
+ 551 0250 50       		.byte	0x50
+ 552 0251 02       		.uleb128 0x2
+ 553 0252 74       		.byte	0x74
+ 554 0253 00       		.sleb128 0
+ 555 0254 0B       		.uleb128 0xb
+ 556 0255 01       		.uleb128 0x1
+ 557 0256 51       		.byte	0x51
+ 558 0257 03       		.uleb128 0x3
+ 559 0258 0B       		.byte	0xb
+ 560 0259 A8C7     		.2byte	0xc7a8
+ 561 025b 0B       		.uleb128 0xb
+ 562 025c 01       		.uleb128 0x1
+ 563 025d 52       		.byte	0x52
+ 564 025e 05       		.uleb128 0x5
+ 565 025f 03       		.byte	0x3
+ 566 0260 00000000 		.4byte	FilterBuffer
+ 567 0264 00       		.byte	0
+ 568 0265 0A       		.uleb128 0xa
+ 569 0266 3A000000 		.4byte	.LVL13
+ 570 026a DA030000 		.4byte	0x3da
+ 571 026e 7F020000 		.4byte	0x27f
+ 572 0272 0B       		.uleb128 0xb
+ 573 0273 01       		.uleb128 0x1
+ 574 0274 50       		.byte	0x50
+ 575 0275 02       		.uleb128 0x2
+ 576 0276 75       		.byte	0x75
+ 577 0277 00       		.sleb128 0
+ 578 0278 0B       		.uleb128 0xb
+ 579 0279 01       		.uleb128 0x1
+ 580 027a 51       		.byte	0x51
+ 581 027b 02       		.uleb128 0x2
+ 582 027c 74       		.byte	0x74
+ 583 027d 00       		.sleb128 0
+ 584 027e 00       		.byte	0
+ 585 027f 0D       		.uleb128 0xd
+ 586 0280 42000000 		.4byte	.LVL14
+ 587 0284 E5030000 		.4byte	0x3e5
+ 588 0288 0B       		.uleb128 0xb
+ 589 0289 01       		.uleb128 0x1
+ 590 028a 50       		.byte	0x50
+ 591 028b 02       		.uleb128 0x2
+ 592 028c 75       		.byte	0x75
+ 593 028d 00       		.sleb128 0
+ 594 028e 0B       		.uleb128 0xb
+ 595 028f 01       		.uleb128 0x1
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 13
+
+
+ 596 0290 51       		.byte	0x51
+ 597 0291 01       		.uleb128 0x1
+ 598 0292 31       		.byte	0x31
+ 599 0293 00       		.byte	0
+ 600 0294 00       		.byte	0
+ 601 0295 07       		.uleb128 0x7
+ 602 0296 2B020000 		.4byte	.LASF26
+ 603 029a 01       		.byte	0x1
+ 604 029b 4A       		.byte	0x4a
+ 605 029c 00000000 		.4byte	.LFB66
+ 606 02a0 48000000 		.4byte	.LFE66-.LFB66
+ 607 02a4 01       		.uleb128 0x1
+ 608 02a5 9C       		.byte	0x9c
+ 609 02a6 6B030000 		.4byte	0x36b
+ 610 02aa 08       		.uleb128 0x8
+ 611 02ab B8000000 		.4byte	.LASF27
+ 612 02af 01       		.byte	0x1
+ 613 02b0 4F       		.byte	0x4f
+ 614 02b1 81000000 		.4byte	0x81
+ 615 02b5 26000000 		.4byte	.LLST2
+ 616 02b9 09       		.uleb128 0x9
+ 617 02ba 8E020000 		.4byte	.LASF28
+ 618 02be 01       		.byte	0x1
+ 619 02bf 50       		.byte	0x50
+ 620 02c0 AF010000 		.4byte	0x1af
+ 621 02c4 0A       		.uleb128 0xa
+ 622 02c5 12000000 		.4byte	.LVL16
+ 623 02c9 FB030000 		.4byte	0x3fb
+ 624 02cd EA020000 		.4byte	0x2ea
+ 625 02d1 0B       		.uleb128 0xb
+ 626 02d2 01       		.uleb128 0x1
+ 627 02d3 50       		.byte	0x50
+ 628 02d4 01       		.uleb128 0x1
+ 629 02d5 32       		.byte	0x32
+ 630 02d6 0B       		.uleb128 0xb
+ 631 02d7 01       		.uleb128 0x1
+ 632 02d8 51       		.byte	0x51
+ 633 02d9 01       		.uleb128 0x1
+ 634 02da 31       		.byte	0x31
+ 635 02db 0B       		.uleb128 0xb
+ 636 02dc 01       		.uleb128 0x1
+ 637 02dd 52       		.byte	0x52
+ 638 02de 03       		.uleb128 0x3
+ 639 02df 0A       		.byte	0xa
+ 640 02e0 FF1F     		.2byte	0x1fff
+ 641 02e2 0B       		.uleb128 0xb
+ 642 02e3 01       		.uleb128 0x1
+ 643 02e4 53       		.byte	0x53
+ 644 02e5 03       		.uleb128 0x3
+ 645 02e6 0A       		.byte	0xa
+ 646 02e7 0040     		.2byte	0x4000
+ 647 02e9 00       		.byte	0
+ 648 02ea 0C       		.uleb128 0xc
+ 649 02eb 18000000 		.4byte	.LVL18
+ 650 02ef B9030000 		.4byte	0x3b9
+ 651 02f3 0A       		.uleb128 0xa
+ 652 02f4 24000000 		.4byte	.LVL19
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 14
+
+
+ 653 02f8 C4030000 		.4byte	0x3c4
+ 654 02fc 17030000 		.4byte	0x317
+ 655 0300 0B       		.uleb128 0xb
+ 656 0301 01       		.uleb128 0x1
+ 657 0302 50       		.byte	0x50
+ 658 0303 02       		.uleb128 0x2
+ 659 0304 74       		.byte	0x74
+ 660 0305 00       		.sleb128 0
+ 661 0306 0B       		.uleb128 0xb
+ 662 0307 01       		.uleb128 0x1
+ 663 0308 51       		.byte	0x51
+ 664 0309 01       		.uleb128 0x1
+ 665 030a 32       		.byte	0x32
+ 666 030b 0B       		.uleb128 0xb
+ 667 030c 01       		.uleb128 0x1
+ 668 030d 52       		.byte	0x52
+ 669 030e 02       		.uleb128 0x2
+ 670 030f 74       		.byte	0x74
+ 671 0310 00       		.sleb128 0
+ 672 0311 0B       		.uleb128 0xb
+ 673 0312 01       		.uleb128 0x1
+ 674 0313 53       		.byte	0x53
+ 675 0314 01       		.uleb128 0x1
+ 676 0315 31       		.byte	0x31
+ 677 0316 00       		.byte	0
+ 678 0317 0A       		.uleb128 0xa
+ 679 0318 32000000 		.4byte	.LVL20
+ 680 031c CF030000 		.4byte	0x3cf
+ 681 0320 3B030000 		.4byte	0x33b
+ 682 0324 0B       		.uleb128 0xb
+ 683 0325 01       		.uleb128 0x1
+ 684 0326 50       		.byte	0x50
+ 685 0327 02       		.uleb128 0x2
+ 686 0328 74       		.byte	0x74
+ 687 0329 00       		.sleb128 0
+ 688 032a 0B       		.uleb128 0xb
+ 689 032b 01       		.uleb128 0x1
+ 690 032c 51       		.byte	0x51
+ 691 032d 05       		.uleb128 0x5
+ 692 032e 03       		.byte	0x3
+ 693 032f 00000000 		.4byte	AdcBuffer
+ 694 0333 0B       		.uleb128 0xb
+ 695 0334 01       		.uleb128 0x1
+ 696 0335 52       		.byte	0x52
+ 697 0336 03       		.uleb128 0x3
+ 698 0337 0B       		.byte	0xb
+ 699 0338 A0C7     		.2byte	0xc7a0
+ 700 033a 00       		.byte	0
+ 701 033b 0A       		.uleb128 0xa
+ 702 033c 3A000000 		.4byte	.LVL21
+ 703 0340 DA030000 		.4byte	0x3da
+ 704 0344 55030000 		.4byte	0x355
+ 705 0348 0B       		.uleb128 0xb
+ 706 0349 01       		.uleb128 0x1
+ 707 034a 50       		.byte	0x50
+ 708 034b 02       		.uleb128 0x2
+ 709 034c 75       		.byte	0x75
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 15
+
+
+ 710 034d 00       		.sleb128 0
+ 711 034e 0B       		.uleb128 0xb
+ 712 034f 01       		.uleb128 0x1
+ 713 0350 51       		.byte	0x51
+ 714 0351 02       		.uleb128 0x2
+ 715 0352 74       		.byte	0x74
+ 716 0353 00       		.sleb128 0
+ 717 0354 00       		.byte	0
+ 718 0355 0D       		.uleb128 0xd
+ 719 0356 42000000 		.4byte	.LVL22
+ 720 035a E5030000 		.4byte	0x3e5
+ 721 035e 0B       		.uleb128 0xb
+ 722 035f 01       		.uleb128 0x1
+ 723 0360 50       		.byte	0x50
+ 724 0361 02       		.uleb128 0x2
+ 725 0362 75       		.byte	0x75
+ 726 0363 00       		.sleb128 0
+ 727 0364 0B       		.uleb128 0xb
+ 728 0365 01       		.uleb128 0x1
+ 729 0366 51       		.byte	0x51
+ 730 0367 01       		.uleb128 0x1
+ 731 0368 31       		.byte	0x31
+ 732 0369 00       		.byte	0
+ 733 036a 00       		.byte	0
+ 734 036b 0E       		.uleb128 0xe
+ 735 036c B3000000 		.4byte	0xb3
+ 736 0370 7B030000 		.4byte	0x37b
+ 737 0374 0F       		.uleb128 0xf
+ 738 0375 D2000000 		.4byte	0xd2
+ 739 0379 01       		.byte	0x1
+ 740 037a 00       		.byte	0
+ 741 037b 10       		.uleb128 0x10
+ 742 037c F6010000 		.4byte	.LASF29
+ 743 0380 05       		.byte	0x5
+ 744 0381 1B       		.byte	0x1b
+ 745 0382 6B030000 		.4byte	0x36b
+ 746 0386 05       		.uleb128 0x5
+ 747 0387 03       		.byte	0x3
+ 748 0388 00000000 		.4byte	AdcBuffer
+ 749 038c 10       		.uleb128 0x10
+ 750 038d AB010000 		.4byte	.LASF30
+ 751 0391 05       		.byte	0x5
+ 752 0392 2F       		.byte	0x2f
+ 753 0393 6B030000 		.4byte	0x36b
+ 754 0397 05       		.uleb128 0x5
+ 755 0398 03       		.byte	0x3
+ 756 0399 00000000 		.4byte	FilterBuffer
+ 757 039d 11       		.uleb128 0x11
+ 758 039e B8010000 		.4byte	.LASF31
+ 759 03a2 06       		.byte	0x6
+ 760 03a3 1207     		.2byte	0x712
+ 761 03a5 A9030000 		.4byte	0x3a9
+ 762 03a9 06       		.uleb128 0x6
+ 763 03aa 76000000 		.4byte	0x76
+ 764 03ae 12       		.uleb128 0x12
+ 765 03af 5C000000 		.4byte	.LASF32
+ 766 03b3 5C000000 		.4byte	.LASF32
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 16
+
+
+ 767 03b7 07       		.byte	0x7
+ 768 03b8 1E       		.byte	0x1e
+ 769 03b9 12       		.uleb128 0x12
+ 770 03ba 8A000000 		.4byte	.LASF33
+ 771 03be 8A000000 		.4byte	.LASF33
+ 772 03c2 08       		.byte	0x8
+ 773 03c3 38       		.byte	0x38
+ 774 03c4 12       		.uleb128 0x12
+ 775 03c5 6E010000 		.4byte	.LASF34
+ 776 03c9 6E010000 		.4byte	.LASF34
+ 777 03cd 08       		.byte	0x8
+ 778 03ce 3B       		.byte	0x3b
+ 779 03cf 12       		.uleb128 0x12
+ 780 03d0 3B000000 		.4byte	.LASF35
+ 781 03d4 3B000000 		.4byte	.LASF35
+ 782 03d8 08       		.byte	0x8
+ 783 03d9 3F       		.byte	0x3f
+ 784 03da 12       		.uleb128 0x12
+ 785 03db 6E000000 		.4byte	.LASF36
+ 786 03df 6E000000 		.4byte	.LASF36
+ 787 03e3 08       		.byte	0x8
+ 788 03e4 2F       		.byte	0x2f
+ 789 03e5 12       		.uleb128 0x12
+ 790 03e6 D3010000 		.4byte	.LASF37
+ 791 03ea D3010000 		.4byte	.LASF37
+ 792 03ee 08       		.byte	0x8
+ 793 03ef 29       		.byte	0x29
+ 794 03f0 12       		.uleb128 0x12
+ 795 03f1 E1010000 		.4byte	.LASF38
+ 796 03f5 E1010000 		.4byte	.LASF38
+ 797 03f9 09       		.byte	0x9
+ 798 03fa 1E       		.byte	0x1e
+ 799 03fb 12       		.uleb128 0x12
+ 800 03fc 15000000 		.4byte	.LASF39
+ 801 0400 15000000 		.4byte	.LASF39
+ 802 0404 0A       		.byte	0xa
+ 803 0405 1E       		.byte	0x1e
+ 804 0406 00       		.byte	0
+ 805              		.section	.debug_abbrev,"",%progbits
+ 806              	.Ldebug_abbrev0:
+ 807 0000 01       		.uleb128 0x1
+ 808 0001 11       		.uleb128 0x11
+ 809 0002 01       		.byte	0x1
+ 810 0003 25       		.uleb128 0x25
+ 811 0004 0E       		.uleb128 0xe
+ 812 0005 13       		.uleb128 0x13
+ 813 0006 0B       		.uleb128 0xb
+ 814 0007 03       		.uleb128 0x3
+ 815 0008 0E       		.uleb128 0xe
+ 816 0009 1B       		.uleb128 0x1b
+ 817 000a 0E       		.uleb128 0xe
+ 818 000b 55       		.uleb128 0x55
+ 819 000c 17       		.uleb128 0x17
+ 820 000d 11       		.uleb128 0x11
+ 821 000e 01       		.uleb128 0x1
+ 822 000f 10       		.uleb128 0x10
+ 823 0010 17       		.uleb128 0x17
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 17
+
+
+ 824 0011 00       		.byte	0
+ 825 0012 00       		.byte	0
+ 826 0013 02       		.uleb128 0x2
+ 827 0014 24       		.uleb128 0x24
+ 828 0015 00       		.byte	0
+ 829 0016 0B       		.uleb128 0xb
+ 830 0017 0B       		.uleb128 0xb
+ 831 0018 3E       		.uleb128 0x3e
+ 832 0019 0B       		.uleb128 0xb
+ 833 001a 03       		.uleb128 0x3
+ 834 001b 0E       		.uleb128 0xe
+ 835 001c 00       		.byte	0
+ 836 001d 00       		.byte	0
+ 837 001e 03       		.uleb128 0x3
+ 838 001f 16       		.uleb128 0x16
+ 839 0020 00       		.byte	0
+ 840 0021 03       		.uleb128 0x3
+ 841 0022 0E       		.uleb128 0xe
+ 842 0023 3A       		.uleb128 0x3a
+ 843 0024 0B       		.uleb128 0xb
+ 844 0025 3B       		.uleb128 0x3b
+ 845 0026 0B       		.uleb128 0xb
+ 846 0027 49       		.uleb128 0x49
+ 847 0028 13       		.uleb128 0x13
+ 848 0029 00       		.byte	0
+ 849 002a 00       		.byte	0
+ 850 002b 04       		.uleb128 0x4
+ 851 002c 24       		.uleb128 0x24
+ 852 002d 00       		.byte	0
+ 853 002e 0B       		.uleb128 0xb
+ 854 002f 0B       		.uleb128 0xb
+ 855 0030 3E       		.uleb128 0x3e
+ 856 0031 0B       		.uleb128 0xb
+ 857 0032 03       		.uleb128 0x3
+ 858 0033 08       		.uleb128 0x8
+ 859 0034 00       		.byte	0
+ 860 0035 00       		.byte	0
+ 861 0036 05       		.uleb128 0x5
+ 862 0037 16       		.uleb128 0x16
+ 863 0038 00       		.byte	0
+ 864 0039 03       		.uleb128 0x3
+ 865 003a 0E       		.uleb128 0xe
+ 866 003b 3A       		.uleb128 0x3a
+ 867 003c 0B       		.uleb128 0xb
+ 868 003d 3B       		.uleb128 0x3b
+ 869 003e 05       		.uleb128 0x5
+ 870 003f 49       		.uleb128 0x49
+ 871 0040 13       		.uleb128 0x13
+ 872 0041 00       		.byte	0
+ 873 0042 00       		.byte	0
+ 874 0043 06       		.uleb128 0x6
+ 875 0044 35       		.uleb128 0x35
+ 876 0045 00       		.byte	0
+ 877 0046 49       		.uleb128 0x49
+ 878 0047 13       		.uleb128 0x13
+ 879 0048 00       		.byte	0
+ 880 0049 00       		.byte	0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 18
+
+
+ 881 004a 07       		.uleb128 0x7
+ 882 004b 2E       		.uleb128 0x2e
+ 883 004c 01       		.byte	0x1
+ 884 004d 3F       		.uleb128 0x3f
+ 885 004e 19       		.uleb128 0x19
+ 886 004f 03       		.uleb128 0x3
+ 887 0050 0E       		.uleb128 0xe
+ 888 0051 3A       		.uleb128 0x3a
+ 889 0052 0B       		.uleb128 0xb
+ 890 0053 3B       		.uleb128 0x3b
+ 891 0054 0B       		.uleb128 0xb
+ 892 0055 27       		.uleb128 0x27
+ 893 0056 19       		.uleb128 0x19
+ 894 0057 11       		.uleb128 0x11
+ 895 0058 01       		.uleb128 0x1
+ 896 0059 12       		.uleb128 0x12
+ 897 005a 06       		.uleb128 0x6
+ 898 005b 40       		.uleb128 0x40
+ 899 005c 18       		.uleb128 0x18
+ 900 005d 9742     		.uleb128 0x2117
+ 901 005f 19       		.uleb128 0x19
+ 902 0060 01       		.uleb128 0x1
+ 903 0061 13       		.uleb128 0x13
+ 904 0062 00       		.byte	0
+ 905 0063 00       		.byte	0
+ 906 0064 08       		.uleb128 0x8
+ 907 0065 34       		.uleb128 0x34
+ 908 0066 00       		.byte	0
+ 909 0067 03       		.uleb128 0x3
+ 910 0068 0E       		.uleb128 0xe
+ 911 0069 3A       		.uleb128 0x3a
+ 912 006a 0B       		.uleb128 0xb
+ 913 006b 3B       		.uleb128 0x3b
+ 914 006c 0B       		.uleb128 0xb
+ 915 006d 49       		.uleb128 0x49
+ 916 006e 13       		.uleb128 0x13
+ 917 006f 02       		.uleb128 0x2
+ 918 0070 17       		.uleb128 0x17
+ 919 0071 00       		.byte	0
+ 920 0072 00       		.byte	0
+ 921 0073 09       		.uleb128 0x9
+ 922 0074 34       		.uleb128 0x34
+ 923 0075 00       		.byte	0
+ 924 0076 03       		.uleb128 0x3
+ 925 0077 0E       		.uleb128 0xe
+ 926 0078 3A       		.uleb128 0x3a
+ 927 0079 0B       		.uleb128 0xb
+ 928 007a 3B       		.uleb128 0x3b
+ 929 007b 0B       		.uleb128 0xb
+ 930 007c 49       		.uleb128 0x49
+ 931 007d 13       		.uleb128 0x13
+ 932 007e 00       		.byte	0
+ 933 007f 00       		.byte	0
+ 934 0080 0A       		.uleb128 0xa
+ 935 0081 898201   		.uleb128 0x4109
+ 936 0084 01       		.byte	0x1
+ 937 0085 11       		.uleb128 0x11
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 19
+
+
+ 938 0086 01       		.uleb128 0x1
+ 939 0087 31       		.uleb128 0x31
+ 940 0088 13       		.uleb128 0x13
+ 941 0089 01       		.uleb128 0x1
+ 942 008a 13       		.uleb128 0x13
+ 943 008b 00       		.byte	0
+ 944 008c 00       		.byte	0
+ 945 008d 0B       		.uleb128 0xb
+ 946 008e 8A8201   		.uleb128 0x410a
+ 947 0091 00       		.byte	0
+ 948 0092 02       		.uleb128 0x2
+ 949 0093 18       		.uleb128 0x18
+ 950 0094 9142     		.uleb128 0x2111
+ 951 0096 18       		.uleb128 0x18
+ 952 0097 00       		.byte	0
+ 953 0098 00       		.byte	0
+ 954 0099 0C       		.uleb128 0xc
+ 955 009a 898201   		.uleb128 0x4109
+ 956 009d 00       		.byte	0
+ 957 009e 11       		.uleb128 0x11
+ 958 009f 01       		.uleb128 0x1
+ 959 00a0 31       		.uleb128 0x31
+ 960 00a1 13       		.uleb128 0x13
+ 961 00a2 00       		.byte	0
+ 962 00a3 00       		.byte	0
+ 963 00a4 0D       		.uleb128 0xd
+ 964 00a5 898201   		.uleb128 0x4109
+ 965 00a8 01       		.byte	0x1
+ 966 00a9 11       		.uleb128 0x11
+ 967 00aa 01       		.uleb128 0x1
+ 968 00ab 31       		.uleb128 0x31
+ 969 00ac 13       		.uleb128 0x13
+ 970 00ad 00       		.byte	0
+ 971 00ae 00       		.byte	0
+ 972 00af 0E       		.uleb128 0xe
+ 973 00b0 01       		.uleb128 0x1
+ 974 00b1 01       		.byte	0x1
+ 975 00b2 49       		.uleb128 0x49
+ 976 00b3 13       		.uleb128 0x13
+ 977 00b4 01       		.uleb128 0x1
+ 978 00b5 13       		.uleb128 0x13
+ 979 00b6 00       		.byte	0
+ 980 00b7 00       		.byte	0
+ 981 00b8 0F       		.uleb128 0xf
+ 982 00b9 21       		.uleb128 0x21
+ 983 00ba 00       		.byte	0
+ 984 00bb 49       		.uleb128 0x49
+ 985 00bc 13       		.uleb128 0x13
+ 986 00bd 2F       		.uleb128 0x2f
+ 987 00be 0B       		.uleb128 0xb
+ 988 00bf 00       		.byte	0
+ 989 00c0 00       		.byte	0
+ 990 00c1 10       		.uleb128 0x10
+ 991 00c2 34       		.uleb128 0x34
+ 992 00c3 00       		.byte	0
+ 993 00c4 03       		.uleb128 0x3
+ 994 00c5 0E       		.uleb128 0xe
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 20
+
+
+ 995 00c6 3A       		.uleb128 0x3a
+ 996 00c7 0B       		.uleb128 0xb
+ 997 00c8 3B       		.uleb128 0x3b
+ 998 00c9 0B       		.uleb128 0xb
+ 999 00ca 49       		.uleb128 0x49
+ 1000 00cb 13       		.uleb128 0x13
+ 1001 00cc 3F       		.uleb128 0x3f
+ 1002 00cd 19       		.uleb128 0x19
+ 1003 00ce 02       		.uleb128 0x2
+ 1004 00cf 18       		.uleb128 0x18
+ 1005 00d0 00       		.byte	0
+ 1006 00d1 00       		.byte	0
+ 1007 00d2 11       		.uleb128 0x11
+ 1008 00d3 34       		.uleb128 0x34
+ 1009 00d4 00       		.byte	0
+ 1010 00d5 03       		.uleb128 0x3
+ 1011 00d6 0E       		.uleb128 0xe
+ 1012 00d7 3A       		.uleb128 0x3a
+ 1013 00d8 0B       		.uleb128 0xb
+ 1014 00d9 3B       		.uleb128 0x3b
+ 1015 00da 05       		.uleb128 0x5
+ 1016 00db 49       		.uleb128 0x49
+ 1017 00dc 13       		.uleb128 0x13
+ 1018 00dd 3F       		.uleb128 0x3f
+ 1019 00de 19       		.uleb128 0x19
+ 1020 00df 3C       		.uleb128 0x3c
+ 1021 00e0 19       		.uleb128 0x19
+ 1022 00e1 00       		.byte	0
+ 1023 00e2 00       		.byte	0
+ 1024 00e3 12       		.uleb128 0x12
+ 1025 00e4 2E       		.uleb128 0x2e
+ 1026 00e5 00       		.byte	0
+ 1027 00e6 3F       		.uleb128 0x3f
+ 1028 00e7 19       		.uleb128 0x19
+ 1029 00e8 3C       		.uleb128 0x3c
+ 1030 00e9 19       		.uleb128 0x19
+ 1031 00ea 6E       		.uleb128 0x6e
+ 1032 00eb 0E       		.uleb128 0xe
+ 1033 00ec 03       		.uleb128 0x3
+ 1034 00ed 0E       		.uleb128 0xe
+ 1035 00ee 3A       		.uleb128 0x3a
+ 1036 00ef 0B       		.uleb128 0xb
+ 1037 00f0 3B       		.uleb128 0x3b
+ 1038 00f1 0B       		.uleb128 0xb
+ 1039 00f2 00       		.byte	0
+ 1040 00f3 00       		.byte	0
+ 1041 00f4 00       		.byte	0
+ 1042              		.section	.debug_loc,"",%progbits
+ 1043              	.Ldebug_loc0:
+ 1044              	.LLST0:
+ 1045 0000 14000000 		.4byte	.LVL1
+ 1046 0004 44000000 		.4byte	.LVL7
+ 1047 0008 0100     		.2byte	0x1
+ 1048 000a 55       		.byte	0x55
+ 1049 000b 00000000 		.4byte	0
+ 1050 000f 00000000 		.4byte	0
+ 1051              	.LLST1:
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 21
+
+
+ 1052 0013 14000000 		.4byte	.LVL9
+ 1053 0017 44000000 		.4byte	.LVL15
+ 1054 001b 0100     		.2byte	0x1
+ 1055 001d 55       		.byte	0x55
+ 1056 001e 00000000 		.4byte	0
+ 1057 0022 00000000 		.4byte	0
+ 1058              	.LLST2:
+ 1059 0026 14000000 		.4byte	.LVL17
+ 1060 002a 44000000 		.4byte	.LVL23
+ 1061 002e 0100     		.2byte	0x1
+ 1062 0030 55       		.byte	0x55
+ 1063 0031 00000000 		.4byte	0
+ 1064 0035 00000000 		.4byte	0
+ 1065              		.section	.debug_aranges,"",%progbits
+ 1066 0000 2C000000 		.4byte	0x2c
+ 1067 0004 0200     		.2byte	0x2
+ 1068 0006 00000000 		.4byte	.Ldebug_info0
+ 1069 000a 04       		.byte	0x4
+ 1070 000b 00       		.byte	0
+ 1071 000c 0000     		.2byte	0
+ 1072 000e 0000     		.2byte	0
+ 1073 0010 00000000 		.4byte	.LFB64
+ 1074 0014 48000000 		.4byte	.LFE64-.LFB64
+ 1075 0018 00000000 		.4byte	.LFB65
+ 1076 001c 48000000 		.4byte	.LFE65-.LFB65
+ 1077 0020 00000000 		.4byte	.LFB66
+ 1078 0024 48000000 		.4byte	.LFE66-.LFB66
+ 1079 0028 00000000 		.4byte	0
+ 1080 002c 00000000 		.4byte	0
+ 1081              		.section	.debug_ranges,"",%progbits
+ 1082              	.Ldebug_ranges0:
+ 1083 0000 00000000 		.4byte	.LFB64
+ 1084 0004 48000000 		.4byte	.LFE64
+ 1085 0008 00000000 		.4byte	.LFB65
+ 1086 000c 48000000 		.4byte	.LFE65
+ 1087 0010 00000000 		.4byte	.LFB66
+ 1088 0014 48000000 		.4byte	.LFE66
+ 1089 0018 00000000 		.4byte	0
+ 1090 001c 00000000 		.4byte	0
+ 1091              		.section	.debug_line,"",%progbits
+ 1092              	.Ldebug_line0:
+ 1093 0000 EB010000 		.section	.debug_str,"MS",%progbits,1
+ 1093      02009F01 
+ 1093      00000201 
+ 1093      FB0E0D00 
+ 1093      01010101 
+ 1094              	.LASF20:
+ 1095 0000 444D415F 		.ascii	"DMA_ADC_2_MEM_Config\000"
+ 1095      4144435F 
+ 1095      325F4D45 
+ 1095      4D5F436F 
+ 1095      6E666967 
+ 1096              	.LASF39:
+ 1097 0015 444D415F 		.ascii	"DMA_MF_DmaInitialize\000"
+ 1097      4D465F44 
+ 1097      6D61496E 
+ 1097      69746961 
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 22
+
+
+ 1097      6C697A65 
+ 1098              	.LASF24:
+ 1099 002a 444D415F 		.ascii	"DMA_TD\000"
+ 1099      544400
+ 1100              	.LASF9:
+ 1101 0031 5F5F696E 		.ascii	"__int32_t\000"
+ 1101      7433325F 
+ 1101      7400
+ 1102              	.LASF35:
+ 1103 003b 4379446D 		.ascii	"CyDmaTdSetAddress\000"
+ 1103      61546453 
+ 1103      65744164 
+ 1103      64726573 
+ 1103      7300
+ 1104              	.LASF41:
+ 1105 004d 444D415F 		.ascii	"DMA_Routines.c\000"
+ 1105      526F7574 
+ 1105      696E6573 
+ 1105      2E6300
+ 1106              	.LASF32:
+ 1107 005c 444D415F 		.ascii	"DMA_DmaInitialize\000"
+ 1107      446D6149 
+ 1107      6E697469 
+ 1107      616C697A 
+ 1107      6500
+ 1108              	.LASF36:
+ 1109 006e 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
+ 1109      61436853 
+ 1109      6574496E 
+ 1109      69746961 
+ 1109      6C546400 
+ 1110              	.LASF10:
+ 1111 0082 696E7433 		.ascii	"int32_t\000"
+ 1111      325F7400 
+ 1112              	.LASF33:
+ 1113 008a 4379446D 		.ascii	"CyDmaTdAllocate\000"
+ 1113      61546441 
+ 1113      6C6C6F63 
+ 1113      61746500 
+ 1114              	.LASF21:
+ 1115 009a 444D415F 		.ascii	"DMA_FILTER_2_MEM_Config\000"
+ 1115      46494C54 
+ 1115      45525F32 
+ 1115      5F4D454D 
+ 1115      5F436F6E 
+ 1116              	.LASF14:
+ 1117 00b2 666C6F61 		.ascii	"float\000"
+ 1117      7400
+ 1118              	.LASF27:
+ 1119 00b8 444D415F 		.ascii	"DMA_MF_Chan\000"
+ 1119      4D465F43 
+ 1119      68616E00 
+ 1120              	.LASF22:
+ 1121 00c4 444D415F 		.ascii	"DMA_Chan\000"
+ 1121      4368616E 
+ 1121      00
+ 1122              	.LASF1:
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 23
+
+
+ 1123 00cd 756E7369 		.ascii	"unsigned char\000"
+ 1123      676E6564 
+ 1123      20636861 
+ 1123      7200
+ 1124              	.LASF40:
+ 1125 00db 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1125      43313120 
+ 1125      352E342E 
+ 1125      31203230 
+ 1125      31363036 
+ 1126 010e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1126      20726576 
+ 1126      6973696F 
+ 1126      6E203233 
+ 1126      37373135 
+ 1127 0141 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1127      66756E63 
+ 1127      74696F6E 
+ 1127      2D736563 
+ 1127      74696F6E 
+ 1128              	.LASF17:
+ 1129 0169 72656738 		.ascii	"reg8\000"
+ 1129      00
+ 1130              	.LASF34:
+ 1131 016e 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
+ 1131      61546453 
+ 1131      6574436F 
+ 1131      6E666967 
+ 1131      75726174 
+ 1132              	.LASF5:
+ 1133 0186 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1133      20756E73 
+ 1133      69676E65 
+ 1133      6420696E 
+ 1133      7400
+ 1134              	.LASF3:
+ 1135 0198 73686F72 		.ascii	"short unsigned int\000"
+ 1135      7420756E 
+ 1135      7369676E 
+ 1135      65642069 
+ 1135      6E7400
+ 1136              	.LASF30:
+ 1137 01ab 46696C74 		.ascii	"FilterBuffer\000"
+ 1137      65724275 
+ 1137      66666572 
+ 1137      00
+ 1138              	.LASF31:
+ 1139 01b8 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1139      52784275 
+ 1139      66666572 
+ 1139      00
+ 1140              	.LASF15:
+ 1141 01c5 646F7562 		.ascii	"double\000"
+ 1141      6C6500
+ 1142              	.LASF12:
+ 1143 01cc 75696E74 		.ascii	"uint16\000"
+ 1143      313600
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 24
+
+
+ 1144              	.LASF37:
+ 1145 01d3 4379446D 		.ascii	"CyDmaChEnable\000"
+ 1145      61436845 
+ 1145      6E61626C 
+ 1145      6500
+ 1146              	.LASF38:
+ 1147 01e1 444D415F 		.ascii	"DMA_FM_DmaInitialize\000"
+ 1147      464D5F44 
+ 1147      6D61496E 
+ 1147      69746961 
+ 1147      6C697A65 
+ 1148              	.LASF29:
+ 1149 01f6 41646342 		.ascii	"AdcBuffer\000"
+ 1149      75666665 
+ 1149      7200
+ 1150              	.LASF13:
+ 1151 0200 75696E74 		.ascii	"uint32\000"
+ 1151      333200
+ 1152              	.LASF8:
+ 1153 0207 756E7369 		.ascii	"unsigned int\000"
+ 1153      676E6564 
+ 1153      20696E74 
+ 1153      00
+ 1154              	.LASF7:
+ 1155 0214 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1155      206C6F6E 
+ 1155      6720756E 
+ 1155      7369676E 
+ 1155      65642069 
+ 1156              	.LASF26:
+ 1157 022b 444D415F 		.ascii	"DMA_MEM_2_FILTER_Config\000"
+ 1157      4D454D5F 
+ 1157      325F4649 
+ 1157      4C544552 
+ 1157      5F436F6E 
+ 1158              	.LASF25:
+ 1159 0243 444D415F 		.ascii	"DMA_FM_TD\000"
+ 1159      464D5F54 
+ 1159      4400
+ 1160              	.LASF19:
+ 1161 024d 73697A65 		.ascii	"sizetype\000"
+ 1161      74797065 
+ 1161      00
+ 1162              	.LASF6:
+ 1163 0256 6C6F6E67 		.ascii	"long long int\000"
+ 1163      206C6F6E 
+ 1163      6720696E 
+ 1163      7400
+ 1164              	.LASF16:
+ 1165 0264 63686172 		.ascii	"char\000"
+ 1165      00
+ 1166              	.LASF2:
+ 1167 0269 73686F72 		.ascii	"short int\000"
+ 1167      7420696E 
+ 1167      7400
+ 1168              	.LASF11:
+ 1169 0273 75696E74 		.ascii	"uint8\000"
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccj51Uck.s 			page 25
+
+
+ 1169      3800
+ 1170              	.LASF4:
+ 1171 0279 6C6F6E67 		.ascii	"long int\000"
+ 1171      20696E74 
+ 1171      00
+ 1172              	.LASF18:
+ 1173 0282 6C6F6E67 		.ascii	"long double\000"
+ 1173      20646F75 
+ 1173      626C6500 
+ 1174              	.LASF28:
+ 1175 028e 444D415F 		.ascii	"DMA_MF_TD\000"
+ 1175      4D465F54 
+ 1175      4400
+ 1176              	.LASF0:
+ 1177 0298 7369676E 		.ascii	"signed char\000"
+ 1177      65642063 
+ 1177      68617200 
+ 1178              	.LASF42:
+ 1179 02a4 433A5C55 		.ascii	"C:\\Users\\cante\\Desktop\\INGEGNERIA BIOMEDICA\\V "
+ 1179      73657273 
+ 1179      5C63616E 
+ 1179      74655C44 
+ 1179      65736B74 
+ 1180 02d2 414E4E4F 		.ascii	"ANNO\\LAB ELETTRONICA\\PSoC\\Progetti DMA\\Workspac"
+ 1180      5C4C4142 
+ 1180      20454C45 
+ 1180      5454524F 
+ 1180      4E494341 
+ 1181 0301 6530315C 		.ascii	"e01\\Design03.cydsn\000"
+ 1181      44657369 
+ 1181      676E3033 
+ 1181      2E637964 
+ 1181      736E00
+ 1182              	.LASF23:
+ 1183 0314 444D415F 		.ascii	"DMA_FM_Chan\000"
+ 1183      464D5F43 
+ 1183      68616E00 
+ 1184              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

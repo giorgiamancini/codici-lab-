@@ -1,0 +1,853 @@
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"InterruptRoutines.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Custom_UART_RX_ISR,"ax",%progbits
+  20              		.align	2
+  21              		.global	Custom_UART_RX_ISR
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Custom_UART_RX_ISR, %function
+  25              	Custom_UART_RX_ISR:
+  26              	.LFB64:
+  27              		.file 1 "InterruptRoutines.c"
+   1:InterruptRoutines.c **** /* ========================================
+   2:InterruptRoutines.c ****  *
+   3:InterruptRoutines.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:InterruptRoutines.c ****  * All Rights Reserved
+   5:InterruptRoutines.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:InterruptRoutines.c ****  *
+   7:InterruptRoutines.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:InterruptRoutines.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:InterruptRoutines.c ****  *
+  10:InterruptRoutines.c ****  * ========================================
+  11:InterruptRoutines.c **** */
+  12:InterruptRoutines.c **** 
+  13:InterruptRoutines.c **** #include "InterruptRoutines.h"
+  14:InterruptRoutines.c **** #include "stdio.h"
+  15:InterruptRoutines.c **** 
+  16:InterruptRoutines.c **** static char message [20] = {'\0'}; //inizializzo la stringa a valore nullo
+  17:InterruptRoutines.c **** 
+  18:InterruptRoutines.c **** 
+  19:InterruptRoutines.c **** CY_ISR(Custom_UART_RX_ISR)
+  20:InterruptRoutines.c **** {
+  28              		.loc 1 20 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 38B5     		push	{r3, r4, r5, lr}
+  33              		.cfi_def_cfa_offset 16
+  34              		.cfi_offset 3, -16
+  35              		.cfi_offset 4, -12
+  36              		.cfi_offset 5, -8
+  37              		.cfi_offset 14, -4
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 2
+
+
+  21:InterruptRoutines.c ****   //we read the received data and echo it back
+  22:InterruptRoutines.c ****     //there are two ways: one we do everything in the interrupt, in the other
+  23:InterruptRoutines.c ****     // we use a flag in a source file
+  24:InterruptRoutines.c ****     if (UART_ReadRxStatus() == UART_RX_STS_FIFO_NOTEMPTY)
+  38              		.loc 1 24 0
+  39 0002 FFF7FEFF 		bl	UART_ReadRxStatus
+  40              	.LVL0:
+  41 0006 2028     		cmp	r0, #32
+  42 0008 16D1     		bne	.L1
+  43              	.LBB2:
+  25:InterruptRoutines.c ****     // WE HAVE some fata in the receiving buffer that need to be read 
+  26:InterruptRoutines.c ****     {
+  27:InterruptRoutines.c ****         uint8_t received= UART_ReadRxData(); // leggiamo rx data
+  44              		.loc 1 27 0
+  45 000a FFF7FEFF 		bl	UART_ReadRxData
+  46              	.LVL1:
+  47 000e 0446     		mov	r4, r0
+  48              	.LVL2:
+  28:InterruptRoutines.c ****         //if we have some data in the FIFO
+  29:InterruptRoutines.c ****         sprintf(message, "Received: %c\r\n", received); // formattiamo quello che abbiamo letto
+  49              		.loc 1 29 0
+  50 0010 0A4D     		ldr	r5, .L5
+  51 0012 0246     		mov	r2, r0
+  52 0014 0A49     		ldr	r1, .L5+4
+  53 0016 2846     		mov	r0, r5
+  54              	.LVL3:
+  55 0018 FFF7FEFF 		bl	sprintf
+  56              	.LVL4:
+  30:InterruptRoutines.c ****             //la prima è la stringa che volgiamo scrivere su questo messaggio
+  31:InterruptRoutines.c ****         
+  32:InterruptRoutines.c ****         UART_PutString(message); // lo mandiamo 
+  57              		.loc 1 32 0
+  58 001c 2846     		mov	r0, r5
+  59 001e FFF7FEFF 		bl	UART_PutString
+  60              	.LVL5:
+  33:InterruptRoutines.c ****         
+  34:InterruptRoutines.c ****         if (received == 'b'){
+  61              		.loc 1 34 0
+  62 0022 622C     		cmp	r4, #98
+  63 0024 03D1     		bne	.L3
+  35:InterruptRoutines.c ****             
+  36:InterruptRoutines.c ****             Pin_uart_Write(1);
+  64              		.loc 1 36 0
+  65 0026 0120     		movs	r0, #1
+  66 0028 FFF7FEFF 		bl	Pin_uart_Write
+  67              	.LVL6:
+  68 002c 38BD     		pop	{r3, r4, r5, pc}
+  69              	.L3:
+  37:InterruptRoutines.c ****         }
+  38:InterruptRoutines.c ****         
+  39:InterruptRoutines.c ****         else if (received == 's'){
+  70              		.loc 1 39 0
+  71 002e 732C     		cmp	r4, #115
+  72 0030 02D1     		bne	.L1
+  40:InterruptRoutines.c ****             Pin_uart_Write(0);
+  73              		.loc 1 40 0
+  74 0032 0020     		movs	r0, #0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 3
+
+
+  75 0034 FFF7FEFF 		bl	Pin_uart_Write
+  76              	.LVL7:
+  77              	.L1:
+  78 0038 38BD     		pop	{r3, r4, r5, pc}
+  79              	.L6:
+  80 003a 00BF     		.align	2
+  81              	.L5:
+  82 003c 00000000 		.word	.LANCHOR0
+  83 0040 00000000 		.word	.LC0
+  84              	.LBE2:
+  85              		.cfi_endproc
+  86              	.LFE64:
+  87              		.size	Custom_UART_RX_ISR, .-Custom_UART_RX_ISR
+  88              		.section	.rodata.str1.4,"aMS",%progbits,1
+  89              		.align	2
+  90              	.LC0:
+  91 0000 52656365 		.ascii	"Received: %c\015\012\000"
+  91      69766564 
+  91      3A202563 
+  91      0D0A00
+  92              		.bss
+  93              		.align	2
+  94              		.set	.LANCHOR0,. + 0
+  95              		.type	message, %object
+  96              		.size	message, 20
+  97              	message:
+  98 0000 00000000 		.space	20
+  98      00000000 
+  98      00000000 
+  98      00000000 
+  98      00000000 
+  99              		.text
+ 100              	.Letext0:
+ 101              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 102              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 103              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 104              		.file 5 "Generated_Source\\PSoC5/UART.h"
+ 105              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 106              		.file 7 "Generated_Source\\PSoC5/Pin_uart.h"
+ 107              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 108              		.section	.debug_info,"",%progbits
+ 109              	.Ldebug_info0:
+ 110 0000 CA010000 		.4byte	0x1ca
+ 111 0004 0400     		.2byte	0x4
+ 112 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 113 000a 04       		.byte	0x4
+ 114 000b 01       		.uleb128 0x1
+ 115 000c BB000000 		.4byte	.LASF26
+ 116 0010 0C       		.byte	0xc
+ 117 0011 4B020000 		.4byte	.LASF27
+ 118 0015 24000000 		.4byte	.LASF28
+ 119 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 120 001d 00000000 		.4byte	0
+ 121 0021 00000000 		.4byte	.Ldebug_line0
+ 122 0025 02       		.uleb128 0x2
+ 123 0026 01       		.byte	0x1
+ 124 0027 06       		.byte	0x6
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 4
+
+
+ 125 0028 28020000 		.4byte	.LASF0
+ 126 002c 03       		.uleb128 0x3
+ 127 002d 08000000 		.4byte	.LASF4
+ 128 0031 02       		.byte	0x2
+ 129 0032 1D       		.byte	0x1d
+ 130 0033 37000000 		.4byte	0x37
+ 131 0037 02       		.uleb128 0x2
+ 132 0038 01       		.byte	0x1
+ 133 0039 08       		.byte	0x8
+ 134 003a 7B010000 		.4byte	.LASF1
+ 135 003e 02       		.uleb128 0x2
+ 136 003f 02       		.byte	0x2
+ 137 0040 05       		.byte	0x5
+ 138 0041 03020000 		.4byte	.LASF2
+ 139 0045 02       		.uleb128 0x2
+ 140 0046 02       		.byte	0x2
+ 141 0047 07       		.byte	0x7
+ 142 0048 5B010000 		.4byte	.LASF3
+ 143 004c 03       		.uleb128 0x3
+ 144 004d 93000000 		.4byte	.LASF5
+ 145 0051 02       		.byte	0x2
+ 146 0052 3F       		.byte	0x3f
+ 147 0053 57000000 		.4byte	0x57
+ 148 0057 02       		.uleb128 0x2
+ 149 0058 04       		.byte	0x4
+ 150 0059 05       		.byte	0x5
+ 151 005a 13020000 		.4byte	.LASF6
+ 152 005e 02       		.uleb128 0x2
+ 153 005f 04       		.byte	0x4
+ 154 0060 07       		.byte	0x7
+ 155 0061 49010000 		.4byte	.LASF7
+ 156 0065 02       		.uleb128 0x2
+ 157 0066 08       		.byte	0x8
+ 158 0067 05       		.byte	0x5
+ 159 0068 F0010000 		.4byte	.LASF8
+ 160 006c 02       		.uleb128 0x2
+ 161 006d 08       		.byte	0x8
+ 162 006e 07       		.byte	0x7
+ 163 006f B0010000 		.4byte	.LASF9
+ 164 0073 04       		.uleb128 0x4
+ 165 0074 04       		.byte	0x4
+ 166 0075 05       		.byte	0x5
+ 167 0076 696E7400 		.ascii	"int\000"
+ 168 007a 02       		.uleb128 0x2
+ 169 007b 04       		.byte	0x4
+ 170 007c 07       		.byte	0x7
+ 171 007d A3010000 		.4byte	.LASF10
+ 172 0081 03       		.uleb128 0x3
+ 173 0082 C7010000 		.4byte	.LASF11
+ 174 0086 03       		.byte	0x3
+ 175 0087 18       		.byte	0x18
+ 176 0088 2C000000 		.4byte	0x2c
+ 177 008c 03       		.uleb128 0x3
+ 178 008d DF010000 		.4byte	.LASF12
+ 179 0091 03       		.byte	0x3
+ 180 0092 2C       		.byte	0x2c
+ 181 0093 4C000000 		.4byte	0x4c
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 5
+
+
+ 182 0097 05       		.uleb128 0x5
+ 183 0098 0D020000 		.4byte	.LASF13
+ 184 009c 04       		.byte	0x4
+ 185 009d E801     		.2byte	0x1e8
+ 186 009f 37000000 		.4byte	0x37
+ 187 00a3 02       		.uleb128 0x2
+ 188 00a4 04       		.byte	0x4
+ 189 00a5 04       		.byte	0x4
+ 190 00a6 A6000000 		.4byte	.LASF14
+ 191 00aa 02       		.uleb128 0x2
+ 192 00ab 08       		.byte	0x8
+ 193 00ac 04       		.byte	0x4
+ 194 00ad 9C010000 		.4byte	.LASF15
+ 195 00b1 02       		.uleb128 0x2
+ 196 00b2 01       		.byte	0x1
+ 197 00b3 08       		.byte	0x8
+ 198 00b4 FE010000 		.4byte	.LASF16
+ 199 00b8 02       		.uleb128 0x2
+ 200 00b9 08       		.byte	0x8
+ 201 00ba 04       		.byte	0x4
+ 202 00bb 1C020000 		.4byte	.LASF17
+ 203 00bf 02       		.uleb128 0x2
+ 204 00c0 04       		.byte	0x4
+ 205 00c1 07       		.byte	0x7
+ 206 00c2 E7010000 		.4byte	.LASF18
+ 207 00c6 06       		.uleb128 0x6
+ 208 00c7 89010000 		.4byte	.LASF29
+ 209 00cb 01       		.byte	0x1
+ 210 00cc 13       		.byte	0x13
+ 211 00cd 00000000 		.4byte	.LFB64
+ 212 00d1 44000000 		.4byte	.LFE64-.LFB64
+ 213 00d5 01       		.uleb128 0x1
+ 214 00d6 9C       		.byte	0x9c
+ 215 00d7 64010000 		.4byte	0x164
+ 216 00db 07       		.uleb128 0x7
+ 217 00dc 0A000000 		.4byte	.LBB2
+ 218 00e0 3A000000 		.4byte	.LBE2-.LBB2
+ 219 00e4 5A010000 		.4byte	0x15a
+ 220 00e8 08       		.uleb128 0x8
+ 221 00e9 9D000000 		.4byte	.LASF19
+ 222 00ed 01       		.byte	0x1
+ 223 00ee 1B       		.byte	0x1b
+ 224 00ef 81000000 		.4byte	0x81
+ 225 00f3 00000000 		.4byte	.LLST0
+ 226 00f7 09       		.uleb128 0x9
+ 227 00f8 0E000000 		.4byte	.LVL1
+ 228 00fc 96010000 		.4byte	0x196
+ 229 0100 0A       		.uleb128 0xa
+ 230 0101 1C000000 		.4byte	.LVL4
+ 231 0105 A1010000 		.4byte	0x1a1
+ 232 0109 23010000 		.4byte	0x123
+ 233 010d 0B       		.uleb128 0xb
+ 234 010e 01       		.uleb128 0x1
+ 235 010f 50       		.byte	0x50
+ 236 0110 02       		.uleb128 0x2
+ 237 0111 75       		.byte	0x75
+ 238 0112 00       		.sleb128 0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 6
+
+
+ 239 0113 0B       		.uleb128 0xb
+ 240 0114 01       		.uleb128 0x1
+ 241 0115 51       		.byte	0x51
+ 242 0116 05       		.uleb128 0x5
+ 243 0117 03       		.byte	0x3
+ 244 0118 00000000 		.4byte	.LC0
+ 245 011c 0B       		.uleb128 0xb
+ 246 011d 01       		.uleb128 0x1
+ 247 011e 52       		.byte	0x52
+ 248 011f 02       		.uleb128 0x2
+ 249 0120 74       		.byte	0x74
+ 250 0121 00       		.sleb128 0
+ 251 0122 00       		.byte	0
+ 252 0123 0A       		.uleb128 0xa
+ 253 0124 22000000 		.4byte	.LVL5
+ 254 0128 AC010000 		.4byte	0x1ac
+ 255 012c 37010000 		.4byte	0x137
+ 256 0130 0B       		.uleb128 0xb
+ 257 0131 01       		.uleb128 0x1
+ 258 0132 50       		.byte	0x50
+ 259 0133 02       		.uleb128 0x2
+ 260 0134 75       		.byte	0x75
+ 261 0135 00       		.sleb128 0
+ 262 0136 00       		.byte	0
+ 263 0137 0A       		.uleb128 0xa
+ 264 0138 2C000000 		.4byte	.LVL6
+ 265 013c B7010000 		.4byte	0x1b7
+ 266 0140 4A010000 		.4byte	0x14a
+ 267 0144 0B       		.uleb128 0xb
+ 268 0145 01       		.uleb128 0x1
+ 269 0146 50       		.byte	0x50
+ 270 0147 01       		.uleb128 0x1
+ 271 0148 31       		.byte	0x31
+ 272 0149 00       		.byte	0
+ 273 014a 0C       		.uleb128 0xc
+ 274 014b 38000000 		.4byte	.LVL7
+ 275 014f B7010000 		.4byte	0x1b7
+ 276 0153 0B       		.uleb128 0xb
+ 277 0154 01       		.uleb128 0x1
+ 278 0155 50       		.byte	0x50
+ 279 0156 01       		.uleb128 0x1
+ 280 0157 30       		.byte	0x30
+ 281 0158 00       		.byte	0
+ 282 0159 00       		.byte	0
+ 283 015a 09       		.uleb128 0x9
+ 284 015b 06000000 		.4byte	.LVL0
+ 285 015f C2010000 		.4byte	0x1c2
+ 286 0163 00       		.byte	0
+ 287 0164 0D       		.uleb128 0xd
+ 288 0165 B1000000 		.4byte	0xb1
+ 289 0169 74010000 		.4byte	0x174
+ 290 016d 0E       		.uleb128 0xe
+ 291 016e BF000000 		.4byte	0xbf
+ 292 0172 13       		.byte	0x13
+ 293 0173 00       		.byte	0
+ 294 0174 0F       		.uleb128 0xf
+ 295 0175 00000000 		.4byte	.LASF20
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 7
+
+
+ 296 0179 01       		.byte	0x1
+ 297 017a 10       		.byte	0x10
+ 298 017b 64010000 		.4byte	0x164
+ 299 017f 05       		.uleb128 0x5
+ 300 0180 03       		.byte	0x3
+ 301 0181 00000000 		.4byte	message
+ 302 0185 10       		.uleb128 0x10
+ 303 0186 6E010000 		.4byte	.LASF30
+ 304 018a 08       		.byte	0x8
+ 305 018b 1207     		.2byte	0x712
+ 306 018d 91010000 		.4byte	0x191
+ 307 0191 11       		.uleb128 0x11
+ 308 0192 8C000000 		.4byte	0x8c
+ 309 0196 12       		.uleb128 0x12
+ 310 0197 CF010000 		.4byte	.LASF21
+ 311 019b CF010000 		.4byte	.LASF21
+ 312 019f 05       		.byte	0x5
+ 313 01a0 6F       		.byte	0x6f
+ 314 01a1 12       		.uleb128 0x12
+ 315 01a2 43020000 		.4byte	.LASF22
+ 316 01a6 43020000 		.4byte	.LASF22
+ 317 01aa 06       		.byte	0x6
+ 318 01ab E7       		.byte	0xe7
+ 319 01ac 12       		.uleb128 0x12
+ 320 01ad 34020000 		.4byte	.LASF23
+ 321 01b1 34020000 		.4byte	.LASF23
+ 322 01b5 05       		.byte	0x5
+ 323 01b6 8B       		.byte	0x8b
+ 324 01b7 12       		.uleb128 0x12
+ 325 01b8 AC000000 		.4byte	.LASF24
+ 326 01bc AC000000 		.4byte	.LASF24
+ 327 01c0 07       		.byte	0x7
+ 328 01c1 26       		.byte	0x26
+ 329 01c2 12       		.uleb128 0x12
+ 330 01c3 12000000 		.4byte	.LASF25
+ 331 01c7 12000000 		.4byte	.LASF25
+ 332 01cb 05       		.byte	0x5
+ 333 01cc 70       		.byte	0x70
+ 334 01cd 00       		.byte	0
+ 335              		.section	.debug_abbrev,"",%progbits
+ 336              	.Ldebug_abbrev0:
+ 337 0000 01       		.uleb128 0x1
+ 338 0001 11       		.uleb128 0x11
+ 339 0002 01       		.byte	0x1
+ 340 0003 25       		.uleb128 0x25
+ 341 0004 0E       		.uleb128 0xe
+ 342 0005 13       		.uleb128 0x13
+ 343 0006 0B       		.uleb128 0xb
+ 344 0007 03       		.uleb128 0x3
+ 345 0008 0E       		.uleb128 0xe
+ 346 0009 1B       		.uleb128 0x1b
+ 347 000a 0E       		.uleb128 0xe
+ 348 000b 55       		.uleb128 0x55
+ 349 000c 17       		.uleb128 0x17
+ 350 000d 11       		.uleb128 0x11
+ 351 000e 01       		.uleb128 0x1
+ 352 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 8
+
+
+ 353 0010 17       		.uleb128 0x17
+ 354 0011 00       		.byte	0
+ 355 0012 00       		.byte	0
+ 356 0013 02       		.uleb128 0x2
+ 357 0014 24       		.uleb128 0x24
+ 358 0015 00       		.byte	0
+ 359 0016 0B       		.uleb128 0xb
+ 360 0017 0B       		.uleb128 0xb
+ 361 0018 3E       		.uleb128 0x3e
+ 362 0019 0B       		.uleb128 0xb
+ 363 001a 03       		.uleb128 0x3
+ 364 001b 0E       		.uleb128 0xe
+ 365 001c 00       		.byte	0
+ 366 001d 00       		.byte	0
+ 367 001e 03       		.uleb128 0x3
+ 368 001f 16       		.uleb128 0x16
+ 369 0020 00       		.byte	0
+ 370 0021 03       		.uleb128 0x3
+ 371 0022 0E       		.uleb128 0xe
+ 372 0023 3A       		.uleb128 0x3a
+ 373 0024 0B       		.uleb128 0xb
+ 374 0025 3B       		.uleb128 0x3b
+ 375 0026 0B       		.uleb128 0xb
+ 376 0027 49       		.uleb128 0x49
+ 377 0028 13       		.uleb128 0x13
+ 378 0029 00       		.byte	0
+ 379 002a 00       		.byte	0
+ 380 002b 04       		.uleb128 0x4
+ 381 002c 24       		.uleb128 0x24
+ 382 002d 00       		.byte	0
+ 383 002e 0B       		.uleb128 0xb
+ 384 002f 0B       		.uleb128 0xb
+ 385 0030 3E       		.uleb128 0x3e
+ 386 0031 0B       		.uleb128 0xb
+ 387 0032 03       		.uleb128 0x3
+ 388 0033 08       		.uleb128 0x8
+ 389 0034 00       		.byte	0
+ 390 0035 00       		.byte	0
+ 391 0036 05       		.uleb128 0x5
+ 392 0037 16       		.uleb128 0x16
+ 393 0038 00       		.byte	0
+ 394 0039 03       		.uleb128 0x3
+ 395 003a 0E       		.uleb128 0xe
+ 396 003b 3A       		.uleb128 0x3a
+ 397 003c 0B       		.uleb128 0xb
+ 398 003d 3B       		.uleb128 0x3b
+ 399 003e 05       		.uleb128 0x5
+ 400 003f 49       		.uleb128 0x49
+ 401 0040 13       		.uleb128 0x13
+ 402 0041 00       		.byte	0
+ 403 0042 00       		.byte	0
+ 404 0043 06       		.uleb128 0x6
+ 405 0044 2E       		.uleb128 0x2e
+ 406 0045 01       		.byte	0x1
+ 407 0046 3F       		.uleb128 0x3f
+ 408 0047 19       		.uleb128 0x19
+ 409 0048 03       		.uleb128 0x3
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 9
+
+
+ 410 0049 0E       		.uleb128 0xe
+ 411 004a 3A       		.uleb128 0x3a
+ 412 004b 0B       		.uleb128 0xb
+ 413 004c 3B       		.uleb128 0x3b
+ 414 004d 0B       		.uleb128 0xb
+ 415 004e 27       		.uleb128 0x27
+ 416 004f 19       		.uleb128 0x19
+ 417 0050 11       		.uleb128 0x11
+ 418 0051 01       		.uleb128 0x1
+ 419 0052 12       		.uleb128 0x12
+ 420 0053 06       		.uleb128 0x6
+ 421 0054 40       		.uleb128 0x40
+ 422 0055 18       		.uleb128 0x18
+ 423 0056 9742     		.uleb128 0x2117
+ 424 0058 19       		.uleb128 0x19
+ 425 0059 01       		.uleb128 0x1
+ 426 005a 13       		.uleb128 0x13
+ 427 005b 00       		.byte	0
+ 428 005c 00       		.byte	0
+ 429 005d 07       		.uleb128 0x7
+ 430 005e 0B       		.uleb128 0xb
+ 431 005f 01       		.byte	0x1
+ 432 0060 11       		.uleb128 0x11
+ 433 0061 01       		.uleb128 0x1
+ 434 0062 12       		.uleb128 0x12
+ 435 0063 06       		.uleb128 0x6
+ 436 0064 01       		.uleb128 0x1
+ 437 0065 13       		.uleb128 0x13
+ 438 0066 00       		.byte	0
+ 439 0067 00       		.byte	0
+ 440 0068 08       		.uleb128 0x8
+ 441 0069 34       		.uleb128 0x34
+ 442 006a 00       		.byte	0
+ 443 006b 03       		.uleb128 0x3
+ 444 006c 0E       		.uleb128 0xe
+ 445 006d 3A       		.uleb128 0x3a
+ 446 006e 0B       		.uleb128 0xb
+ 447 006f 3B       		.uleb128 0x3b
+ 448 0070 0B       		.uleb128 0xb
+ 449 0071 49       		.uleb128 0x49
+ 450 0072 13       		.uleb128 0x13
+ 451 0073 02       		.uleb128 0x2
+ 452 0074 17       		.uleb128 0x17
+ 453 0075 00       		.byte	0
+ 454 0076 00       		.byte	0
+ 455 0077 09       		.uleb128 0x9
+ 456 0078 898201   		.uleb128 0x4109
+ 457 007b 00       		.byte	0
+ 458 007c 11       		.uleb128 0x11
+ 459 007d 01       		.uleb128 0x1
+ 460 007e 31       		.uleb128 0x31
+ 461 007f 13       		.uleb128 0x13
+ 462 0080 00       		.byte	0
+ 463 0081 00       		.byte	0
+ 464 0082 0A       		.uleb128 0xa
+ 465 0083 898201   		.uleb128 0x4109
+ 466 0086 01       		.byte	0x1
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 10
+
+
+ 467 0087 11       		.uleb128 0x11
+ 468 0088 01       		.uleb128 0x1
+ 469 0089 31       		.uleb128 0x31
+ 470 008a 13       		.uleb128 0x13
+ 471 008b 01       		.uleb128 0x1
+ 472 008c 13       		.uleb128 0x13
+ 473 008d 00       		.byte	0
+ 474 008e 00       		.byte	0
+ 475 008f 0B       		.uleb128 0xb
+ 476 0090 8A8201   		.uleb128 0x410a
+ 477 0093 00       		.byte	0
+ 478 0094 02       		.uleb128 0x2
+ 479 0095 18       		.uleb128 0x18
+ 480 0096 9142     		.uleb128 0x2111
+ 481 0098 18       		.uleb128 0x18
+ 482 0099 00       		.byte	0
+ 483 009a 00       		.byte	0
+ 484 009b 0C       		.uleb128 0xc
+ 485 009c 898201   		.uleb128 0x4109
+ 486 009f 01       		.byte	0x1
+ 487 00a0 11       		.uleb128 0x11
+ 488 00a1 01       		.uleb128 0x1
+ 489 00a2 31       		.uleb128 0x31
+ 490 00a3 13       		.uleb128 0x13
+ 491 00a4 00       		.byte	0
+ 492 00a5 00       		.byte	0
+ 493 00a6 0D       		.uleb128 0xd
+ 494 00a7 01       		.uleb128 0x1
+ 495 00a8 01       		.byte	0x1
+ 496 00a9 49       		.uleb128 0x49
+ 497 00aa 13       		.uleb128 0x13
+ 498 00ab 01       		.uleb128 0x1
+ 499 00ac 13       		.uleb128 0x13
+ 500 00ad 00       		.byte	0
+ 501 00ae 00       		.byte	0
+ 502 00af 0E       		.uleb128 0xe
+ 503 00b0 21       		.uleb128 0x21
+ 504 00b1 00       		.byte	0
+ 505 00b2 49       		.uleb128 0x49
+ 506 00b3 13       		.uleb128 0x13
+ 507 00b4 2F       		.uleb128 0x2f
+ 508 00b5 0B       		.uleb128 0xb
+ 509 00b6 00       		.byte	0
+ 510 00b7 00       		.byte	0
+ 511 00b8 0F       		.uleb128 0xf
+ 512 00b9 34       		.uleb128 0x34
+ 513 00ba 00       		.byte	0
+ 514 00bb 03       		.uleb128 0x3
+ 515 00bc 0E       		.uleb128 0xe
+ 516 00bd 3A       		.uleb128 0x3a
+ 517 00be 0B       		.uleb128 0xb
+ 518 00bf 3B       		.uleb128 0x3b
+ 519 00c0 0B       		.uleb128 0xb
+ 520 00c1 49       		.uleb128 0x49
+ 521 00c2 13       		.uleb128 0x13
+ 522 00c3 02       		.uleb128 0x2
+ 523 00c4 18       		.uleb128 0x18
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 11
+
+
+ 524 00c5 00       		.byte	0
+ 525 00c6 00       		.byte	0
+ 526 00c7 10       		.uleb128 0x10
+ 527 00c8 34       		.uleb128 0x34
+ 528 00c9 00       		.byte	0
+ 529 00ca 03       		.uleb128 0x3
+ 530 00cb 0E       		.uleb128 0xe
+ 531 00cc 3A       		.uleb128 0x3a
+ 532 00cd 0B       		.uleb128 0xb
+ 533 00ce 3B       		.uleb128 0x3b
+ 534 00cf 05       		.uleb128 0x5
+ 535 00d0 49       		.uleb128 0x49
+ 536 00d1 13       		.uleb128 0x13
+ 537 00d2 3F       		.uleb128 0x3f
+ 538 00d3 19       		.uleb128 0x19
+ 539 00d4 3C       		.uleb128 0x3c
+ 540 00d5 19       		.uleb128 0x19
+ 541 00d6 00       		.byte	0
+ 542 00d7 00       		.byte	0
+ 543 00d8 11       		.uleb128 0x11
+ 544 00d9 35       		.uleb128 0x35
+ 545 00da 00       		.byte	0
+ 546 00db 49       		.uleb128 0x49
+ 547 00dc 13       		.uleb128 0x13
+ 548 00dd 00       		.byte	0
+ 549 00de 00       		.byte	0
+ 550 00df 12       		.uleb128 0x12
+ 551 00e0 2E       		.uleb128 0x2e
+ 552 00e1 00       		.byte	0
+ 553 00e2 3F       		.uleb128 0x3f
+ 554 00e3 19       		.uleb128 0x19
+ 555 00e4 3C       		.uleb128 0x3c
+ 556 00e5 19       		.uleb128 0x19
+ 557 00e6 6E       		.uleb128 0x6e
+ 558 00e7 0E       		.uleb128 0xe
+ 559 00e8 03       		.uleb128 0x3
+ 560 00e9 0E       		.uleb128 0xe
+ 561 00ea 3A       		.uleb128 0x3a
+ 562 00eb 0B       		.uleb128 0xb
+ 563 00ec 3B       		.uleb128 0x3b
+ 564 00ed 0B       		.uleb128 0xb
+ 565 00ee 00       		.byte	0
+ 566 00ef 00       		.byte	0
+ 567 00f0 00       		.byte	0
+ 568              		.section	.debug_loc,"",%progbits
+ 569              	.Ldebug_loc0:
+ 570              	.LLST0:
+ 571 0000 10000000 		.4byte	.LVL2
+ 572 0004 18000000 		.4byte	.LVL3
+ 573 0008 0100     		.2byte	0x1
+ 574 000a 50       		.byte	0x50
+ 575 000b 00000000 		.4byte	0
+ 576 000f 00000000 		.4byte	0
+ 577              		.section	.debug_aranges,"",%progbits
+ 578 0000 1C000000 		.4byte	0x1c
+ 579 0004 0200     		.2byte	0x2
+ 580 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 12
+
+
+ 581 000a 04       		.byte	0x4
+ 582 000b 00       		.byte	0
+ 583 000c 0000     		.2byte	0
+ 584 000e 0000     		.2byte	0
+ 585 0010 00000000 		.4byte	.LFB64
+ 586 0014 44000000 		.4byte	.LFE64-.LFB64
+ 587 0018 00000000 		.4byte	0
+ 588 001c 00000000 		.4byte	0
+ 589              		.section	.debug_ranges,"",%progbits
+ 590              	.Ldebug_ranges0:
+ 591 0000 00000000 		.4byte	.LFB64
+ 592 0004 44000000 		.4byte	.LFE64
+ 593 0008 00000000 		.4byte	0
+ 594 000c 00000000 		.4byte	0
+ 595              		.section	.debug_line,"",%progbits
+ 596              	.Ldebug_line0:
+ 597 0000 01020000 		.section	.debug_str,"MS",%progbits,1
+ 597      0200E401 
+ 597      00000201 
+ 597      FB0E0D00 
+ 597      01010101 
+ 598              	.LASF20:
+ 599 0000 6D657373 		.ascii	"message\000"
+ 599      61676500 
+ 600              	.LASF4:
+ 601 0008 5F5F7569 		.ascii	"__uint8_t\000"
+ 601      6E74385F 
+ 601      7400
+ 602              	.LASF25:
+ 603 0012 55415254 		.ascii	"UART_ReadRxStatus\000"
+ 603      5F526561 
+ 603      64527853 
+ 603      74617475 
+ 603      7300
+ 604              	.LASF28:
+ 605 0024 433A5C55 		.ascii	"C:\\Users\\cante\\Desktop\\INGEGNERIA BIOMEDICA\\V "
+ 605      73657273 
+ 605      5C63616E 
+ 605      74655C44 
+ 605      65736B74 
+ 606 0052 414E4E4F 		.ascii	"ANNO\\LAB ELETTRONICA\\PSoC\\AY2021_II_PSoC_Basics\\"
+ 606      5C4C4142 
+ 606      20454C45 
+ 606      5454524F 
+ 606      4E494341 
+ 607 0082 30382D55 		.ascii	"08-UARTLED.cydsn\000"
+ 607      4152544C 
+ 607      45442E63 
+ 607      7964736E 
+ 607      00
+ 608              	.LASF5:
+ 609 0093 5F5F696E 		.ascii	"__int32_t\000"
+ 609      7433325F 
+ 609      7400
+ 610              	.LASF19:
+ 611 009d 72656365 		.ascii	"received\000"
+ 611      69766564 
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 13
+
+
+ 611      00
+ 612              	.LASF14:
+ 613 00a6 666C6F61 		.ascii	"float\000"
+ 613      7400
+ 614              	.LASF24:
+ 615 00ac 50696E5F 		.ascii	"Pin_uart_Write\000"
+ 615      75617274 
+ 615      5F577269 
+ 615      746500
+ 616              	.LASF26:
+ 617 00bb 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 617      43313120 
+ 617      352E342E 
+ 617      31203230 
+ 617      31363036 
+ 618 00ee 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 618      20726576 
+ 618      6973696F 
+ 618      6E203233 
+ 618      37373135 
+ 619 0121 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 619      66756E63 
+ 619      74696F6E 
+ 619      2D736563 
+ 619      74696F6E 
+ 620              	.LASF7:
+ 621 0149 6C6F6E67 		.ascii	"long unsigned int\000"
+ 621      20756E73 
+ 621      69676E65 
+ 621      6420696E 
+ 621      7400
+ 622              	.LASF3:
+ 623 015b 73686F72 		.ascii	"short unsigned int\000"
+ 623      7420756E 
+ 623      7369676E 
+ 623      65642069 
+ 623      6E7400
+ 624              	.LASF30:
+ 625 016e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 625      52784275 
+ 625      66666572 
+ 625      00
+ 626              	.LASF1:
+ 627 017b 756E7369 		.ascii	"unsigned char\000"
+ 627      676E6564 
+ 627      20636861 
+ 627      7200
+ 628              	.LASF29:
+ 629 0189 43757374 		.ascii	"Custom_UART_RX_ISR\000"
+ 629      6F6D5F55 
+ 629      4152545F 
+ 629      52585F49 
+ 629      535200
+ 630              	.LASF15:
+ 631 019c 646F7562 		.ascii	"double\000"
+ 631      6C6500
+ 632              	.LASF10:
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 14
+
+
+ 633 01a3 756E7369 		.ascii	"unsigned int\000"
+ 633      676E6564 
+ 633      20696E74 
+ 633      00
+ 634              	.LASF9:
+ 635 01b0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 635      206C6F6E 
+ 635      6720756E 
+ 635      7369676E 
+ 635      65642069 
+ 636              	.LASF11:
+ 637 01c7 75696E74 		.ascii	"uint8_t\000"
+ 637      385F7400 
+ 638              	.LASF21:
+ 639 01cf 55415254 		.ascii	"UART_ReadRxData\000"
+ 639      5F526561 
+ 639      64527844 
+ 639      61746100 
+ 640              	.LASF12:
+ 641 01df 696E7433 		.ascii	"int32_t\000"
+ 641      325F7400 
+ 642              	.LASF18:
+ 643 01e7 73697A65 		.ascii	"sizetype\000"
+ 643      74797065 
+ 643      00
+ 644              	.LASF8:
+ 645 01f0 6C6F6E67 		.ascii	"long long int\000"
+ 645      206C6F6E 
+ 645      6720696E 
+ 645      7400
+ 646              	.LASF16:
+ 647 01fe 63686172 		.ascii	"char\000"
+ 647      00
+ 648              	.LASF2:
+ 649 0203 73686F72 		.ascii	"short int\000"
+ 649      7420696E 
+ 649      7400
+ 650              	.LASF13:
+ 651 020d 75696E74 		.ascii	"uint8\000"
+ 651      3800
+ 652              	.LASF6:
+ 653 0213 6C6F6E67 		.ascii	"long int\000"
+ 653      20696E74 
+ 653      00
+ 654              	.LASF17:
+ 655 021c 6C6F6E67 		.ascii	"long double\000"
+ 655      20646F75 
+ 655      626C6500 
+ 656              	.LASF0:
+ 657 0228 7369676E 		.ascii	"signed char\000"
+ 657      65642063 
+ 657      68617200 
+ 658              	.LASF23:
+ 659 0234 55415254 		.ascii	"UART_PutString\000"
+ 659      5F507574 
+ 659      53747269 
+ 659      6E6700
+ARM GAS  C:\Users\cante\AppData\Local\Temp\ccyIg4Rl.s 			page 15
+
+
+ 660              	.LASF22:
+ 661 0243 73707269 		.ascii	"sprintf\000"
+ 661      6E746600 
+ 662              	.LASF27:
+ 663 024b 496E7465 		.ascii	"InterruptRoutines.c\000"
+ 663      72727570 
+ 663      74526F75 
+ 663      74696E65 
+ 663      732E6300 
+ 664              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
